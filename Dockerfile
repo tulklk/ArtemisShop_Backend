@@ -1,56 +1,64 @@
-# Use the official .NET 8.0 SDK image for building
+# Stage 1: Build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+# Set the working directory
 WORKDIR /src
 
-# Copy solution and project files
-COPY ["AtermisShop/AtermisShop.sln", "AtermisShop/"]
-COPY ["AtermisShop/AtermisShop_API/AtermisShop_API.csproj", "AtermisShop/AtermisShop_API/"]
-COPY ["AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj", "AtermisShop/AtermisShop.Domain/"]
-COPY ["AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj", "AtermisShop/AtermisShop.Application/"]
-COPY ["AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj", "AtermisShop/AtermisShop.Infrastructure/"]
+# Copy solution file
+COPY AtermisShop/AtermisShop.sln ./
 
-# Restore dependencies
-RUN dotnet restore "AtermisShop/AtermisShop.sln"
+# Copy all project files (for better Docker layer caching)
+COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj AtermisShop/AtermisShop_API/
+COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj AtermisShop/AtermisShop.Domain/
+COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj AtermisShop/AtermisShop.Application/
+COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj AtermisShop/AtermisShop.Infrastructure/
 
-# Copy everything else and build
+# Restore dependencies (this leverages Docker cache)
+RUN dotnet restore AtermisShop.sln
+
+# Copy the rest of the source code
 COPY AtermisShop/ AtermisShop/
+
+# Build and publish the application
 WORKDIR /src/AtermisShop
-RUN dotnet build "AtermisShop.sln" -c Release -o /app/build
+RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
 
-# Publish the API project
-FROM build AS publish
-RUN dotnet publish "AtermisShop_API/AtermisShop_API.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
-WORKDIR /app
+# Stage 2: Create the runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 
 # Install curl for health checks
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Create a non-root user
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+# Create a non-root user to run the application
+RUN groupadd -r appuser && useradd -r -g appuser -s /bin/bash appuser
 
-# Copy published app
-COPY --from=publish /app/publish .
+# Set the working directory
+WORKDIR /app
 
-# Copy entrypoint script
+# Copy the published application from the build stage
+COPY --from=build /app/publish .
+
+# Copy entrypoint script (from root of build context)
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
-# Change ownership to non-root user
+# Change ownership of the application files
 RUN chown -R appuser:appuser /app
 
-# Switch to non-root user
+# Switch to the non-root user
 USER appuser
 
 # Expose port (fly.io will set PORT env variable)
 EXPOSE 8080
 
+# Configure environment variables
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV DOTNET_EnableDiagnostics=0
+ENV DOTNET_gcServer=1
+
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:${PORT:-8080}/api/health || exit 1
 
-# Run the app using entrypoint script
+# Run the application using entrypoint script
 ENTRYPOINT ["/app/entrypoint.sh"]
-
