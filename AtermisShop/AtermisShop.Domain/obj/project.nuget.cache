@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LkJ+DplVIOs=",
+  "dgSpecHash": "Looo2XNs6J4=",
   "success": true,
-  "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
+  "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\10.0.1\\microsoft.aspnetcore.cryptography.internal.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\10.0.1\\microsoft.aspnetcore.cryptography.keyderivation.10.0.1.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x8ld6A82WYY=",
+  "dgSpecHash": "mYyAET4Liho=",
   "success": true,
-  "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+  "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tus\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
