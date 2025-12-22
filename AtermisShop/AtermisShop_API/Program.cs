@@ -127,6 +127,15 @@ namespace AtermisShop_API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // Add root route handler for Fly.io deployment check
+            app.MapGet("/", () => Results.Json(new 
+            { 
+                message = "Artemis Shop API is running", 
+                version = "v1",
+                health = "/api/health",
+                swagger = app.Environment.IsDevelopment() ? "/swagger" : null
+            }));
+
             app.MapControllers();
 
             // Apply migrations and seed admin user on startup
