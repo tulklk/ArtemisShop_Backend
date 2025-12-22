@@ -19,7 +19,7 @@ RUN dotnet restore AtermisShop.sln
 # Copy the rest of the source code
 COPY AtermisShop/ AtermisShop/
 
-# Build and publish the application
+# Build and publish the API project
 WORKDIR /src/AtermisShop
 RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
 
@@ -30,7 +30,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user to run the application
-RUN groupadd -r appuser && useradd -r -g appuser -s /bin/bash appuser
+RUN useradd -m -u 1000 -s /bin/bash dotnetuser
 
 # Set the working directory
 WORKDIR /app
@@ -38,27 +38,24 @@ WORKDIR /app
 # Copy the published application from the build stage
 COPY --from=build /app/publish .
 
-# Copy entrypoint script (from root of build context)
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 # Change ownership of the application files
-RUN chown -R appuser:appuser /app
+RUN chown -R dotnetuser:dotnetuser /app
 
 # Switch to the non-root user
-USER appuser
+USER dotnetuser
 
-# Expose port (fly.io will set PORT env variable)
+# Configure ASP.NET Core to listen on port 8080 (matches fly.toml internal_port)
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080
 
-# Configure environment variables
-ENV ASPNETCORE_ENVIRONMENT=Production
+# Enable .NET 8 performance features
 ENV DOTNET_EnableDiagnostics=0
 ENV DOTNET_gcServer=1
 
-# Health check
+# Health check endpoint (HealthController -> /api/health)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:${PORT:-8080}/api/health || exit 1
+  CMD curl -f http://localhost:8080/api/health || exit 1
 
-# Run the application using entrypoint script
-ENTRYPOINT ["/app/entrypoint.sh"]
+# Run the application (correct DLL name)
+ENTRYPOINT ["dotnet", "AtermisShop_API.dll"]
