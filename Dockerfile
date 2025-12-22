@@ -4,25 +4,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# 1) Copy solution file
-COPY AtermisShop/AtermisShop.sln ./AtermisShop/
-
-# 2) Copy project files (for Docker layer caching)
-COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj ./AtermisShop/AtermisShop_API/
-COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj ./AtermisShop/AtermisShop.Application/
-COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj ./AtermisShop/AtermisShop.Domain/
-COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj ./AtermisShop/AtermisShop.Infrastructure/
-
-# 3) Restore dependencies (run inside folder that contains AtermisShop.sln)
-WORKDIR /src/AtermisShop
-RUN dotnet restore
-
-# 4) Copy the rest of the source code
-WORKDIR /src
+# Copy entire solution directory first (simpler approach)
 COPY AtermisShop/ ./AtermisShop/
 
-# 5) Publish API project
+# Restore dependencies
 WORKDIR /src/AtermisShop
+RUN dotnet restore AtermisShop.sln
+
+# Publish API project
 RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
 
 # =========================
