@@ -5,26 +5,25 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # 1) Copy solution file
-COPY ArtemisShop/ArtemisShop.sln ArtemisShop/
+COPY AtermisShop/AtermisShop.sln ./AtermisShop/
 
 # 2) Copy project files (for Docker layer caching)
-COPY ArtemisShop/ArtemisShop_API/ArtemisShop_API.csproj ArtemisShop/ArtemisShop_API/
-COPY ArtemisShop/ArtemisShop.Application/ArtemisShop.Application.csproj ArtemisShop/ArtemisShop.Application/
-COPY ArtemisShop/ArtemisShop.Domain/ArtemisShop.Domain.csproj ArtemisShop/ArtemisShop.Domain/
-COPY ArtemisShop/ArtemisShop.Infrastructure/ArtemisShop.Infrastructure.csproj ArtemisShop/ArtemisShop.Infrastructure/
+COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj ./AtermisShop/AtermisShop_API/
+COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj ./AtermisShop/AtermisShop.Application/
+COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj ./AtermisShop/AtermisShop.Domain/
+COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj ./AtermisShop/AtermisShop.Infrastructure/
 
-# 3) Restore
-WORKDIR /src/ArtemisShop
-RUN dotnet restore ArtemisShop.sln
+# 3) Restore dependencies
+WORKDIR /src/AtermisShop
+RUN dotnet restore AtermisShop.sln
 
 # 4) Copy the rest of the source code
 WORKDIR /src
-COPY ArtemisShop/ ArtemisShop/
+COPY AtermisShop/ ./AtermisShop/
 
-# 5) Publish API
-WORKDIR /src/ArtemisShop
-RUN dotnet publish ArtemisShop_API/ArtemisShop_API.csproj -c Release -o /app/publish --no-restore
-
+# 5) Publish API project
+WORKDIR /src/AtermisShop
+RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
 
 # =========================
 # Stage 2: Runtime
@@ -32,17 +31,20 @@ RUN dotnet publish ArtemisShop_API/ArtemisShop_API.csproj -c Release -o /app/pub
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
-# (Optional) install curl for HEALTHCHECK
+# Install curl for health checks
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Fly thường map internal_port = 8080
+# Configure ASP.NET Core
 ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080
 
-# Healthcheck (đảm bảo bạn có endpoint /api/health)
+# Health check endpoint
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:8080/api/health || exit 1
 
+# Copy published application
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "ArtemisShop_API.dll"]
+
+# Run the application
+ENTRYPOINT ["dotnet", "AtermisShop_API.dll"]
