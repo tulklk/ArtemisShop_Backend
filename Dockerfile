@@ -1,65 +1,48 @@
-# Stage 1: Build the application
+# =========================
+# Stage 1: Build & Publish
+# =========================
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-
-# Set the working directory
 WORKDIR /src
 
-# Copy solution file first
-COPY AtermisShop/AtermisShop.sln ./AtermisShop/
+# 1) Copy solution file
+COPY ArtemisShop/ArtemisShop.sln ArtemisShop/
 
-# Copy all project files (for better Docker layer caching)
-# Maintain the exact directory structure
-COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj ./AtermisShop/AtermisShop_API/
-COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj ./AtermisShop/AtermisShop.Domain/
-COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj ./AtermisShop/AtermisShop.Application/
-COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj ./AtermisShop/AtermisShop.Infrastructure/
+# 2) Copy project files (for Docker layer caching)
+COPY ArtemisShop/ArtemisShop_API/ArtemisShop_API.csproj ArtemisShop/ArtemisShop_API/
+COPY ArtemisShop/ArtemisShop.Application/ArtemisShop.Application.csproj ArtemisShop/ArtemisShop.Application/
+COPY ArtemisShop/ArtemisShop.Domain/ArtemisShop.Domain.csproj ArtemisShop/ArtemisShop.Domain/
+COPY ArtemisShop/ArtemisShop.Infrastructure/ArtemisShop.Infrastructure.csproj ArtemisShop/ArtemisShop.Infrastructure/
 
-# Restore dependencies (this leverages Docker cache)
-# Change to AtermisShop directory where solution file is located
-WORKDIR /src/AtermisShop
-RUN dotnet restore AtermisShop.sln
+# 3) Restore
+WORKDIR /src/ArtemisShop
+RUN dotnet restore ArtemisShop.sln
 
-# Copy the rest of the source code
+# 4) Copy the rest of the source code
 WORKDIR /src
-COPY AtermisShop/ ./AtermisShop/
+COPY ArtemisShop/ ArtemisShop/
 
-# Build and publish the API project
-WORKDIR /src/AtermisShop
-RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
+# 5) Publish API
+WORKDIR /src/ArtemisShop
+RUN dotnet publish ArtemisShop_API/ArtemisShop_API.csproj -c Release -o /app/publish --no-restore
 
-# Stage 2: Create the runtime image
+
+# =========================
+# Stage 2: Runtime
+# =========================
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
-
-# Install curl for health checks
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
-
-# Create a non-root user to run the application
-RUN useradd -m -u 1000 -s /bin/bash dotnetuser
-
-# Set the working directory
 WORKDIR /app
 
-# Copy the published application from the build stage
-COPY --from=build /app/publish .
+# (Optional) install curl for HEALTHCHECK
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Change ownership of the application files
-RUN chown -R dotnetuser:dotnetuser /app
-
-# Switch to the non-root user
-USER dotnetuser
-
-# Configure ASP.NET Core to listen on port 8080 (matches fly.toml internal_port)
+# Fly thường map internal_port = 8080
 ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 EXPOSE 8080
 
-# Enable .NET 8 performance features
-ENV DOTNET_EnableDiagnostics=0
-ENV DOTNET_gcServer=1
-
-# Health check endpoint (HealthController -> /api/health)
+# Healthcheck (đảm bảo bạn có endpoint /api/health)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:8080/api/health || exit 1
 
-# Run the application (correct DLL name)
-ENTRYPOINT ["dotnet", "AtermisShop_API.dll"]
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "ArtemisShop_API.dll"]
