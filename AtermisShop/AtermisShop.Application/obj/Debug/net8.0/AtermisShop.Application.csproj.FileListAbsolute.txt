@@ -1,0 +1,15 @@
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.csproj.AssemblyReference.cache
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.AssemblyInfoInputs.cache
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.AssemblyInfo.cs
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.csproj.CoreCompileInputs.cache
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.deps.json
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.pdb
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Domain.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Domain.pdb
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisS.8F24EEF5.Up2Date
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\refint\AtermisShop.Application.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.pdb
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\ref\AtermisShop.Application.dll
