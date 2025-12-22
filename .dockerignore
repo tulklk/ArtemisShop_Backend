@@ -1,182 +1,32 @@
-# Build results
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-[Ll]og/
-[Ll]ogs/
+# .NET build outputs
+**/bin/
+**/obj/
+**/out/
 
-# Visual Studio
+# Visual Studio files
 .vs/
-.vscode/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# User-specific files
-*.rsuser
-*.dbmdl
-*.jfm
-
 # Build results
 [Dd]ebug/
-[Dd]ebugPublic/
 [Rr]elease/
-[Rr]eleases/
 x64/
 x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
 bld/
-[Bb]in/
-[Oo]bj/
 [Ll]og/
+[Ll]ogs/
 
-# MSTest test Results
+# Test results
 [Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
+*.trx
 
-# NuGet
+# NuGet packages
 *.nupkg
-*.snupkg
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
-*.nuget.props
-*.nuget.targets
-
-# .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# Files built by Visual Studio
-*_i.c
-*_p.c
-*_h.h
-*.ilk
-*.meta
-*.obj
-*.iobj
-*.pch
-*.pdb
-*.ipdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp
-*.tmp_proj
-*_wpftmp.csproj
-*.log
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.svclog
-*.scc
-
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.sap
-
-# ReSharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-*.DotSettings.user
-
-# TeamCity
-_TeamCity*
-
-# DotCover
-*.dotCover
-
-# NCrunch
-_NCrunch_*
-.*crunch*.local.xml
-nCrunchTemp_*
-
-# Publish Web Output
-*.[Pp]ublish.xml
-*.azurePubxml
-*.pubxml
-*.publishproj
-PublishScripts/
-
-# Windows Store app package directories and files
-AppPackages/
-BundleArtifacts/
-Package.StoreAssociation.xml
-_pkginfo.txt
-*.appx
-*.appxbundle
-*.appxupload
-
-# Others
-ClientBin/
-~$*
-*~
-*.dbmdl
-*.dbproj.schemaview
-*.jfm
-*.pfx
-*.publishsettings
-orleans.codegen.cs
-
-# SQL Server files
-*.mdf
-*.ldf
-*.ndf
-
-# Node.js Tools for Visual Studio
-.ntvs_analysis.dat
-node_modules/
-
-# Typescript v1 declaration files
-typings/
-
-# Visual Studio 6 build log
-*.plg
-
-# Visual Studio 6 workspace options file
-*.opt
-
-# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
-*.vbw
-
-# Visual Studio LightSwitch build output
-**/*.HTMLClient/GeneratedArtifacts
-**/*.DesktopClient/GeneratedArtifacts
-**/*.DesktopClient/ModelManifest.xml
-**/*.Server/GeneratedArtifacts
-**/*.Server/ModelManifest.xml
-_Pvt_Extensions
-
-# Paket dependency manager
-.paket/paket.exe
-paket-files/
-
-# FAKE - F# Make
-.fake/
-
-# JetBrains Rider
-.idea/
-*.sln.iml
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
 
 # Git
 .git/
@@ -184,26 +34,36 @@ Desktop.ini
 .gitattributes
 
 # Docker
-Dockerfile
+Dockerfile*
 .dockerignore
 docker-compose*.yml
-
-# Documentation
-README.md
-LICENSE
-CHANGELOG.md
-docs/
-
-# Environment files
-.env
-.env.*
-appsettings.Development.json
-appsettings.Local.json
 
 # Fly.io
 fly.toml
 .fly/
 
-# .NET 8 specific
-.dotnet/
-.aspnet/
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Documentation
+*.md
+README*
+
+# Misc
+*.cache
+*.tmp
+*.temp
+

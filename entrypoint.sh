@@ -9,3 +9,4 @@ export ASPNETCORE_URLS="http://0.0.0.0:${PORT}"
 
 # Run the application
 exec dotnet AtermisShop_API.dll
+
