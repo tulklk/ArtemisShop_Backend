@@ -13,9 +13,9 @@ COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj ./Atermi
 COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj ./AtermisShop/AtermisShop.Domain/
 COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj ./AtermisShop/AtermisShop.Infrastructure/
 
-# 3) Restore dependencies
+# 3) Restore dependencies (run inside folder that contains AtermisShop.sln)
 WORKDIR /src/AtermisShop
-RUN dotnet restore AtermisShop.sln
+RUN dotnet restore
 
 # 4) Copy the rest of the source code
 WORKDIR /src
