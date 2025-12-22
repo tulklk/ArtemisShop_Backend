@@ -4,24 +4,24 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 # Set the working directory
 WORKDIR /src
 
-# Copy solution file
+# Copy solution file to root
 COPY AtermisShop/AtermisShop.sln ./
 
 # Copy all project files (for better Docker layer caching)
-COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj AtermisShop/AtermisShop_API/
-COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj AtermisShop/AtermisShop.Domain/
-COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj AtermisShop/AtermisShop.Application/
-COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj AtermisShop/AtermisShop.Infrastructure/
+# Maintain the directory structure
+COPY AtermisShop/AtermisShop_API/AtermisShop_API.csproj ./AtermisShop/AtermisShop_API/
+COPY AtermisShop/AtermisShop.Domain/AtermisShop.Domain.csproj ./AtermisShop/AtermisShop.Domain/
+COPY AtermisShop/AtermisShop.Application/AtermisShop.Application.csproj ./AtermisShop/AtermisShop.Application/
+COPY AtermisShop/AtermisShop.Infrastructure/AtermisShop.Infrastructure.csproj ./AtermisShop/AtermisShop.Infrastructure/
 
 # Restore dependencies (this leverages Docker cache)
 RUN dotnet restore AtermisShop.sln
 
 # Copy the rest of the source code
-COPY AtermisShop/ AtermisShop/
+COPY AtermisShop/ ./AtermisShop/
 
 # Build and publish the API project
-WORKDIR /src/AtermisShop
-RUN dotnet publish AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
+RUN dotnet publish AtermisShop/AtermisShop_API/AtermisShop_API.csproj -c Release -o /app/publish --no-restore
 
 # Stage 2: Create the runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
