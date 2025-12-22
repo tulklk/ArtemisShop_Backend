@@ -107,18 +107,21 @@ namespace AtermisShop_API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            // Enable Swagger for both Development and Production
+            app.UseSwagger(c =>
             {
-                app.UseSwagger(c =>
+                c.RouteTemplate = "swagger/{documentName}/swagger.json";
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Artemis Shop API v1");
+                c.RoutePrefix = "swagger";
+                // Disable try it out in production for better security (optional)
+                if (!app.Environment.IsDevelopment())
                 {
-                    c.RouteTemplate = "swagger/{documentName}/swagger.json";
-                });
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Artemis Shop API v1");
-                    c.RoutePrefix = "swagger";
-                });
-            }
+                    c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
+                }
+            });
 
             app.UseHttpsRedirection();
 
@@ -133,7 +136,7 @@ namespace AtermisShop_API
                 message = "Artemis Shop API is running", 
                 version = "v1",
                 health = "/api/health",
-                swagger = app.Environment.IsDevelopment() ? "/swagger" : null
+                swagger = "/swagger"
             }));
 
             app.MapControllers();
