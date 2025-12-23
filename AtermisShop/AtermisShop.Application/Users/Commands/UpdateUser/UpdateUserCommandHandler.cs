@@ -1,21 +1,21 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Users.Commands.UpdateUser;
 
 public sealed class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public UpdateUserCommandHandler(UserManager<ApplicationUser> userManager)
+    public UpdateUserCommandHandler(IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
     public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+        var user = await _userService.FindByIdAsync(request.UserId);
         if (user == null)
             throw new InvalidOperationException("User not found");
 
@@ -25,7 +25,13 @@ public sealed class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand
         if (!string.IsNullOrEmpty(request.PhoneNumber))
             user.PhoneNumber = request.PhoneNumber;
 
-        await _userManager.UpdateAsync(user);
+        // Update IsActive if provided
+        if (request.IsActive.HasValue)
+        {
+            user.IsActive = request.IsActive.Value;
+        }
+
+        await _userService.UpdateAsync(user);
         return Unit.Value;
     }
 }

@@ -1,21 +1,22 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace AtermisShop.Application.Users.Queries.GetUsers;
 
 public sealed class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IReadOnlyList<ApplicationUser>>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IApplicationDbContext _context;
 
-    public GetUsersQueryHandler(UserManager<ApplicationUser> userManager)
+    public GetUsersQueryHandler(IApplicationDbContext context)
     {
-        _userManager = userManager;
+        _context = context;
     }
 
     public async Task<IReadOnlyList<ApplicationUser>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
-        return _userManager.Users.ToList();
+        return await _context.Users.ToListAsync(cancellationToken);
     }
 }
 

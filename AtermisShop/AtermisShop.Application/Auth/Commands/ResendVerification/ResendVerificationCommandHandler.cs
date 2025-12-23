@@ -1,22 +1,22 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Auth.Commands.ResendVerification;
 
 public sealed class ResendVerificationCommandHandler : IRequestHandler<ResendVerificationCommand, bool>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public ResendVerificationCommandHandler(UserManager<ApplicationUser> userManager)
+    public ResendVerificationCommandHandler(IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
     public async Task<bool> Handle(ResendVerificationCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
-        if (user == null || user.EmailConfirmed)
+        var user = await _userService.FindByEmailAsync(request.Email);
+        if (user == null || user.EmailVerified)
             return false;
 
         // TODO: Send verification email

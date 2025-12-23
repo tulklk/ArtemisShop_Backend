@@ -1,25 +1,26 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Users.Commands.DeleteUser;
 
 public sealed class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IApplicationDbContext _context;
 
-    public DeleteUserCommandHandler(UserManager<ApplicationUser> userManager)
+    public DeleteUserCommandHandler(IApplicationDbContext context)
     {
-        _userManager = userManager;
+        _context = context;
     }
 
     public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+        var user = await _context.Users.FindAsync(new object[] { request.UserId }, cancellationToken);
         if (user == null)
             throw new InvalidOperationException("User not found");
 
-        await _userManager.DeleteAsync(user);
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync(cancellationToken);
         return Unit.Value;
     }
 }

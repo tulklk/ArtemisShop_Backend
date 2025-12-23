@@ -2,7 +2,6 @@ using AtermisShop.Application.Auth.Common;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,16 +12,16 @@ namespace AtermisShop.Application.Auth.Commands.RefreshToken;
 
 public sealed class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, JwtTokenResult?>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
     private readonly IConfiguration _configuration;
     private readonly IJwtTokenService _jwtTokenService;
 
     public RefreshTokenCommandHandler(
-        UserManager<ApplicationUser> userManager,
+        IUserService userService,
         IConfiguration configuration,
         IJwtTokenService jwtTokenService)
     {
-        _userManager = userManager;
+        _userService = userService;
         _configuration = configuration;
         _jwtTokenService = jwtTokenService;
     }
@@ -50,7 +49,7 @@ public sealed class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCom
             if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
                 return null;
 
-            var user = await _userManager.FindByIdAsync(userId.ToString());
+            var user = await _userService.FindByIdAsync(userId);
             if (user == null)
                 return null;
 

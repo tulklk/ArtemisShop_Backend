@@ -3,7 +3,6 @@ using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using Google.Apis.Auth;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -11,18 +10,18 @@ namespace AtermisShop.Application.Auth.Commands.LoginGoogle;
 
 public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleCommand, JwtTokenResult?>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
     private readonly IConfiguration _configuration;
     private readonly IJwtTokenService _jwtTokenService;
     private readonly ILogger<LoginGoogleCommandHandler> _logger;
 
     public LoginGoogleCommandHandler(
-        UserManager<ApplicationUser> userManager,
+        IUserService userService,
         IConfiguration configuration,
         IJwtTokenService jwtTokenService,
         ILogger<LoginGoogleCommandHandler> logger)
     {
-        _userManager = userManager;
+        _userService = userService;
         _configuration = configuration;
         _jwtTokenService = jwtTokenService;
         _logger = logger;
@@ -74,33 +73,25 @@ public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleComma
             }
 
             // Find user by email
-            var user = await _userManager.FindByEmailAsync(payload.Email);
+            var user = await _userService.FindByEmailAsync(payload.Email);
 
             if (user == null)
             {
                 // Create new user from Google account
                 user = new ApplicationUser
                 {
-                    Id = Guid.NewGuid(),
-                    UserName = payload.Email,
                     Email = payload.Email,
-                    EmailConfirmed = true,
                     EmailVerified = true,
                     FullName = payload.Name ?? payload.Email.Split('@')[0],
                     Avatar = payload.Picture,
                     GoogleId = payload.Subject,
-                    IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    Role = 0, // Default role
+                    IsActive = true
                 };
 
-                var createResult = await _userManager.CreateAsync(user);
-                if (!createResult.Succeeded)
-                {
-                    _logger.LogError("Failed to create user from Google login: {Errors}", 
-                        string.Join(", ", createResult.Errors.Select(e => e.Description)));
-                    return null;
-                }
-
+                // Create user without password (Google auth)
+                await _userService.CreateAsync(user, Guid.NewGuid().ToString()); // Temporary password for Google users
+                
                 _logger.LogInformation("Created new user from Google login: {Email}", payload.Email);
             }
             else
@@ -130,16 +121,15 @@ public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleComma
                 }
                 
                 // Mark email as verified for Google users
-                if (!user.EmailConfirmed)
+                if (!user.EmailVerified)
                 {
-                    user.EmailConfirmed = true;
                     user.EmailVerified = true;
                     shouldUpdate = true;
                 }
 
                 if (shouldUpdate)
                 {
-                    await _userManager.UpdateAsync(user);
+                    await _userService.UpdateAsync(user);
                 }
             }
 

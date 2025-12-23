@@ -1,34 +1,37 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Auth.Commands.Register;
 
 public sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand, Guid>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public RegisterCommandHandler(UserManager<ApplicationUser> userManager)
+    public RegisterCommandHandler(IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
     public async Task<Guid> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
+        // Check if user already exists
+        var existingUser = await _userService.FindByEmailAsync(request.Email);
+        if (existingUser != null)
+        {
+            throw new InvalidOperationException("User with this email already exists.");
+        }
+
         var user = new ApplicationUser
         {
-            UserName = request.Email,
             Email = request.Email,
-            FullName = request.FullName
+            FullName = request.FullName ?? string.Empty,
+            EmailVerified = false,
+            Role = 0, // Default role
+            IsActive = true
         };
 
-        var result = await _userManager.CreateAsync(user, request.Password);
-
-        if (!result.Succeeded)
-        {
-            var errors = string.Join("; ", result.Errors.Select(e => e.Description));
-            throw new InvalidOperationException($"Cannot create user: {errors}");
-        }
+        await _userService.CreateAsync(user, request.Password);
 
         // TODO: send email confirmation
 

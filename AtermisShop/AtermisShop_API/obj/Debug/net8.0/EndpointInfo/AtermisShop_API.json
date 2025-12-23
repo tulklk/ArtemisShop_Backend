@@ -3303,6 +3303,10 @@
           "phoneNumber": {
             "type": "string",
             "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3733,6 +3737,10 @@
           },
           "phoneNumber": {
             "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
             "nullable": true
           }
         },

@@ -5,5 +5,6 @@ namespace AtermisShop.Application.Users.Commands.UpdateUser;
 public sealed record UpdateUserCommand(
     Guid UserId,
     string? FullName,
-    string? PhoneNumber) : IRequest<Unit>;
+    string? PhoneNumber,
+    bool? IsActive = null) : IRequest<Unit>;
 

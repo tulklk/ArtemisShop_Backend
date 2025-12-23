@@ -1,21 +1,21 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Auth.Queries.GetMe;
 
 public sealed class GetMeQueryHandler : IRequestHandler<GetMeQuery, ApplicationUser?>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IApplicationDbContext _context;
 
-    public GetMeQueryHandler(UserManager<ApplicationUser> userManager)
+    public GetMeQueryHandler(IApplicationDbContext context)
     {
-        _userManager = userManager;
+        _context = context;
     }
 
     public async Task<ApplicationUser?> Handle(GetMeQuery request, CancellationToken cancellationToken)
     {
-        return await _userManager.FindByIdAsync(request.UserId.ToString());
+        return await _context.Users.FindAsync(new object[] { request.UserId }, cancellationToken);
     }
 }
 

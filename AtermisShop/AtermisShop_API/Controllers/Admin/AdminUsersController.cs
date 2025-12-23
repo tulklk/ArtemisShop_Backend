@@ -39,7 +39,7 @@ public class AdminUsersController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserRequest request, CancellationToken cancellationToken)
     {
-        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber), cancellationToken);
+        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, request.IsActive), cancellationToken);
         return NoContent();
     }
 
@@ -57,7 +57,7 @@ public class AdminUsersController : ControllerBase
         return Ok();
     }
 
-    public record UpdateUserRequest(string? FullName, string? PhoneNumber);
+    public record UpdateUserRequest(string? FullName, string? PhoneNumber, bool? IsActive);
     public record UpdateUserStatusRequest(bool IsActive);
 }
 

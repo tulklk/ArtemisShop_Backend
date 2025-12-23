@@ -1,67 +1,69 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
-using Microsoft.AspNetCore.Identity;
+using AtermisShop.Infrastructure.Auth;
 
 namespace AtermisShop.Infrastructure.Persistence;
 
 public static class DatabaseSeeder
 {
-    public static async Task SeedAdminUserAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole<Guid>> roleManager)
+    public static async Task SeedAdminUserAsync(IUserService userService)
     {
-        // Tạo Admin role nếu chưa có
-        var adminRoleName = "Admin";
-        if (!await roleManager.RoleExistsAsync(adminRoleName))
-        {
-            await roleManager.CreateAsync(new IdentityRole<Guid>(adminRoleName) { Id = Guid.NewGuid() });
-        }
-
         // Kiểm tra xem đã có admin user chưa
         var adminEmail = "admin@artemisshop.com";
-        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+        var adminPassword = "Admin@123456";
+        var adminUser = await userService.FindByEmailAsync(adminEmail);
 
         if (adminUser == null)
         {
-            // Tạo admin user
+            // Tạo admin user với Role = 1 (Admin)
             adminUser = new ApplicationUser
             {
-                Id = Guid.NewGuid(),
-                UserName = adminEmail,
                 Email = adminEmail,
-                EmailConfirmed = true, // Bỏ qua email confirmation cho admin
-                EmailVerified = true,
                 FullName = "Administrator",
-                IsActive = true,
-                CreatedAt = DateTime.UtcNow
+                EmailVerified = true,
+                Role = 1, // 1 = Admin
+                IsActive = true
             };
 
-            var result = await userManager.CreateAsync(adminUser, "Admin@123456"); // Password mặc định
-            if (result.Succeeded)
-            {
-                await userManager.AddToRoleAsync(adminUser, adminRoleName);
-                Console.WriteLine($"Admin user created: {adminEmail} / Password: Admin@123456");
-            }
-            else
-            {
-                Console.WriteLine($"Failed to create admin user: {string.Join(", ", result.Errors.Select(e => e.Description))}");
-            }
+            await userService.CreateAsync(adminUser, adminPassword); // Password mặc định
+            Console.WriteLine($"Admin user created: {adminEmail} / Password: {adminPassword}");
         }
         else
         {
-            // Đảm bảo admin user có role Admin
-            if (!await userManager.IsInRoleAsync(adminUser, adminRoleName))
+            // Đảm bảo admin user có Role = 1, email verified, và password hash đúng format
+            var needsUpdate = false;
+            
+            if (adminUser.Role != 1)
             {
-                await userManager.AddToRoleAsync(adminUser, adminRoleName);
+                adminUser.Role = 1;
+                needsUpdate = true;
             }
             
-            // Đảm bảo admin user không cần verify email
-            if (!adminUser.EmailConfirmed || !adminUser.EmailVerified)
+            if (!adminUser.EmailVerified)
             {
-                adminUser.EmailConfirmed = true;
                 adminUser.EmailVerified = true;
-                await userManager.UpdateAsync(adminUser);
-                Console.WriteLine($"Admin user email verification status updated: {adminEmail}");
+                needsUpdate = true;
             }
             
-            Console.WriteLine($"Admin user already exists: {adminEmail}");
+            // Luôn reset password hash để đảm bảo dùng format mới (SHA256)
+            // Vì có thể admin user có password hash từ Identity (format cũ)
+            var correctPasswordHash = PasswordHasher.HashPassword(adminPassword);
+            if (adminUser.PasswordHash != correctPasswordHash)
+            {
+                adminUser.PasswordHash = correctPasswordHash;
+                needsUpdate = true;
+                Console.WriteLine($"Admin user password hash reset to new format: {adminEmail} / Password: {adminPassword}");
+            }
+            
+            if (needsUpdate)
+            {
+                await userService.UpdateAsync(adminUser);
+                Console.WriteLine($"Admin user updated: {adminEmail}");
+            }
+            else
+            {
+                Console.WriteLine($"Admin user already exists with correct settings: {adminEmail}");
+            }
         }
     }
 }

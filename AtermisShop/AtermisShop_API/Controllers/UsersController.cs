@@ -77,7 +77,9 @@ public class UsersController : ControllerBase
         if (!isAdmin && currentUserId != id)
             return Forbid();
 
-        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber), cancellationToken);
+        // Only admins can update IsActive status
+        bool? isActive = isAdmin ? request.IsActive : null;
+        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, isActive), cancellationToken);
         return NoContent();
     }
 
@@ -100,7 +102,7 @@ public class UsersController : ControllerBase
         return Ok(new { message = "Password changed successfully" });
     }
 
-    public record UpdateUserRequest(string? FullName, string? PhoneNumber);
+    public record UpdateUserRequest(string? FullName, string? PhoneNumber, bool? IsActive = null);
     public record ChangePasswordRequest(string CurrentPassword, string NewPassword);
 }
 

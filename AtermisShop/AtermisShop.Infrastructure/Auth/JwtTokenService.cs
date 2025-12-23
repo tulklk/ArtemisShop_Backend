@@ -4,7 +4,6 @@ using System.Text;
 using AtermisShop.Application.Auth.Common;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -14,16 +13,13 @@ namespace AtermisShop.Infrastructure.Auth;
 public sealed class JwtTokenService : IJwtTokenService
 {
     private readonly IConfiguration _configuration;
-    private readonly UserManager<ApplicationUser> _userManager;
     private readonly ILogger<JwtTokenService> _logger;
 
     public JwtTokenService(
         IConfiguration configuration,
-        UserManager<ApplicationUser> userManager,
         ILogger<JwtTokenService> logger)
     {
         _configuration = configuration;
-        _userManager = userManager;
         _logger = logger;
     }
 
@@ -42,23 +38,20 @@ public sealed class JwtTokenService : IJwtTokenService
         var claims = new List<Claim>
         {
             new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new(JwtRegisteredClaimNames.Email, user.Email ?? string.Empty),
+            new(JwtRegisteredClaimNames.Email, user.Email),
             new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new(ClaimTypes.Name, user.UserName ?? user.Email ?? string.Empty)
+            new(ClaimTypes.Name, user.Email)
         };
 
-        // Attach role claims so [Authorize(Roles = ...)] works for admin APIs
-        var roles = await _userManager.GetRolesAsync(user);
-        _logger.LogInformation("User {UserId} ({Email}) has roles: {Roles}", user.Id, user.Email, string.Join(", ", roles));
-        
-        if (roles.Count == 0)
+        // Add role claim based on Role field (1 = Admin)
+        if (user.Role == 1)
         {
-            _logger.LogWarning("User {UserId} ({Email}) has no roles assigned. Admin APIs will not work.", user.Id, user.Email);
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            _logger.LogInformation("User {UserId} ({Email}) is Admin", user.Id, user.Email);
         }
-        
-        foreach (var role in roles)
+        else
         {
-            claims.Add(new Claim(ClaimTypes.Role, role));
+            _logger.LogInformation("User {UserId} ({Email}) has role: {Role}", user.Id, user.Email, user.Role);
         }
 
         var now = DateTime.UtcNow;

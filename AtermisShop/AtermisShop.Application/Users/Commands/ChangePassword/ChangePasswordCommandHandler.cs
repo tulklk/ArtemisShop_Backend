@@ -1,26 +1,20 @@
-using AtermisShop.Domain.Users;
+using AtermisShop.Application.Common.Interfaces;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Users.Commands.ChangePassword;
 
 public sealed class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, bool>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public ChangePasswordCommandHandler(UserManager<ApplicationUser> userManager)
+    public ChangePasswordCommandHandler(IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
     public async Task<bool> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByIdAsync(request.UserId.ToString());
-        if (user == null)
-            return false;
-
-        var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
-        return result.Succeeded;
+        return await _userService.ChangePasswordAsync(request.UserId, request.CurrentPassword, request.NewPassword);
     }
 }
 

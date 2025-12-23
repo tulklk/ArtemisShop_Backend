@@ -2,40 +2,44 @@ using AtermisShop.Application.Auth.Common;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Auth.Commands.Login;
 
 public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, JwtTokenResult>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
     private readonly IJwtTokenService _jwtTokenService;
 
     public LoginCommandHandler(
-        UserManager<ApplicationUser> userManager,
+        IUserService userService,
         IJwtTokenService jwtTokenService)
     {
-        _userManager = userManager;
+        _userService = userService;
         _jwtTokenService = jwtTokenService;
     }
 
     public async Task<JwtTokenResult> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
+        var user = await _userService.FindByEmailAsync(request.Email);
         if (user is null)
         {
             throw new UnauthorizedAccessException("Invalid credentials.");
         }
 
-        var passwordValid = await _userManager.CheckPasswordAsync(user, request.Password);
+        if (!user.IsActive)
+        {
+            throw new UnauthorizedAccessException("Account is inactive.");
+        }
+
+        var passwordValid = await _userService.CheckPasswordAsync(user, request.Password);
         if (!passwordValid)
         {
             throw new UnauthorizedAccessException("Invalid credentials.");
         }
 
         // Check if user is admin - admins don't need email verification
-        var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
-        if (!isAdmin && !user.EmailConfirmed)
+        var isAdmin = await _userService.IsAdminAsync(user);
+        if (!isAdmin && !user.EmailVerified)
         {
             throw new UnauthorizedAccessException("Please verify your email before logging in.");
         }

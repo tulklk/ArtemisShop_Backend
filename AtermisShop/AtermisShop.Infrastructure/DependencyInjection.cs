@@ -4,8 +4,8 @@ using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using AtermisShop.Infrastructure.Auth;
 using AtermisShop.Infrastructure.Persistence;
+using AtermisShop.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,14 +37,8 @@ public static class DependencyInjection
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
-        services
-            .AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
-            {
-                options.SignIn.RequireConfirmedEmail = true;
-            })
-            .AddRoles<IdentityRole<Guid>>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders();
+        // Register custom UserService to replace Identity
+        services.AddScoped<IUserService, UserService>();
 
         var jwtSection = configuration.GetSection("Jwt");
         var secret = jwtSection["Secret"]!;
@@ -71,7 +65,10 @@ public static class DependencyInjection
                     NameClaimType = ClaimTypes.NameIdentifier,
                     RoleClaimType = ClaimTypes.Role,
                     // Allow small clock skew to handle minor time differences
-                    ClockSkew = TimeSpan.FromMinutes(5)
+                    ClockSkew = TimeSpan.FromMinutes(5),
+                    // Map role from integer to string for [Authorize(Roles = "Admin")]
+                    // Role will be added as "Admin" claim in JWT token based on user.Role == 1
+                    SaveSigninToken = false
                 };
                 
                 // Ensure role claims are properly mapped from JWT

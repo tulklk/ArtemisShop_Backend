@@ -10,6 +10,7 @@ namespace AtermisShop.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {
+    DbSet<ApplicationUser> Users { get; }
     // Products
     DbSet<Product> Products { get; }
     DbSet<ProductCategory> ProductCategories { get; }

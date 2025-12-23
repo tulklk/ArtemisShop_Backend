@@ -1,21 +1,21 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 
 namespace AtermisShop.Application.Auth.Commands.ForgotPassword;
 
 public sealed class ForgotPasswordCommandHandler : IRequestHandler<ForgotPasswordCommand, bool>
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public ForgotPasswordCommandHandler(UserManager<ApplicationUser> userManager)
+    public ForgotPasswordCommandHandler(IUserService userService)
     {
-        _userManager = userManager;
+        _userService = userService;
     }
 
     public async Task<bool> Handle(ForgotPasswordCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
+        var user = await _userService.FindByEmailAsync(request.Email);
         if (user == null)
             return false; // Don't reveal if user exists
 

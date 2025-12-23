@@ -1,10 +1,11 @@
 
 using AtermisShop.Application;
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Infrastructure;
 
 using AtermisShop.Domain.Users;
 using AtermisShop.Infrastructure.Persistence;
-using Microsoft.AspNetCore.Identity;
+using AtermisShop.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -177,8 +178,7 @@ namespace AtermisShop_API
             using (var scope = app.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+                var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
                 var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
                 
                 try
@@ -202,7 +202,7 @@ namespace AtermisShop_API
 
                         // Seed admin user
                         logger.LogInformation("Seeding admin user...");
-                        await DatabaseSeeder.SeedAdminUserAsync(userManager, roleManager);
+                        await DatabaseSeeder.SeedAdminUserAsync(userService);
                         logger.LogInformation("Admin user seeding completed.");
                     }
                 }

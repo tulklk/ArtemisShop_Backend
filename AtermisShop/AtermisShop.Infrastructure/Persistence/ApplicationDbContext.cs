@@ -5,13 +5,11 @@ using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using AtermisShop.Domain.Users;
 using AtermisShop.Domain.Wishlist;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AtermisShop.Infrastructure.Persistence;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>, IApplicationDbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -21,23 +19,25 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     {
         base.OnModelCreating(builder);
 
-        // Đổi tên các bảng Identity từ AspNet* thành tên không có prefix
+        // Configure Users table
         builder.Entity<ApplicationUser>(entity =>
         {
             entity.ToTable("Users");
+            entity.HasKey(e => e.Id);
             
-            // Set default values
-            entity.Property(e => e.IsActive).HasDefaultValue(true);
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
-            entity.Property(e => e.EmailVerified).HasDefaultValue(false);
+            entity.Property(e => e.Id).IsRequired();
+            entity.Property(e => e.Email).IsRequired().HasMaxLength(256);
+            entity.Property(e => e.PasswordHash).IsRequired();
+            entity.Property(e => e.FullName).IsRequired();
+            entity.Property(e => e.PhoneNumber).HasMaxLength(50);
+            entity.Property(e => e.Role).IsRequired();
+            entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
+            entity.Property(e => e.EmailVerified).IsRequired().HasDefaultValue(false);
+            entity.Property(e => e.CreatedAt).IsRequired().HasDefaultValueSql("NOW()");
+            entity.Property(e => e.UpdatedAt).IsRequired().HasDefaultValueSql("NOW()");
+            
+            entity.HasIndex(e => e.Email).IsUnique();
         });
-        
-        builder.Entity<IdentityRole<Guid>>().ToTable("Roles");
-        builder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles");
-        builder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
-        builder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaims");
-        builder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogins");
-        builder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens");
 
         // Đổi tên các bảng theo schema mới
         builder.Entity<ProductCategory>().ToTable("ProductCategories");
@@ -71,6 +71,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<Wishlist> Wishlists => Set<Wishlist>();
 
     // Users
+    public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<EmailVerificationToken> EmailVerificationTokens => Set<EmailVerificationToken>();
 
@@ -79,7 +80,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        // Đồng bộ EmailConfirmed và EmailVerified
+        // Set UpdatedAt khi có thay đổi
         var entries = ChangeTracker.Entries<ApplicationUser>()
             .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
 
@@ -87,24 +88,16 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
         {
             var user = entry.Entity;
             
-            // Đồng bộ EmailVerified với EmailConfirmed
-            if (entry.Property(nameof(ApplicationUser.EmailConfirmed)).IsModified)
-            {
-                user.EmailVerified = user.EmailConfirmed;
-            }
-            else if (entry.Property(nameof(ApplicationUser.EmailVerified)).IsModified)
-            {
-                user.EmailConfirmed = user.EmailVerified;
-            }
-            
-            // Set UpdatedAt khi có thay đổi
             if (entry.State == EntityState.Modified)
             {
                 user.UpdatedAt = DateTime.UtcNow;
             }
             else if (entry.State == EntityState.Added)
             {
-                user.CreatedAt = DateTime.UtcNow;
+                if (user.CreatedAt == default)
+                    user.CreatedAt = DateTime.UtcNow;
+                if (user.UpdatedAt == default)
+                    user.UpdatedAt = DateTime.UtcNow;
             }
         }
 
