@@ -1,10 +1,11 @@
 using AtermisShop.Application.Auth.Common;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
+using Google.Apis.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Auth.Commands.LoginGoogle;
 
@@ -13,47 +14,136 @@ public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleComma
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
     private readonly IJwtTokenService _jwtTokenService;
+    private readonly ILogger<LoginGoogleCommandHandler> _logger;
 
     public LoginGoogleCommandHandler(
         UserManager<ApplicationUser> userManager,
         IConfiguration configuration,
-        IJwtTokenService jwtTokenService)
+        IJwtTokenService jwtTokenService,
+        ILogger<LoginGoogleCommandHandler> logger)
     {
         _userManager = userManager;
         _configuration = configuration;
         _jwtTokenService = jwtTokenService;
+        _logger = logger;
     }
 
     public async Task<JwtTokenResult?> Handle(LoginGoogleCommand request, CancellationToken cancellationToken)
     {
-        // For simplicity, decode token without validation. In production, validate with Google
         try
         {
-            var handler = new JwtSecurityTokenHandler();
-            var token = handler.ReadJwtToken(request.IdToken);
-            var email = token.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
-            var name = token.Claims.FirstOrDefault(c => c.Type == "name")?.Value;
-
-            if (string.IsNullOrEmpty(email))
-                return null;
-
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
+            if (string.IsNullOrWhiteSpace(request.IdToken))
             {
-                // Create user
-                user = new ApplicationUser
-                {
-                    UserName = email,
-                    Email = email,
-                    EmailConfirmed = true,
-                    FullName = name,
-                    EmailVerified = true
-                };
-                var result = await _userManager.CreateAsync(user);
-                if (!result.Succeeded)
-                    return null;
+                _logger.LogWarning("Google ID token is empty");
+                return null;
             }
 
+            // Get Google Client ID from configuration
+            var googleClientId = _configuration["GoogleOAuth:ClientId"];
+            if (string.IsNullOrWhiteSpace(googleClientId) || googleClientId == "YOUR_GOOGLE_CLIENT_ID_HERE")
+            {
+                _logger.LogError("Google OAuth Client ID is not configured");
+                throw new InvalidOperationException("Google OAuth is not properly configured. Please set GoogleOAuth:ClientId in appsettings.json");
+            }
+
+            // Validate Google ID token
+            GoogleJsonWebSignature.Payload? payload;
+            try
+            {
+                var settings = new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new[] { googleClientId }
+                };
+                payload = await GoogleJsonWebSignature.ValidateAsync(request.IdToken, settings);
+            }
+            catch (InvalidJwtException ex)
+            {
+                _logger.LogWarning(ex, "Invalid Google ID token");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error validating Google ID token");
+                return null;
+            }
+
+            if (payload == null || string.IsNullOrEmpty(payload.Email))
+            {
+                _logger.LogWarning("Google token payload is missing email");
+                return null;
+            }
+
+            // Find user by email
+            var user = await _userManager.FindByEmailAsync(payload.Email);
+
+            if (user == null)
+            {
+                // Create new user from Google account
+                user = new ApplicationUser
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = payload.Email,
+                    Email = payload.Email,
+                    EmailConfirmed = true,
+                    EmailVerified = true,
+                    FullName = payload.Name ?? payload.Email.Split('@')[0],
+                    Avatar = payload.Picture,
+                    GoogleId = payload.Subject,
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                var createResult = await _userManager.CreateAsync(user);
+                if (!createResult.Succeeded)
+                {
+                    _logger.LogError("Failed to create user from Google login: {Errors}", 
+                        string.Join(", ", createResult.Errors.Select(e => e.Description)));
+                    return null;
+                }
+
+                _logger.LogInformation("Created new user from Google login: {Email}", payload.Email);
+            }
+            else
+            {
+                // Update user info if needed
+                var shouldUpdate = false;
+                
+                // Update GoogleId if not set
+                if (string.IsNullOrEmpty(user.GoogleId) && !string.IsNullOrEmpty(payload.Subject))
+                {
+                    user.GoogleId = payload.Subject;
+                    shouldUpdate = true;
+                }
+                
+                // Update avatar if not set or different
+                if ((string.IsNullOrEmpty(user.Avatar) || user.Avatar != payload.Picture) && !string.IsNullOrEmpty(payload.Picture))
+                {
+                    user.Avatar = payload.Picture;
+                    shouldUpdate = true;
+                }
+                
+                // Update full name if not set
+                if (string.IsNullOrEmpty(user.FullName) && !string.IsNullOrEmpty(payload.Name))
+                {
+                    user.FullName = payload.Name;
+                    shouldUpdate = true;
+                }
+                
+                // Mark email as verified for Google users
+                if (!user.EmailConfirmed)
+                {
+                    user.EmailConfirmed = true;
+                    user.EmailVerified = true;
+                    shouldUpdate = true;
+                }
+
+                if (shouldUpdate)
+                {
+                    await _userManager.UpdateAsync(user);
+                }
+            }
+
+            // Generate JWT tokens
             var tokens = await _jwtTokenService.GenerateTokensAsync(user);
             
             // Add user information to response
@@ -70,8 +160,13 @@ public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleComma
 
             return tokens;
         }
-        catch
+        catch (InvalidOperationException)
         {
+            throw; // Re-throw configuration errors
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error during Google login");
             return null;
         }
     }
