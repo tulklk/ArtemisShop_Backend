@@ -1,5 +1,8 @@
 using AtermisShop.Application.Products.Commands.CreateProduct;
+using AtermisShop.Application.Products.Commands.DeleteProduct;
+using AtermisShop.Application.Products.Commands.UpdateProduct;
 using AtermisShop.Application.Products.Queries.GetProductByIdOrSlug;
+using AtermisShop.Application.Products.Queries.GetProducts;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +19,13 @@ public class AdminProductsController : ControllerBase
     public AdminProductsController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetProducts(CancellationToken cancellationToken)
+    {
+        var products = await _mediator.Send(new GetProductsQuery(), cancellationToken);
+        return Ok(products);
     }
 
     [HttpPost]
@@ -38,18 +48,51 @@ public class AdminProductsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] UpdateProductRequest request, CancellationToken cancellationToken)
     {
-        // TODO: Implement update command
-        return Ok();
+        try
+        {
+            await _mediator.Send(new UpdateProductCommand(
+                id,
+                request.Name,
+                request.Slug,
+                request.Description,
+                request.Price,
+                request.CategoryId,
+                request.OriginalPrice,
+                request.StockQuantity,
+                request.Brand,
+                request.IsActive), cancellationToken);
+            return Ok();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(Guid id, CancellationToken cancellationToken)
     {
-        // TODO: Implement delete command
-        return NoContent();
+        try
+        {
+            await _mediator.Send(new DeleteProductCommand(id), cancellationToken);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 
     public record CreateProductRequest(string Name, string Slug, string? Description, decimal Price, Guid CategoryId);
-    public record UpdateProductRequest(string Name, string Slug, string? Description, decimal Price, Guid CategoryId);
+    public record UpdateProductRequest(
+        string Name, 
+        string Slug, 
+        string? Description, 
+        decimal Price, 
+        Guid CategoryId,
+        decimal? OriginalPrice = null,
+        int? StockQuantity = null,
+        string? Brand = null,
+        bool? IsActive = null);
 }
 

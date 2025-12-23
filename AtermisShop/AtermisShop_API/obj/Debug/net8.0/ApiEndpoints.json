@@ -222,6 +222,16 @@
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.Admin.AdminProductsController",
+    "Method": "GetProducts",
+    "RelativePath": "api/admin/AdminProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.Admin.AdminProductsController",
     "Method": "CreateProduct",
     "RelativePath": "api/admin/AdminProducts",
     "HttpMethod": "POST",
