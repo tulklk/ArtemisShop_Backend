@@ -3087,18 +3087,41 @@
   },
   "components": {
     "schemas": {
+      "AtermisShop.Application.Categories.Commands.UpdateCategory.ChildCategoryDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AtermisShop.Application.Categories.Commands.UpdateCategory.ChildCategoryDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AtermisShop_API.Controllers.Admin.AdminCategoriesController.CreateCategoryRequest": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string"
           },
-          "slug": {
-            "type": "string"
-          },
-          "parentId": {
+          "description": {
             "type": "string",
-            "format": "uuid",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -3110,12 +3133,15 @@
           "name": {
             "type": "string"
           },
-          "slug": {
-            "type": "string"
-          },
-          "parentId": {
+          "description": {
             "type": "string",
-            "format": "uuid",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AtermisShop.Application.Categories.Commands.UpdateCategory.ChildCategoryDto"
+            },
             "nullable": true
           }
         },
@@ -3464,12 +3490,15 @@
           "name": {
             "type": "string"
           },
-          "slug": {
-            "type": "string"
-          },
-          "parentId": {
+          "description": {
             "type": "string",
-            "format": "uuid",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },

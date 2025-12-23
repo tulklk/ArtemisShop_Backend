@@ -29,16 +29,19 @@ public class CategoriesController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateCategoryRequest request, CancellationToken cancellationToken)
     {
-        var id = await _mediator.Send(new CreateCategoryCommand(request.Name, request.Slug, request.ParentId), cancellationToken);
-        return Ok(new { id });
+        var result = await _mediator.Send(new CreateCategoryCommand(
+            request.Name, 
+            request.Description, 
+            request.Children), cancellationToken);
+        return Ok(result);
     }
 }
 
 public sealed class CreateCategoryRequest
 {
     public string Name { get; set; } = default!;
-    public string Slug { get; set; } = default!;
-    public Guid? ParentId { get; set; }
+    public string? Description { get; set; }
+    public List<string>? Children { get; set; }
 }
 
 

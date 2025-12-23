@@ -17,6 +17,8 @@ public sealed class GetCategoryByIdQueryHandler : IRequestHandler<GetCategoryByI
     public async Task<ProductCategory?> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
         return await _context.ProductCategories
+            .Include(c => c.Children)
+            .Include(c => c.Products)
             .FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
     }
 }

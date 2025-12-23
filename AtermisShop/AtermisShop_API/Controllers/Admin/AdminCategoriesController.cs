@@ -1,4 +1,5 @@
 using AtermisShop.Application.Categories.Commands.CreateCategory;
+using AtermisShop.Application.Categories.Commands.UpdateCategory;
 using AtermisShop.Application.Categories.Queries.GetCategories;
 using AtermisShop.Application.Categories.Queries.GetCategoryById;
 using MediatR;
@@ -29,8 +30,11 @@ public class AdminCategoriesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request, CancellationToken cancellationToken)
     {
-        var id = await _mediator.Send(new CreateCategoryCommand(request.Name, request.Slug, request.ParentId), cancellationToken);
-        return Ok(new { Id = id });
+        var result = await _mediator.Send(new CreateCategoryCommand(
+            request.Name, 
+            request.Description, 
+            request.Children), cancellationToken);
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
@@ -45,7 +49,11 @@ public class AdminCategoriesController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] UpdateCategoryRequest request, CancellationToken cancellationToken)
     {
-        // TODO: Implement update command
+        await _mediator.Send(new UpdateCategoryCommand(
+            id,
+            request.Name,
+            request.Description,
+            request.Children), cancellationToken);
         return Ok();
     }
 
@@ -56,7 +64,7 @@ public class AdminCategoriesController : ControllerBase
         return NoContent();
     }
 
-    public record CreateCategoryRequest(string Name, string Slug, Guid? ParentId);
-    public record UpdateCategoryRequest(string Name, string Slug, Guid? ParentId);
+    public record CreateCategoryRequest(string Name, string? Description, List<string>? Children);
+    public record UpdateCategoryRequest(string Name, string? Description, List<AtermisShop.Application.Categories.Commands.UpdateCategory.ChildCategoryDto>? Children);
 }
 
