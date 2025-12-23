@@ -33,6 +33,13 @@ public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, JwtToken
             throw new UnauthorizedAccessException("Invalid credentials.");
         }
 
+        // Check if user is admin - admins don't need email verification
+        var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+        if (!isAdmin && !user.EmailConfirmed)
+        {
+            throw new UnauthorizedAccessException("Please verify your email before logging in.");
+        }
+
         var tokens = await _jwtTokenService.GenerateTokensAsync(user);
         
         // Add user information to response

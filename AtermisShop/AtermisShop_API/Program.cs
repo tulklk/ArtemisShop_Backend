@@ -6,6 +6,7 @@ using AtermisShop.Domain.Users;
 using AtermisShop.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace AtermisShop_API
 {
@@ -151,18 +152,38 @@ namespace AtermisShop_API
                 
                 try
                 {
-                    // Apply pending migrations
-                    logger.LogInformation("Applying database migrations...");
-                    await context.Database.MigrateAsync();
-                    logger.LogInformation("Database migrations applied successfully.");
+                    // Check if database is available
+                    logger.LogInformation("Checking database connection...");
+                    var canConnect = await context.Database.CanConnectAsync();
+                    
+                    if (!canConnect)
+                    {
+                        logger.LogWarning("Cannot connect to database. Application will start without applying migrations.");
+                        logger.LogWarning("Please check your connection string in appsettings.json");
+                        logger.LogWarning("The application will continue to run, but database operations may fail.");
+                    }
+                    else
+                    {
+                        // Apply pending migrations
+                        logger.LogInformation("Applying database migrations...");
+                        await context.Database.MigrateAsync();
+                        logger.LogInformation("Database migrations applied successfully.");
 
-                    // Seed admin user
-                    await DatabaseSeeder.SeedAdminUserAsync(userManager, roleManager);
+                        // Seed admin user
+                        logger.LogInformation("Seeding admin user...");
+                        await DatabaseSeeder.SeedAdminUserAsync(userManager, roleManager);
+                        logger.LogInformation("Admin user seeding completed.");
+                    }
+                }
+                catch (Npgsql.PostgresException pgEx) when (pgEx.SqlState == "28P01")
+                {
+                    logger.LogError(pgEx, "Database authentication failed. Please check your connection string credentials in appsettings.json");
+                    logger.LogError("The application will continue to run, but database operations will fail until the connection is fixed.");
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "An error occurred while setting up the database.");
-                    throw;
+                    logger.LogError(ex, "An error occurred while setting up the database. The application will continue to run.");
+                    // Don't throw - allow app to continue running
                 }
             }
 

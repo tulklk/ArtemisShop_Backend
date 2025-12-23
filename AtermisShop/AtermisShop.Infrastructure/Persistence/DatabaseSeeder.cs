@@ -51,6 +51,16 @@ public static class DatabaseSeeder
             {
                 await userManager.AddToRoleAsync(adminUser, adminRoleName);
             }
+            
+            // Đảm bảo admin user không cần verify email
+            if (!adminUser.EmailConfirmed || !adminUser.EmailVerified)
+            {
+                adminUser.EmailConfirmed = true;
+                adminUser.EmailVerified = true;
+                await userManager.UpdateAsync(adminUser);
+                Console.WriteLine($"Admin user email verification status updated: {adminEmail}");
+            }
+            
             Console.WriteLine($"Admin user already exists: {adminEmail}");
         }
     }

@@ -1,5 +1,7 @@
 using System.Net;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace AtermisShop_API.Middleware;
 
@@ -30,18 +32,35 @@ public class GlobalExceptionHandlerMiddleware
     private static Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         context.Response.ContentType = "application/json";
-        context.Response.StatusCode = exception switch
+        
+        // Handle database connection errors
+        string errorMessage = exception.Message;
+        if (exception is PostgresException pgEx && (pgEx.SqlState == "XX000" || exception.Message.Contains("Circuit breaker")))
         {
-            InvalidOperationException => (int)HttpStatusCode.BadRequest,
-            UnauthorizedAccessException => (int)HttpStatusCode.Unauthorized,
-            _ => (int)HttpStatusCode.InternalServerError
-        };
+            errorMessage = "Database connection temporarily unavailable. Please try again in a few moments.";
+            context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+        }
+        else if (exception is DbUpdateException dbEx && dbEx.InnerException is PostgresException innerPgEx && 
+                 (innerPgEx.SqlState == "XX000" || innerPgEx.Message.Contains("Circuit breaker")))
+        {
+            errorMessage = "Database connection temporarily unavailable. Please try again in a few moments.";
+            context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
+        }
+        else
+        {
+            context.Response.StatusCode = exception switch
+            {
+                InvalidOperationException => (int)HttpStatusCode.BadRequest,
+                UnauthorizedAccessException => (int)HttpStatusCode.Unauthorized,
+                _ => (int)HttpStatusCode.InternalServerError
+            };
+        }
 
         var response = new
         {
             error = new
             {
-                message = exception.Message,
+                message = errorMessage,
                 statusCode = context.Response.StatusCode
             }
         };

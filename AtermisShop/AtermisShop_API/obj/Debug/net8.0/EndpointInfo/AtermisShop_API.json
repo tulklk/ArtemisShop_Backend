@@ -1149,6 +1149,18 @@
         }
       }
     },
+    "/": {
+      "get": {
+        "tags": [
+          "AtermisShop_API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/register": {
       "post": {
         "tags": [
