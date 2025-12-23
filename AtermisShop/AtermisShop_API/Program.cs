@@ -38,6 +38,33 @@ namespace AtermisShop_API
                 throw;
             }
 
+            // Configure CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.SetIsOriginAllowed(origin =>
+                        {
+                            // Allow localhost for development
+                            if (origin.StartsWith("http://localhost:") || origin.StartsWith("https://localhost:"))
+                                return true;
+                            
+                            // Allow main Vercel production domain
+                            if (origin == "https://custom-bracelet-with-gps-website.vercel.app")
+                                return true;
+                            
+                            // Allow all Vercel preview deployments (*.vercel.app)
+                            if (origin.EndsWith(".vercel.app") && origin.StartsWith("https://"))
+                                return true;
+                            
+                            return false;
+                        })
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials(); // Required for cookies/auth headers
+                });
+            });
+
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {
@@ -125,6 +152,9 @@ namespace AtermisShop_API
             });
 
             app.UseHttpsRedirection();
+
+            // Enable CORS - must be before UseAuthentication and UseAuthorization
+            app.UseCors("AllowFrontend");
 
             app.UseMiddleware<Middleware.GlobalExceptionHandlerMiddleware>();
 
