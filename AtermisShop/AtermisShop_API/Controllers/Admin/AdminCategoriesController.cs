@@ -1,4 +1,5 @@
 using AtermisShop.Application.Categories.Commands.CreateCategory;
+using AtermisShop.Application.Categories.Commands.DeleteCategory;
 using AtermisShop.Application.Categories.Commands.UpdateCategory;
 using AtermisShop.Application.Categories.Queries.GetCategories;
 using AtermisShop.Application.Categories.Queries.GetCategoryById;
@@ -60,8 +61,15 @@ public class AdminCategoriesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCategory(Guid id, CancellationToken cancellationToken)
     {
-        // TODO: Implement delete command
-        return NoContent();
+        try
+        {
+            await _mediator.Send(new DeleteCategoryCommand(id), cancellationToken);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
     }
 
     public record CreateCategoryRequest(string Name, string? Description, List<string>? Children);
