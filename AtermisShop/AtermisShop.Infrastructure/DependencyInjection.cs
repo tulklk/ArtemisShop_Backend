@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 
@@ -61,13 +63,51 @@ public static class DependencyInjection
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
                     ValidIssuer = jwtSection["Issuer"],
                     ValidAudience = jwtSection["Audience"],
-                    IssuerSigningKey = key
+                    IssuerSigningKey = key,
+                    // Map claim types correctly so [Authorize(Roles = "Admin")] works
+                    NameClaimType = ClaimTypes.NameIdentifier,
+                    RoleClaimType = ClaimTypes.Role,
+                    // Allow small clock skew to handle minor time differences
+                    ClockSkew = TimeSpan.FromMinutes(5)
+                };
+                
+                // Ensure role claims are properly mapped from JWT
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        var logger = context.HttpContext.RequestServices.GetService<ILogger<JwtBearerEvents>>();
+                        logger?.LogError(context.Exception, "JWT Authentication failed");
+                        return Task.CompletedTask;
+                    },
+                    OnChallenge = context =>
+                    {
+                        var logger = context.HttpContext.RequestServices.GetService<ILogger<JwtBearerEvents>>();
+                        logger?.LogWarning("JWT Challenge: {Error}, {ErrorDescription}", context.Error, context.ErrorDescription);
+                        return Task.CompletedTask;
+                    },
+                    OnTokenValidated = context =>
+                    {
+                        // This ensures role claims are available for authorization
+                        if (context.Principal?.Identity is ClaimsIdentity claimsIdentity)
+                        {
+                            // Role claims should already be mapped by RoleClaimType setting above
+                            // But we can verify they exist for debugging
+                            var roles = claimsIdentity.FindAll(ClaimTypes.Role).Select(c => c.Value).ToList();
+                            var logger = context.HttpContext.RequestServices.GetService<ILogger<JwtBearerEvents>>();
+                            logger?.LogInformation("Token validated. User: {UserId}, Roles: {Roles}", 
+                                claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)?.Value, 
+                                string.Join(", ", roles));
+                        }
+                        return Task.CompletedTask;
+                    }
                 };
             });
 
-        services.AddScoped<IJwtTokenService>(sp => new Auth.JwtTokenService(configuration));
+        services.AddScoped<IJwtTokenService, Auth.JwtTokenService>();
 
         // Register payment providers
         services.AddHttpClient<Payments.MomoPaymentProvider>();

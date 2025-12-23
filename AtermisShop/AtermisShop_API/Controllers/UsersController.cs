@@ -40,7 +40,21 @@ public class UsersController : ControllerBase
             return NotFound();
         
         var stats = await _mediator.Send(new GetUserStatsQuery(userId), cancellationToken);
-        return Ok(new { User = user, Stats = stats });
+        
+        // Include claims for debugging
+        var roles = User.FindAll(System.Security.Claims.ClaimTypes.Role).Select(c => c.Value).ToList();
+        
+        return Ok(new 
+        { 
+            User = user, 
+            Stats = stats,
+            Claims = new
+            {
+                Roles = roles,
+                IsAuthenticated = User.Identity?.IsAuthenticated,
+                Name = User.Identity?.Name
+            }
+        });
     }
 
     [HttpGet("{id}")]
