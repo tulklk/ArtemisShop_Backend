@@ -1,5 +1,4 @@
 using AtermisShop.Application.Common.Interfaces;
-using AtermisShop.Application.Cart.Queries.GetCart;
 using AtermisShop.Domain.Orders;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +18,11 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
 
     public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
-        var cart = await _mediator.Send(new GetCartQuery(request.UserId), cancellationToken);
+        // Get cart from database directly to access domain entities
+        var cart = await _context.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == request.UserId, cancellationToken);
+            
         if (cart == null || !cart.Items.Any())
             throw new InvalidOperationException("Cart is empty");
 
