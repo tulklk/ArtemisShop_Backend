@@ -1315,8 +1315,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1745840Z",
-                "endDate": "2025-12-25T07:00:00.1749015Z",
+                "startDate": "2025-12-25T10:01:12.7340329Z",
+                "endDate": "2025-12-25T10:01:12.7343867Z",
                 "usageLimit": 0,
                 "isActive": true
               }
@@ -1336,8 +1336,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1749133Z",
-                "endDate": "2025-12-25T07:00:00.1749140Z",
+                "startDate": "2025-12-25T10:01:12.7344008Z",
+                "endDate": "2025-12-25T10:01:12.7344014Z",
                 "usageLimit": 0,
                 "isActive": true
               }
@@ -1357,8 +1357,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1749190Z",
-                "endDate": "2025-12-25T07:00:00.1749195Z",
+                "startDate": "2025-12-25T10:01:12.7344055Z",
+                "endDate": "2025-12-25T10:01:12.7344059Z",
                 "usageLimit": 0,
                 "isActive": true
               }
@@ -1428,8 +1428,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1751702Z",
-                "endDate": "2025-12-25T07:00:00.1751715Z",
+                "startDate": "2025-12-25T10:01:12.7346687Z",
+                "endDate": "2025-12-25T10:01:12.7346699Z",
                 "usageLimit": 0,
                 "isActive": true
               }
@@ -1449,8 +1449,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1751802Z",
-                "endDate": "2025-12-25T07:00:00.1751807Z",
+                "startDate": "2025-12-25T10:01:12.7346771Z",
+                "endDate": "2025-12-25T10:01:12.7346775Z",
                 "usageLimit": 0,
                 "isActive": true
               }
@@ -1470,8 +1470,8 @@
                 "discountPercentage": 10,
                 "minOrderAmount": 99.99,
                 "maxDiscountAmount": 99.99,
-                "startDate": "2025-12-25T07:00:00.1751854Z",
-                "endDate": "2025-12-25T07:00:00.1751860Z",
+                "startDate": "2025-12-25T10:01:12.7346808Z",
+                "endDate": "2025-12-25T10:01:12.7346812Z",
                 "usageLimit": 0,
                 "isActive": true
               }
