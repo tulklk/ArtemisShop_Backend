@@ -13,7 +13,6 @@ public sealed record ShippingAddressDto(
     string FullName,
     string PhoneNumber,
     string AddressLine,
-    string Ward,
     string District,
     string City);
 

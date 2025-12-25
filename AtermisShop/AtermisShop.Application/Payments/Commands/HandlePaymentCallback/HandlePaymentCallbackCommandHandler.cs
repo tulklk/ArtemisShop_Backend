@@ -29,11 +29,25 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
         if (!callbackResult.Success)
             return null;
 
-        if (!Guid.TryParse(callbackResult.OrderId, out var orderId))
-            return null;
-
-        var order = await _context.Orders
-            .FirstOrDefaultAsync(o => o.Id == orderId, cancellationToken);
+        // For PayOS, OrderId in callback result is actually the orderCode (string)
+        // We need to find the order by PaymentTransactionId (which stores the orderCode)
+        Order? order = null;
+        
+        if (request.Provider.Equals("PayOS", StringComparison.OrdinalIgnoreCase))
+        {
+            // PayOS returns orderCode as OrderId, find order by PaymentTransactionId
+            order = await _context.Orders
+                .FirstOrDefaultAsync(o => o.PaymentTransactionId == callbackResult.OrderId, cancellationToken);
+        }
+        else
+        {
+            // For other providers, try to parse as Guid
+            if (Guid.TryParse(callbackResult.OrderId, out var orderId))
+            {
+                order = await _context.Orders
+                    .FirstOrDefaultAsync(o => o.Id == orderId, cancellationToken);
+            }
+        }
 
         if (order == null || order.OrderStatus != (int)OrderStatus.Pending)
             return null;

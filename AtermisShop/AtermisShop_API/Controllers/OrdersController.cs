@@ -1,8 +1,10 @@
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateOrder;
+using AtermisShop.Application.Orders.Commands.UpdateOrderPaymentTransaction;
 using AtermisShop.Application.Orders.Queries.GetMyOrders;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
+using AtermisShop.Application.Payments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +33,6 @@ public class OrdersController : ControllerBase
                 request.ShippingAddress.FullName,
                 request.ShippingAddress.PhoneNumber,
                 request.ShippingAddress.AddressLine,
-                request.ShippingAddress.Ward,
                 request.ShippingAddress.District,
                 request.ShippingAddress.City
             ) : null,
@@ -84,15 +85,31 @@ public class OrdersController : ControllerBase
         if (order == null)
             return NotFound();
 
+        // Convert OrderItems to PaymentItems for PayOS
+        var paymentItems = order.Items.Select(item => new PaymentItem(
+            Name: item.ProductNameSnapshot + (!string.IsNullOrEmpty(item.VariantInfoSnapshot) ? $" - {item.VariantInfoSnapshot}" : ""),
+            Quantity: item.Quantity,
+            Price: (int)item.UnitPrice // Convert decimal to int (VND)
+        )).ToList();
+
         var paymentResult = await _mediator.Send(new CreatePaymentCommand(
             request.Provider,
             order.Id,
             order.TotalAmount,
             $"Order #{order.OrderNumber}",
-            request.ReturnUrl), cancellationToken);
+            paymentItems,
+            request.ReturnUrl,
+            request.CancelUrl), cancellationToken);
 
         if (!paymentResult.Success)
             return BadRequest(new { message = paymentResult.ErrorMessage });
+
+        // For PayOS, save orderCode to PaymentTransactionId for callback verification
+        if (request.Provider.Equals("PayOS", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(paymentResult.OrderCode))
+        {
+            await _mediator.Send(new UpdateOrderPaymentTransactionCommand(
+                order.Id, paymentResult.OrderCode), cancellationToken);
+        }
 
         return Ok(new { PaymentUrl = paymentResult.PaymentUrl });
     }
@@ -116,7 +133,6 @@ public class OrdersController : ControllerBase
         public string FullName { get; set; } = default!;
         public string PhoneNumber { get; set; } = default!;
         public string AddressLine { get; set; } = default!;
-        public string Ward { get; set; } = default!;
         public string District { get; set; } = default!;
         public string City { get; set; } = default!;
     }
@@ -125,6 +141,6 @@ public class OrdersController : ControllerBase
     {
         public string Code { get; set; } = default!;
     }
-    public record CreatePaymentRequest(string Provider, string? ReturnUrl);
+    public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
 }
 

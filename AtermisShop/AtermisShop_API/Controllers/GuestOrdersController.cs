@@ -3,6 +3,7 @@ using AtermisShop.Application.Orders.Commands.CreateGuestOrder;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Orders.Queries.LookupGuestOrder;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
+using AtermisShop.Application.Payments.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -82,12 +83,21 @@ public class GuestOrdersController : ControllerBase
         if (order == null || order.UserId.HasValue)
             return NotFound();
 
+        // Convert OrderItems to PaymentItems for PayOS
+        var paymentItems = order.Items.Select(item => new PaymentItem(
+            Name: item.ProductNameSnapshot + (!string.IsNullOrEmpty(item.VariantInfoSnapshot) ? $" - {item.VariantInfoSnapshot}" : ""),
+            Quantity: item.Quantity,
+            Price: (int)item.UnitPrice // Convert decimal to int (VND)
+        )).ToList();
+
         var paymentResult = await _mediator.Send(new CreatePaymentCommand(
             request.Provider,
             order.Id,
             order.TotalAmount,
             $"Order #{order.OrderNumber}",
-            request.ReturnUrl), cancellationToken);
+            paymentItems,
+            request.ReturnUrl,
+            request.CancelUrl), cancellationToken);
 
         if (!paymentResult.Success)
             return BadRequest(new { message = paymentResult.ErrorMessage });
@@ -110,6 +120,6 @@ public class GuestOrdersController : ControllerBase
         public string Code { get; set; } = default!;
         public decimal OrderAmount { get; set; }
     }
-    public record CreatePaymentRequest(string Provider, string? ReturnUrl);
+    public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
 }
 

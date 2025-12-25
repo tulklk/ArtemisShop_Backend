@@ -107,9 +107,6 @@ public static class DependencyInjection
         services.AddScoped<IJwtTokenService, Auth.JwtTokenService>();
 
         // Register payment providers
-        services.AddHttpClient<Payments.MomoPaymentProvider>();
-        services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.MomoPaymentProvider>();
-        services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.VnPayPaymentProvider>();
         services.AddHttpClient<Payments.PayOsPaymentProvider>();
         services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.PayOsPaymentProvider>();
 

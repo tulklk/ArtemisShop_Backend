@@ -11,13 +11,15 @@ public record CreatePaymentRequest(
     string OrderId,
     decimal Amount,
     string OrderDescription,
+    List<PaymentItem> Items,
     string? ReturnUrl = null,
     string? CancelUrl = null);
 
 public record PaymentUrlResult(
     bool Success,
     string? PaymentUrl,
-    string? ErrorMessage = null);
+    string? ErrorMessage = null,
+    string? OrderCode = null);
 
 public record PaymentCallbackResult(
     bool Success,

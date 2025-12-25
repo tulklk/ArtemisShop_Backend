@@ -18,6 +18,12 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
 
     public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
+        // Validate payment method
+        if (!AtermisShop.Application.Orders.Common.PaymentMethod.IsValid(request.PaymentMethod))
+        {
+            throw new ArgumentException($"Invalid payment method. Only 'COD' and 'PayOS' are supported.");
+        }
+
         // Get cart from database directly to access domain entities
         var cart = await _context.Carts
             .Include(c => c.Items)
@@ -33,11 +39,11 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             UserId = request.UserId,
             OrderStatus = (int)OrderStatus.Pending,
             PaymentStatus = 0, // Pending
-            PaymentMethod = request.PaymentMethod == "COD" ? 0 : (request.PaymentMethod == "BANK_TRANSFER" ? 1 : 2), // 0: COD, 1: Bank Transfer, 2: Online Payment
+            PaymentMethod = AtermisShop.Application.Orders.Common.PaymentMethod.ToInt(request.PaymentMethod), // 0: COD, 1: PayOS
             ShippingFullName = request.ShippingAddress?.FullName,
             ShippingPhoneNumber = request.ShippingAddress?.PhoneNumber,
             ShippingAddressLine = request.ShippingAddress?.AddressLine,
-            ShippingWard = request.ShippingAddress?.Ward,
+            ShippingWard = null, // Removed from API to match Vietnam provinces API v2
             ShippingDistrict = request.ShippingAddress?.District,
             ShippingCity = request.ShippingAddress?.City
         };

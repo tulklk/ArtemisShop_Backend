@@ -264,6 +264,10 @@ public class ExampleOperationFilter : IOperationFilter
             {
                 return new OpenApiBoolean(true);
             }
+            if (lowerName.Contains("paymentmethod") || lowerName.Contains("payment_method"))
+            {
+                return new OpenApiString("COD");
+            }
         }
 
         // Handle based on schema type and format

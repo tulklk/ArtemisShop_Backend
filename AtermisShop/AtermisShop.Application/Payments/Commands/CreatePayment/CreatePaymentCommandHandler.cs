@@ -24,10 +24,12 @@ public sealed class CreatePaymentCommandHandler : IRequestHandler<CreatePaymentC
             request.OrderId.ToString(),
             request.Amount,
             request.OrderDescription,
-            request.ReturnUrl);
+            request.Items,
+            request.ReturnUrl,
+            request.CancelUrl);
 
         var result = await provider.CreatePaymentUrlAsync(paymentRequest, cancellationToken);
-        return new CreatePaymentResult(result.Success, result.PaymentUrl, result.ErrorMessage);
+        return new CreatePaymentResult(result.Success, result.PaymentUrl, result.ErrorMessage, result.OrderCode);
     }
 }
 

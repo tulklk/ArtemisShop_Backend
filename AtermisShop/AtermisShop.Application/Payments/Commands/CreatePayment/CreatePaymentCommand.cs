@@ -7,10 +7,13 @@ public sealed record CreatePaymentCommand(
     Guid OrderId,
     decimal Amount,
     string OrderDescription,
-    string? ReturnUrl = null) : IRequest<CreatePaymentResult>;
+    List<Common.PaymentItem> Items,
+    string? ReturnUrl = null,
+    string? CancelUrl = null) : IRequest<CreatePaymentResult>;
 
 public sealed record CreatePaymentResult(
     bool Success,
     string? PaymentUrl,
-    string? ErrorMessage = null);
+    string? ErrorMessage = null,
+    string? OrderCode = null);
 
