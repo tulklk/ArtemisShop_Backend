@@ -70,7 +70,7 @@ public class GuestOrdersController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> ApplyVoucher([FromBody] ApplyVoucherRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new ApplyVoucherCommand(request.VoucherCode, request.OrderAmount), cancellationToken);
+        var result = await _mediator.Send(new ApplyVoucherCommand(request.Code, null, request.OrderAmount), cancellationToken);
         return Ok(result);
     }
 
@@ -105,7 +105,11 @@ public class GuestOrdersController : ControllerBase
         string? VoucherCode);
 
     public record GuestOrderItem(Guid ProductId, int Quantity);
-    public record ApplyVoucherRequest(string VoucherCode, decimal OrderAmount);
+    public sealed class ApplyVoucherRequest
+    {
+        public string Code { get; set; } = default!;
+        public decimal OrderAmount { get; set; }
+    }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl);
 }
 

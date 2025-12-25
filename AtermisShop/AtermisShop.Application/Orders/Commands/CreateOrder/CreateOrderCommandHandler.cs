@@ -33,8 +33,13 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             UserId = request.UserId,
             OrderStatus = (int)OrderStatus.Pending,
             PaymentStatus = 0, // Pending
-            ShippingFullName = request.ShippingAddress?.Split('\n').FirstOrDefault(),
-            ShippingAddressLine = request.ShippingAddress
+            PaymentMethod = request.PaymentMethod == "COD" ? 0 : (request.PaymentMethod == "BANK_TRANSFER" ? 1 : 2), // 0: COD, 1: Bank Transfer, 2: Online Payment
+            ShippingFullName = request.ShippingAddress?.FullName,
+            ShippingPhoneNumber = request.ShippingAddress?.PhoneNumber,
+            ShippingAddressLine = request.ShippingAddress?.AddressLine,
+            ShippingWard = request.ShippingAddress?.Ward,
+            ShippingDistrict = request.ShippingAddress?.District,
+            ShippingCity = request.ShippingAddress?.City
         };
 
         decimal subTotal = 0;

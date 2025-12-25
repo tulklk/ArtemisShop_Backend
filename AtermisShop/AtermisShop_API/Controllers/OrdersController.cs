@@ -27,8 +27,15 @@ public class OrdersController : ControllerBase
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
         var order = await _mediator.Send(new CreateOrderCommand(
             userId,
-            request.ShippingAddress,
-            request.Notes,
+            request.ShippingAddress != null ? new AtermisShop.Application.Orders.Commands.CreateOrder.ShippingAddressDto(
+                request.ShippingAddress.FullName,
+                request.ShippingAddress.PhoneNumber,
+                request.ShippingAddress.AddressLine,
+                request.ShippingAddress.Ward,
+                request.ShippingAddress.District,
+                request.ShippingAddress.City
+            ) : null,
+            request.PaymentMethod,
             request.VoucherCode), cancellationToken);
         return Ok(order);
     }
@@ -36,7 +43,8 @@ public class OrdersController : ControllerBase
     [HttpPost("apply-voucher")]
     public async Task<IActionResult> ApplyVoucher([FromBody] ApplyVoucherRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new ApplyVoucherCommand(request.VoucherCode, request.OrderAmount), cancellationToken);
+        var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+        var result = await _mediator.Send(new ApplyVoucherCommand(request.Code, userId), cancellationToken);
         return Ok(result);
     }
 
@@ -96,8 +104,27 @@ public class OrdersController : ControllerBase
         return Ok(new { message = "Test email endpoint - not implemented yet" });
     }
 
-    public record CreateOrderRequest(string? ShippingAddress, string? Notes, string? VoucherCode);
-    public record ApplyVoucherRequest(string VoucherCode, decimal OrderAmount);
+    public sealed class CreateOrderRequest
+    {
+        public ShippingAddressDto? ShippingAddress { get; set; }
+        public string PaymentMethod { get; set; } = default!;
+        public string? VoucherCode { get; set; }
+    }
+
+    public sealed class ShippingAddressDto
+    {
+        public string FullName { get; set; } = default!;
+        public string PhoneNumber { get; set; } = default!;
+        public string AddressLine { get; set; } = default!;
+        public string Ward { get; set; } = default!;
+        public string District { get; set; } = default!;
+        public string City { get; set; } = default!;
+    }
+
+    public sealed class ApplyVoucherRequest
+    {
+        public string Code { get; set; } = default!;
+    }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl);
 }
 

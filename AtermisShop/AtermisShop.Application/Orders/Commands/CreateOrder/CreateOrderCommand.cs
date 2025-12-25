@@ -5,7 +5,15 @@ namespace AtermisShop.Application.Orders.Commands.CreateOrder;
 
 public sealed record CreateOrderCommand(
     Guid UserId,
-    string? ShippingAddress,
-    string? Notes,
+    ShippingAddressDto? ShippingAddress,
+    string PaymentMethod,
     string? VoucherCode = null) : IRequest<Order>;
+
+public sealed record ShippingAddressDto(
+    string FullName,
+    string PhoneNumber,
+    string AddressLine,
+    string Ward,
+    string District,
+    string City);
 
