@@ -32,7 +32,16 @@ public class AdminProductsController : ControllerBase
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequest request, CancellationToken cancellationToken)
     {
         var id = await _mediator.Send(new CreateProductCommand(
-            request.Name, request.Slug, request.Description, request.Price, request.CategoryId), cancellationToken);
+            request.Name,
+            request.Description,
+            request.CategoryId,
+            request.Price,
+            request.OriginalPrice,
+            request.StockQuantity,
+            request.Brand,
+            request.IsActive,
+            request.ImageUrls,
+            request.Variants), cancellationToken);
         return Ok(new { Id = id });
     }
 
@@ -83,7 +92,17 @@ public class AdminProductsController : ControllerBase
         }
     }
 
-    public record CreateProductRequest(string Name, string Slug, string? Description, decimal Price, Guid CategoryId);
+    public record CreateProductRequest(
+        string Name,
+        string? Description,
+        Guid CategoryId,
+        decimal Price,
+        decimal OriginalPrice,
+        int StockQuantity,
+        string? Brand,
+        bool IsActive,
+        List<string>? ImageUrls,
+        List<ProductVariantDto>? Variants);
     public record UpdateProductRequest(
         string Name, 
         string Slug, 

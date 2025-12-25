@@ -30,6 +30,13 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.CreateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
+                ]
               }
             },
             "text/json": {
@@ -39,6 +46,13 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.CreateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
+                ]
               }
             },
             "application/*+json": {
@@ -47,6 +61,13 @@
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.CreateCategoryRequest"
                   }
+                ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
                 ]
               }
             }
@@ -72,7 +93,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -93,7 +115,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -105,6 +128,19 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.UpdateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  {
+                    "name": "Sample Name",
+                    "description": "Sample description",
+                    "children": [
+                      { }
+                    ]
+                  }
+                ]
               }
             },
             "text/json": {
@@ -114,6 +150,19 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.UpdateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  {
+                    "name": "Sample Name",
+                    "description": "Sample description",
+                    "children": [
+                      { }
+                    ]
+                  }
+                ]
               }
             },
             "application/*+json": {
@@ -121,6 +170,19 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminCategoriesController.UpdateCategoryRequest"
+                  }
+                ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  {
+                    "name": "Sample Name",
+                    "description": "Sample description",
+                    "children": [
+                      { }
+                    ]
                   }
                 ]
               }
@@ -145,7 +207,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -179,6 +242,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.CreateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             },
             "text/json": {
@@ -188,6 +260,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.CreateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             },
             "application/*+json": {
@@ -197,6 +278,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.CreateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             }
           }
@@ -221,7 +311,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -242,7 +333,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -254,6 +346,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.UpdateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             },
             "text/json": {
@@ -263,6 +364,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.UpdateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             },
             "application/*+json": {
@@ -272,6 +382,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminNewsController.UpdateNewsRequest"
                   }
                 ]
+              },
+              "example": {
+                "title": "Sample Name",
+                "slug": "string",
+                "content": "string",
+                "excerpt": "string",
+                "imageUrl": "https://example.com/image.jpg",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "isPublished": false
               }
             }
           }
@@ -294,7 +413,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -329,7 +449,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -352,7 +473,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -364,6 +486,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminOrdersController.UpdateOrderStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "status": "string"
               }
             },
             "text/json": {
@@ -373,6 +498,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminOrdersController.UpdateOrderStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "status": "string"
               }
             },
             "application/*+json": {
@@ -382,6 +510,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminOrdersController.UpdateOrderStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "status": "string"
               }
             }
           }
@@ -417,6 +548,30 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.CreateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
+                  }
+                ]
               }
             },
             "text/json": {
@@ -426,6 +581,30 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.CreateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
+                  }
+                ]
               }
             },
             "application/*+json": {
@@ -433,6 +612,30 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.CreateProductRequest"
+                  }
+                ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
                   }
                 ]
               }
@@ -459,7 +662,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -480,7 +684,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -492,6 +697,17 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.UpdateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "slug": "string",
+                "description": "Sample description",
+                "price": 99.99,
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true
               }
             },
             "text/json": {
@@ -501,6 +717,17 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.UpdateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "slug": "string",
+                "description": "Sample description",
+                "price": 99.99,
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -510,6 +737,17 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductsController.UpdateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "slug": "string",
+                "description": "Sample description",
+                "price": 99.99,
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true
               }
             }
           }
@@ -532,7 +770,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -555,7 +794,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -576,7 +816,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -588,6 +829,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.CreateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             },
             "text/json": {
@@ -597,6 +842,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.CreateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             },
             "application/*+json": {
@@ -606,6 +855,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.CreateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             }
           }
@@ -630,7 +883,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
           {
             "name": "id",
@@ -639,7 +893,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -660,7 +915,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
           {
             "name": "id",
@@ -669,7 +925,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -681,6 +938,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.UpdateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             },
             "text/json": {
@@ -690,6 +951,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.UpdateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             },
             "application/*+json": {
@@ -699,6 +964,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.UpdateSpecificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "value": "string"
               }
             }
           }
@@ -721,7 +990,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
           {
             "name": "id",
@@ -730,7 +1000,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -753,7 +1024,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -765,6 +1037,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.BulkUpdateRequest"
                   }
                 ]
+              },
+              "example": {
+                "items": [
+                  {
+                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "name": "Sample Name",
+                    "value": "string"
+                  }
+                ]
               }
             },
             "text/json": {
@@ -774,6 +1055,15 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.BulkUpdateRequest"
                   }
                 ]
+              },
+              "example": {
+                "items": [
+                  {
+                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "name": "Sample Name",
+                    "value": "string"
+                  }
+                ]
               }
             },
             "application/*+json": {
@@ -781,6 +1071,15 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminProductSpecificationsController.BulkUpdateRequest"
+                  }
+                ]
+              },
+              "example": {
+                "items": [
+                  {
+                    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "name": "Sample Name",
+                    "value": "string"
                   }
                 ]
               }
@@ -819,7 +1118,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -840,7 +1140,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -852,6 +1153,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             },
             "text/json": {
@@ -861,6 +1167,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -870,6 +1181,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             }
           }
@@ -892,7 +1208,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -915,7 +1232,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -927,6 +1245,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             },
             "text/json": {
@@ -936,6 +1257,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -945,6 +1269,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminUsersController.UpdateUserStatusRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             }
           }
@@ -980,6 +1307,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.CreateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1745840Z",
+                "endDate": "2025-12-25T07:00:00.1749015Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             },
             "text/json": {
@@ -989,6 +1328,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.CreateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1749133Z",
+                "endDate": "2025-12-25T07:00:00.1749140Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -998,6 +1349,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.CreateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1749190Z",
+                "endDate": "2025-12-25T07:00:00.1749195Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             }
           }
@@ -1022,7 +1385,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -1043,7 +1407,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -1055,6 +1420,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.UpdateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1751702Z",
+                "endDate": "2025-12-25T07:00:00.1751715Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             },
             "text/json": {
@@ -1064,6 +1441,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.UpdateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1751802Z",
+                "endDate": "2025-12-25T07:00:00.1751807Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -1073,6 +1462,18 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.UpdateVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "code": "string",
+                "description": "Sample description",
+                "discountAmount": 99.99,
+                "discountPercentage": 10,
+                "minOrderAmount": 99.99,
+                "maxDiscountAmount": 99.99,
+                "startDate": "2025-12-25T07:00:00.1751854Z",
+                "endDate": "2025-12-25T07:00:00.1751860Z",
+                "usageLimit": 0,
+                "isActive": true
               }
             }
           }
@@ -1095,7 +1496,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -1118,7 +1520,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -1130,6 +1533,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.PublishVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             },
             "text/json": {
@@ -1139,6 +1545,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.PublishVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -1148,6 +1557,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.Admin.AdminVouchersController.PublishVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "isActive": true
               }
             }
           }
@@ -1185,6 +1597,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RegisterRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string",
+                "fullName": "Sample Name"
               }
             },
             "text/json": {
@@ -1194,6 +1611,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RegisterRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string",
+                "fullName": "Sample Name"
               }
             },
             "application/*+json": {
@@ -1203,6 +1625,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RegisterRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string",
+                "fullName": "Sample Name"
               }
             }
           }
@@ -1228,6 +1655,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string"
               }
             },
             "text/json": {
@@ -1237,6 +1668,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string"
               }
             },
             "application/*+json": {
@@ -1246,6 +1681,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com",
+                "password": "string"
               }
             }
           }
@@ -1271,6 +1710,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginGoogleRequest"
                   }
                 ]
+              },
+              "example": {
+                "idToken": "string"
               }
             },
             "text/json": {
@@ -1280,6 +1722,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginGoogleRequest"
                   }
                 ]
+              },
+              "example": {
+                "idToken": "string"
               }
             },
             "application/*+json": {
@@ -1289,6 +1734,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.LoginGoogleRequest"
                   }
                 ]
+              },
+              "example": {
+                "idToken": "string"
               }
             }
           }
@@ -1314,6 +1762,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RefreshTokenRequest"
                   }
                 ]
+              },
+              "example": {
+                "refreshToken": "string"
               }
             },
             "text/json": {
@@ -1323,6 +1774,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RefreshTokenRequest"
                   }
                 ]
+              },
+              "example": {
+                "refreshToken": "string"
               }
             },
             "application/*+json": {
@@ -1332,6 +1786,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.RefreshTokenRequest"
                   }
                 ]
+              },
+              "example": {
+                "refreshToken": "string"
               }
             }
           }
@@ -1381,6 +1838,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.VerifyEmailRequest"
                   }
                 ]
+              },
+              "example": {
+                "userId": "string",
+                "token": "string"
               }
             },
             "text/json": {
@@ -1390,6 +1851,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.VerifyEmailRequest"
                   }
                 ]
+              },
+              "example": {
+                "userId": "string",
+                "token": "string"
               }
             },
             "application/*+json": {
@@ -1399,6 +1864,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.VerifyEmailRequest"
                   }
                 ]
+              },
+              "example": {
+                "userId": "string",
+                "token": "string"
               }
             }
           }
@@ -1424,6 +1893,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ResendVerificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             },
             "text/json": {
@@ -1433,6 +1905,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ResendVerificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             },
             "application/*+json": {
@@ -1442,6 +1917,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ResendVerificationRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             }
           }
@@ -1467,6 +1945,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ForgotPasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             },
             "text/json": {
@@ -1476,6 +1957,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ForgotPasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             },
             "application/*+json": {
@@ -1485,6 +1969,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ForgotPasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "email": "user@example.com"
               }
             }
           }
@@ -1544,6 +2031,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.AddCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "quantity": 10
               }
             },
             "text/json": {
@@ -1553,6 +2044,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.AddCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "quantity": 10
               }
             },
             "application/*+json": {
@@ -1562,6 +2057,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.AddCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "quantity": 10
               }
             }
           }
@@ -1586,7 +2085,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -1598,6 +2098,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.UpdateCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "quantity": 10
               }
             },
             "text/json": {
@@ -1607,6 +2110,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.UpdateCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "quantity": 10
               }
             },
             "application/*+json": {
@@ -1616,6 +2122,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CartController.UpdateCartItemRequest"
                   }
                 ]
+              },
+              "example": {
+                "quantity": 10
               }
             }
           }
@@ -1638,7 +2147,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -1672,6 +2182,13 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
+                ]
               }
             },
             "text/json": {
@@ -1681,6 +2198,13 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateCategoryRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
+                ]
               }
             },
             "application/*+json": {
@@ -1689,6 +2213,13 @@
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateCategoryRequest"
                   }
+                ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "children": [
+                  "string"
                 ]
               }
             }
@@ -1715,6 +2246,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ChatController.SendMessageRequest"
                   }
                 ]
+              },
+              "example": {
+                "message": "string",
+                "sessionId": "string"
               }
             },
             "text/json": {
@@ -1724,6 +2259,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ChatController.SendMessageRequest"
                   }
                 ]
+              },
+              "example": {
+                "message": "string",
+                "sessionId": "string"
               }
             },
             "application/*+json": {
@@ -1733,6 +2272,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ChatController.SendMessageRequest"
                   }
                 ]
+              },
+              "example": {
+                "message": "string",
+                "sessionId": "string"
               }
             }
           }
@@ -1782,6 +2325,20 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreateGuestOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "guestEmail": "user@example.com",
+                "guestPhone": "+1234567890",
+                "guestName": "Sample Name",
+                "shippingAddress": "string",
+                "notes": "string",
+                "items": [
+                  {
+                    "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "quantity": 10
+                  }
+                ],
+                "voucherCode": "string"
               }
             },
             "text/json": {
@@ -1791,6 +2348,20 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreateGuestOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "guestEmail": "user@example.com",
+                "guestPhone": "+1234567890",
+                "guestName": "Sample Name",
+                "shippingAddress": "string",
+                "notes": "string",
+                "items": [
+                  {
+                    "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "quantity": 10
+                  }
+                ],
+                "voucherCode": "string"
               }
             },
             "application/*+json": {
@@ -1800,6 +2371,20 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreateGuestOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "guestEmail": "user@example.com",
+                "guestPhone": "+1234567890",
+                "guestName": "Sample Name",
+                "shippingAddress": "string",
+                "notes": "string",
+                "items": [
+                  {
+                    "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "quantity": 10
+                  }
+                ],
+                "voucherCode": "string"
               }
             }
           }
@@ -1824,7 +2409,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -1845,14 +2431,16 @@
             "in": "query",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           },
           {
             "name": "email",
             "in": "query",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -1874,7 +2462,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -1898,6 +2487,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             },
             "text/json": {
@@ -1907,6 +2500,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             },
             "application/*+json": {
@@ -1916,6 +2513,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             }
           }
@@ -1940,7 +2541,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -1952,6 +2554,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             },
             "text/json": {
@@ -1961,6 +2567,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             },
             "application/*+json": {
@@ -1970,6 +2580,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.GuestOrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             }
           }
@@ -2017,7 +2631,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -2041,6 +2656,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreateOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "shippingAddress": "string",
+                "notes": "string",
+                "voucherCode": "string"
               }
             },
             "text/json": {
@@ -2050,6 +2670,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreateOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "shippingAddress": "string",
+                "notes": "string",
+                "voucherCode": "string"
               }
             },
             "application/*+json": {
@@ -2059,6 +2684,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreateOrderRequest"
                   }
                 ]
+              },
+              "example": {
+                "shippingAddress": "string",
+                "notes": "string",
+                "voucherCode": "string"
               }
             }
           }
@@ -2084,6 +2714,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             },
             "text/json": {
@@ -2093,6 +2727,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             },
             "application/*+json": {
@@ -2102,6 +2740,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.ApplyVoucherRequest"
                   }
                 ]
+              },
+              "example": {
+                "voucherCode": "string",
+                "orderAmount": 99.99
               }
             }
           }
@@ -2138,7 +2780,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2161,7 +2804,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2184,7 +2828,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -2196,6 +2841,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             },
             "text/json": {
@@ -2205,6 +2854,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             },
             "application/*+json": {
@@ -2214,6 +2867,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.OrdersController.CreatePaymentRequest"
                   }
                 ]
+              },
+              "example": {
+                "provider": "string",
+                "returnUrl": "https://example.com/image.jpg"
               }
             }
           }
@@ -2238,7 +2895,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2480,7 +3138,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -2500,7 +3159,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "requestBody": {
@@ -2512,6 +3172,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.CreateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string",
+                "parentCommentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
               }
             },
             "text/json": {
@@ -2521,6 +3185,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.CreateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string",
+                "parentCommentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
               }
             },
             "application/*+json": {
@@ -2530,6 +3198,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.CreateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string",
+                "parentCommentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
               }
             }
           }
@@ -2553,7 +3225,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           },
           {
             "name": "commentId",
@@ -2562,7 +3235,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -2574,6 +3248,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.UpdateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string"
               }
             },
             "text/json": {
@@ -2583,6 +3260,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.UpdateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string"
               }
             },
             "application/*+json": {
@@ -2592,6 +3272,9 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductCommentsController.UpdateCommentRequest"
                   }
                 ]
+              },
+              "example": {
+                "content": "string"
               }
             }
           }
@@ -2613,7 +3296,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           },
           {
             "name": "commentId",
@@ -2622,7 +3306,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2644,7 +3329,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -2664,7 +3350,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "requestBody": {
@@ -2676,6 +3363,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductReviewsController.CreateReviewRequest"
                   }
                 ]
+              },
+              "example": {
+                "rating": 0,
+                "comment": "string"
               }
             },
             "text/json": {
@@ -2685,6 +3376,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductReviewsController.CreateReviewRequest"
                   }
                 ]
+              },
+              "example": {
+                "rating": 0,
+                "comment": "string"
               }
             },
             "application/*+json": {
@@ -2694,6 +3389,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.ProductReviewsController.CreateReviewRequest"
                   }
                 ]
+              },
+              "example": {
+                "rating": 0,
+                "comment": "string"
               }
             }
           }
@@ -2729,6 +3428,30 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
+                  }
+                ]
               }
             },
             "text/json": {
@@ -2738,6 +3461,30 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateProductRequest"
                   }
                 ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
+                  }
+                ]
               }
             },
             "application/*+json": {
@@ -2745,6 +3492,30 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.CreateProductRequest"
+                  }
+                ]
+              },
+              "example": {
+                "name": "Sample Name",
+                "description": "Sample description",
+                "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "price": 99.99,
+                "originalPrice": 99.99,
+                "stockQuantity": 10,
+                "brand": "string",
+                "isActive": true,
+                "imageUrls": [
+                  "string"
+                ],
+                "variants": [
+                  {
+                    "color": "string",
+                    "size": "string",
+                    "spec": "string",
+                    "price": 99.99,
+                    "originalPrice": 99.99,
+                    "stockQuantity": 10,
+                    "isActive": true
                   }
                 ]
               }
@@ -2770,7 +3541,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -2803,7 +3575,8 @@
             "in": "query",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "string"
           }
         ],
         "responses": {
@@ -2850,7 +3623,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2871,7 +3645,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "requestBody": {
@@ -2883,6 +3658,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             },
             "text/json": {
@@ -2892,6 +3672,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             },
             "application/*+json": {
@@ -2901,6 +3686,11 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.UpdateUserRequest"
                   }
                 ]
+              },
+              "example": {
+                "fullName": "Sample Name",
+                "phoneNumber": "+1234567890",
+                "isActive": true
               }
             }
           }
@@ -2923,7 +3713,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -2947,6 +3738,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.ChangePasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "currentPassword": "string",
+                "newPassword": "string"
               }
             },
             "text/json": {
@@ -2956,6 +3751,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.ChangePasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "currentPassword": "string",
+                "newPassword": "string"
               }
             },
             "application/*+json": {
@@ -2965,6 +3764,10 @@
                     "$ref": "#/components/schemas/AtermisShop_API.Controllers.UsersController.ChangePasswordRequest"
                   }
                 ]
+              },
+              "example": {
+                "currentPassword": "string",
+                "newPassword": "string"
               }
             }
           }
@@ -2992,7 +3795,15 @@
                   "items": {
                     "$ref": "#/components/schemas/AtermisShop_API.WeatherForecast"
                   }
-                }
+                },
+                "example": [
+                  {
+                    "date": "2025-12-25",
+                    "temperatureC": 0,
+                    "temperatureF": 0,
+                    "summary": "string"
+                  }
+                ]
               },
               "application/json": {
                 "schema": {
@@ -3000,7 +3811,15 @@
                   "items": {
                     "$ref": "#/components/schemas/AtermisShop_API.WeatherForecast"
                   }
-                }
+                },
+                "example": [
+                  {
+                    "date": "2025-12-25",
+                    "temperatureC": 0,
+                    "temperatureF": 0,
+                    "summary": "string"
+                  }
+                ]
               },
               "text/json": {
                 "schema": {
@@ -3008,7 +3827,15 @@
                   "items": {
                     "$ref": "#/components/schemas/AtermisShop_API.WeatherForecast"
                   }
-                }
+                },
+                "example": [
+                  {
+                    "date": "2025-12-25",
+                    "temperatureC": 0,
+                    "temperatureF": 0,
+                    "summary": "string"
+                  }
+                ]
               }
             }
           }
@@ -3040,7 +3867,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -3061,7 +3889,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -3084,7 +3913,8 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
+            },
+            "example": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         ],
         "responses": {
@@ -3113,6 +3943,39 @@
               "$ref": "#/components/schemas/AtermisShop.Application.Categories.Commands.UpdateCategory.ChildCategoryDto"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AtermisShop.Application.Products.Commands.CreateProduct.ProductVariantDto": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "spec": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "originalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isActive": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -3287,20 +4150,46 @@
           "name": {
             "type": "string"
           },
-          "slug": {
-            "type": "string"
-          },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid"
           },
           "price": {
             "type": "number",
             "format": "double"
           },
-          "categoryId": {
+          "originalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brand": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AtermisShop.Application.Products.Commands.CreateProduct.ProductVariantDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3538,20 +4427,46 @@
           "name": {
             "type": "string"
           },
-          "slug": {
-            "type": "string"
-          },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid"
           },
           "price": {
             "type": "number",
             "format": "double"
           },
-          "categoryId": {
+          "originalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brand": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AtermisShop.Application.Products.Commands.CreateProduct.ProductVariantDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

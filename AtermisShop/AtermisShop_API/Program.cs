@@ -132,6 +132,9 @@ namespace AtermisShop_API
                 // Use camelCase for property names in Swagger
                 c.DescribeAllParametersInCamelCase();
                 c.SchemaFilter<Swagger.CamelCaseSchemaFilter>();
+                
+                // Add example values to all operations
+                c.OperationFilter<Swagger.ExampleOperationFilter>();
             });
 
             var app = builder.Build();

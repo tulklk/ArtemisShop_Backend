@@ -4,9 +4,23 @@ namespace AtermisShop.Application.Products.Commands.CreateProduct;
 
 public sealed record CreateProductCommand(
     string Name,
-    string Slug,
     string? Description,
+    Guid CategoryId,
     decimal Price,
-    Guid CategoryId) : IRequest<Guid>;
+    decimal OriginalPrice,
+    int StockQuantity,
+    string? Brand,
+    bool IsActive,
+    List<string>? ImageUrls,
+    List<ProductVariantDto>? Variants) : IRequest<Guid>;
+
+public sealed record ProductVariantDto(
+    string? Color,
+    string? Size,
+    string? Spec,
+    decimal Price,
+    decimal OriginalPrice,
+    int StockQuantity,
+    bool IsActive);
 
 

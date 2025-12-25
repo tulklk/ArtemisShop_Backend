@@ -59,10 +59,15 @@ public class ProductsController : ControllerBase
     {
         var id = await _mediator.Send(new CreateProductCommand(
             request.Name,
-            request.Slug,
             request.Description,
+            request.CategoryId,
             request.Price,
-            request.CategoryId), cancellationToken);
+            request.OriginalPrice,
+            request.StockQuantity,
+            request.Brand,
+            request.IsActive,
+            request.ImageUrls,
+            request.Variants), cancellationToken);
 
         return Ok(new { id });
     }
@@ -71,10 +76,15 @@ public class ProductsController : ControllerBase
 public sealed class CreateProductRequest
 {
     public string Name { get; set; } = default!;
-    public string Slug { get; set; } = default!;
     public string? Description { get; set; }
-    public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
+    public decimal Price { get; set; }
+    public decimal OriginalPrice { get; set; }
+    public int StockQuantity { get; set; }
+    public string? Brand { get; set; }
+    public bool IsActive { get; set; }
+    public List<string>? ImageUrls { get; set; }
+    public List<ProductVariantDto>? Variants { get; set; }
 }
 
 
