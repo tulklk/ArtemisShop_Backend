@@ -1,5 +1,6 @@
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Orders;
+using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,27 +17,69 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
 
     public async Task<Order> Handle(CreateGuestOrderCommand request, CancellationToken cancellationToken)
     {
+        // Validate payment method
+        if (!AtermisShop.Application.Orders.Common.PaymentMethod.IsValid(request.PaymentMethod))
+        {
+            throw new ArgumentException($"Invalid payment method. Only 'COD' and 'PayOS' are supported.");
+        }
+
         var orderNumber = Guid.NewGuid();
         var order = new Order
         {
             OrderNumber = orderNumber,
-            GuestEmail = request.GuestEmail,
-            GuestFullName = request.GuestName,
+            GuestEmail = request.Email,
+            GuestFullName = request.FullName,
             OrderStatus = (int)OrderStatus.Pending,
             PaymentStatus = 0, // Pending
-            ShippingFullName = request.GuestName,
-            ShippingPhoneNumber = request.GuestPhone,
-            ShippingAddressLine = request.ShippingAddress
+            PaymentMethod = AtermisShop.Application.Orders.Common.PaymentMethod.ToInt(request.PaymentMethod), // 0: COD, 1: PayOS
+            ShippingFullName = request.ShippingAddress?.FullName,
+            ShippingPhoneNumber = request.ShippingAddress?.PhoneNumber,
+            ShippingAddressLine = request.ShippingAddress?.AddressLine,
+            ShippingWard = null, // Removed from API to match Vietnam provinces API v2
+            ShippingDistrict = request.ShippingAddress?.District,
+            ShippingCity = request.ShippingAddress?.City
         };
 
         decimal subTotal = 0;
         foreach (var item in request.Items)
         {
-            var product = await _context.Products.FindAsync(new object[] { item.ProductId }, cancellationToken);
+            var product = await _context.Products
+                .Include(p => p.Variants)
+                .FirstOrDefaultAsync(p => p.Id == item.ProductId, cancellationToken);
+            
             if (product == null)
                 continue;
 
-            var unitPrice = product.Price;
+            decimal unitPrice;
+            ProductVariant? variant = null;
+            string? variantInfo = null;
+
+            // If ProductVariantId is provided, use variant price
+            if (item.ProductVariantId.HasValue)
+            {
+                variant = product.Variants.FirstOrDefault(v => v.Id == item.ProductVariantId.Value && v.IsActive);
+                if (variant != null)
+                {
+                    unitPrice = variant.Price;
+                    // Build variant info string
+                    var variantParts = new List<string>();
+                    if (!string.IsNullOrEmpty(variant.Color)) variantParts.Add($"Màu: {variant.Color}");
+                    if (!string.IsNullOrEmpty(variant.Size)) variantParts.Add($"Size: {variant.Size}");
+                    if (!string.IsNullOrEmpty(variant.Spec)) variantParts.Add($"Spec: {variant.Spec}");
+                    variantInfo = string.Join(", ", variantParts);
+                }
+                else
+                {
+                    // Variant not found or inactive, use product price
+                    unitPrice = product.Price;
+                }
+            }
+            else
+            {
+                // No variant specified, use product price
+                unitPrice = product.Price;
+            }
+
             var lineTotal = unitPrice * item.Quantity;
             subTotal += lineTotal;
 
@@ -44,10 +87,12 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             {
                 OrderId = order.Id,
                 ProductId = product.Id,
+                ProductVariantId = variant?.Id,
                 Quantity = item.Quantity,
                 UnitPrice = unitPrice,
                 LineTotal = lineTotal,
-                ProductNameSnapshot = product.Name
+                ProductNameSnapshot = product.Name,
+                VariantInfoSnapshot = variantInfo
             };
             order.Items.Add(orderItem);
         }

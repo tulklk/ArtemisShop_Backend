@@ -1,5 +1,6 @@
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateGuestOrder;
+using AtermisShop.Application.Orders.Commands.CreateOrder;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Orders.Queries.LookupGuestOrder;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
@@ -25,13 +26,25 @@ public class GuestOrdersController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> CreateOrder([FromBody] CreateGuestOrderRequest request, CancellationToken cancellationToken)
     {
-        var orderItems = request.Items.Select(item => new AtermisShop.Application.Orders.Commands.CreateGuestOrder.GuestOrderItem(item.ProductId, item.Quantity)).ToList();
+        var orderItems = request.Items.Select(item => new AtermisShop.Application.Orders.Commands.CreateGuestOrder.GuestOrderItem(
+            item.ProductId, 
+            item.ProductVariantId, 
+            item.Quantity)).ToList();
+        
+        var shippingAddressDto = request.ShippingAddress != null 
+            ? new ShippingAddressDto(
+                request.ShippingAddress.FullName,
+                request.ShippingAddress.PhoneNumber,
+                request.ShippingAddress.AddressLine,
+                request.ShippingAddress.District,
+                request.ShippingAddress.City)
+            : null;
+
         var order = await _mediator.Send(new CreateGuestOrderCommand(
-            request.GuestEmail,
-            request.GuestPhone,
-            request.GuestName,
-            request.ShippingAddress,
-            request.Notes,
+            request.Email,
+            request.FullName,
+            shippingAddressDto,
+            request.PaymentMethod,
             orderItems,
             request.VoucherCode), cancellationToken);
         return Ok(order);
@@ -106,15 +119,24 @@ public class GuestOrdersController : ControllerBase
     }
 
     public record CreateGuestOrderRequest(
-        string GuestEmail,
-        string GuestPhone,
-        string GuestName,
-        string? ShippingAddress,
-        string? Notes,
+        string Email,
+        string FullName,
+        GuestShippingAddressDto? ShippingAddress,
+        string PaymentMethod,
         List<GuestOrderItem> Items,
         string? VoucherCode);
 
-    public record GuestOrderItem(Guid ProductId, int Quantity);
+    public record GuestShippingAddressDto(
+        string FullName,
+        string PhoneNumber,
+        string AddressLine,
+        string District,
+        string City);
+
+    public record GuestOrderItem(
+        Guid ProductId,
+        Guid? ProductVariantId,
+        int Quantity);
     public sealed class ApplyVoucherRequest
     {
         public string Code { get; set; } = default!;
