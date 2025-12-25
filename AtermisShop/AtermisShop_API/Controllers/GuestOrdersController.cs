@@ -5,6 +5,7 @@ using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Orders.Queries.LookupGuestOrder;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
 using AtermisShop.Application.Payments.Common;
+using AtermisShop_API.Controllers.GuestOrders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,32 +23,111 @@ public class GuestOrdersController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Creates a new guest order
+    /// </summary>
+    /// <param name="request">Guest order creation request</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Created order</returns>
+    /// <response code="200">Order created successfully</response>
+    /// <response code="400">Bad request - Invalid input data or validation error</response>
+    /// <response code="500">Internal server error</response>
     [HttpPost]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(OrderResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ErrorResponseDto), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateOrder([FromBody] CreateGuestOrderRequest request, CancellationToken cancellationToken)
     {
-        var orderItems = request.Items.Select(item => new AtermisShop.Application.Orders.Commands.CreateGuestOrder.GuestOrderItem(
-            item.ProductId, 
-            item.ProductVariantId, 
-            item.Quantity)).ToList();
-        
-        var shippingAddressDto = request.ShippingAddress != null 
-            ? new ShippingAddressDto(
-                request.ShippingAddress.FullName,
-                request.ShippingAddress.PhoneNumber,
-                request.ShippingAddress.AddressLine,
-                request.ShippingAddress.District,
-                request.ShippingAddress.City)
-            : null;
+        try
+        {
+            if (request == null)
+            {
+                return BadRequest(new ErrorResponseDto { Message = "Request body is required." });
+            }
 
-        var order = await _mediator.Send(new CreateGuestOrderCommand(
-            request.Email,
-            request.FullName,
-            shippingAddressDto,
-            request.PaymentMethod,
-            orderItems,
-            request.VoucherCode), cancellationToken);
-        return Ok(order);
+            if (request.Items == null || !request.Items.Any())
+            {
+                return BadRequest(new ErrorResponseDto { Message = "Order must contain at least one item." });
+            }
+
+            var orderItems = request.Items.Select(item => new AtermisShop.Application.Orders.Commands.CreateGuestOrder.GuestOrderItem(
+                item.ProductId, 
+                item.ProductVariantId, 
+                item.Quantity)).ToList();
+            
+            var shippingAddressDto = request.ShippingAddress != null 
+                ? new ShippingAddressDto(
+                    request.ShippingAddress.FullName,
+                    request.ShippingAddress.PhoneNumber,
+                    request.ShippingAddress.AddressLine,
+                    request.ShippingAddress.District,
+                    request.ShippingAddress.City)
+                : null;
+
+            var order = await _mediator.Send(new CreateGuestOrderCommand(
+                request.Email,
+                request.FullName,
+                shippingAddressDto,
+                request.PaymentMethod,
+                orderItems,
+                request.VoucherCode), cancellationToken);
+            
+            // Map Order entity to OrderResponseDto
+            var orderResponse = new OrderResponseDto
+            {
+                Id = order.Id,
+                OrderNumber = order.OrderNumber,
+                UserId = order.UserId,
+                GuestEmail = order.GuestEmail,
+                GuestFullName = order.GuestFullName,
+                TotalAmount = order.TotalAmount,
+                PaymentStatus = order.PaymentStatus,
+                OrderStatus = order.OrderStatus,
+                PaymentMethod = order.PaymentMethod,
+                PaymentTransactionId = order.PaymentTransactionId,
+                ShippingFullName = order.ShippingFullName,
+                ShippingPhoneNumber = order.ShippingPhoneNumber,
+                ShippingAddressLine = order.ShippingAddressLine,
+                ShippingWard = order.ShippingWard,
+                ShippingDistrict = order.ShippingDistrict,
+                ShippingCity = order.ShippingCity,
+                VoucherId = order.VoucherId,
+                VoucherDiscountAmount = order.VoucherDiscountAmount,
+                Items = order.Items.Select(item => new OrderItemResponseDto
+                {
+                    Id = item.Id,
+                    OrderId = item.OrderId,
+                    ProductId = item.ProductId,
+                    ProductVariantId = item.ProductVariantId,
+                    ProductNameSnapshot = item.ProductNameSnapshot,
+                    VariantInfoSnapshot = item.VariantInfoSnapshot,
+                    Quantity = item.Quantity,
+                    UnitPrice = item.UnitPrice,
+                    LineTotal = item.LineTotal
+                }).ToList(),
+                CreatedAt = order.CreatedAt,
+                UpdatedAt = order.UpdatedAt
+            };
+            
+            return Ok(orderResponse);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new ErrorResponseDto { Message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new ErrorResponseDto { Message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ErrorResponseDto 
+            { 
+                Message = "An error occurred while creating the order.", 
+                Error = ex.Message 
+            });
+        }
     }
 
     [HttpGet("{id}")]

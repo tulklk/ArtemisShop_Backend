@@ -23,6 +23,12 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             throw new ArgumentException($"Invalid payment method. Only 'COD' and 'PayOS' are supported.");
         }
 
+        // Validate items
+        if (request.Items == null || !request.Items.Any())
+        {
+            throw new InvalidOperationException("Order must contain at least one item.");
+        }
+
         var orderNumber = Guid.NewGuid();
         var order = new Order
         {
@@ -41,14 +47,28 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
         };
 
         decimal subTotal = 0;
+        var processedItems = new List<OrderItem>();
+        
         foreach (var item in request.Items)
         {
+            if (item.Quantity <= 0)
+            {
+                throw new ArgumentException($"Invalid quantity for product {item.ProductId}. Quantity must be greater than 0.");
+            }
+
             var product = await _context.Products
                 .Include(p => p.Variants)
                 .FirstOrDefaultAsync(p => p.Id == item.ProductId, cancellationToken);
             
             if (product == null)
-                continue;
+            {
+                throw new InvalidOperationException($"Product with ID {item.ProductId} not found.");
+            }
+
+            if (!product.IsActive)
+            {
+                throw new InvalidOperationException($"Product {product.Name} is not active.");
+            }
 
             decimal unitPrice;
             ProductVariant? variant = null;
@@ -57,7 +77,7 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             // If ProductVariantId is provided, use variant price
             if (item.ProductVariantId.HasValue)
             {
-                variant = product.Variants.FirstOrDefault(v => v.Id == item.ProductVariantId.Value && v.IsActive);
+                variant = product.Variants?.FirstOrDefault(v => v.Id == item.ProductVariantId.Value && v.IsActive);
                 if (variant != null)
                 {
                     unitPrice = variant.Price;
@@ -67,17 +87,28 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
                     if (!string.IsNullOrEmpty(variant.Size)) variantParts.Add($"Size: {variant.Size}");
                     if (!string.IsNullOrEmpty(variant.Spec)) variantParts.Add($"Spec: {variant.Spec}");
                     variantInfo = string.Join(", ", variantParts);
+                    
+                    // Check stock
+                    if (variant.StockQuantity < item.Quantity)
+                    {
+                        throw new InvalidOperationException($"Insufficient stock for variant. Available: {variant.StockQuantity}, Requested: {item.Quantity}.");
+                    }
                 }
                 else
                 {
-                    // Variant not found or inactive, use product price
-                    unitPrice = product.Price;
+                    throw new InvalidOperationException($"Product variant with ID {item.ProductVariantId.Value} not found or inactive.");
                 }
             }
             else
             {
                 // No variant specified, use product price
                 unitPrice = product.Price;
+                
+                // Check stock
+                if (product.StockQuantity < item.Quantity)
+                {
+                    throw new InvalidOperationException($"Insufficient stock for product {product.Name}. Available: {product.StockQuantity}, Requested: {item.Quantity}.");
+                }
             }
 
             var lineTotal = unitPrice * item.Quantity;
@@ -94,6 +125,12 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
                 ProductNameSnapshot = product.Name,
                 VariantInfoSnapshot = variantInfo
             };
+            processedItems.Add(orderItem);
+        }
+
+        // Add all processed items to order
+        foreach (var orderItem in processedItems)
+        {
             order.Items.Add(orderItem);
         }
 
