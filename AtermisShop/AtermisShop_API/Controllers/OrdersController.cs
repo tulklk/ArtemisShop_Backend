@@ -6,6 +6,7 @@ using AtermisShop.Application.Orders.Queries.GetMyOrders;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
 using AtermisShop.Application.Payments.Common;
+using AtermisShop_API.Controllers.Orders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -130,7 +131,18 @@ public class OrdersController : ControllerBase
                 order.Id, paymentResult.OrderCode), cancellationToken);
         }
 
-        return Ok(new { PaymentUrl = paymentResult.PaymentUrl });
+        // Build response according to API specification
+        var response = new PaymentResponseDto
+        {
+            PaymentUrl = paymentResult.PaymentUrl ?? string.Empty,
+            OrderId = order.Id,
+            OrderNumber = order.OrderNumber,
+            IsCod = order.PaymentMethod == 0, // 0 = COD
+            IsBankTransfer = false, // PayOS is not bank transfer, it's online payment
+            BankTransferInfo = null // Only set if payment method is bank transfer
+        };
+
+        return Ok(response);
     }
 
     [HttpPost("{id}/test-email")]
