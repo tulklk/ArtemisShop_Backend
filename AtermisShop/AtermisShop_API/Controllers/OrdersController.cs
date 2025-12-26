@@ -108,7 +108,7 @@ public class OrdersController : ControllerBase
         var paymentItems = order.Items.Select(item => new PaymentItem(
             Name: item.ProductNameSnapshot + (!string.IsNullOrEmpty(item.VariantInfoSnapshot) ? $" - {item.VariantInfoSnapshot}" : ""),
             Quantity: item.Quantity,
-            Price: (int)item.UnitPrice // Convert decimal to int (VND)
+            Price: (int)Math.Round(item.UnitPrice, MidpointRounding.AwayFromZero) // Convert decimal to int (VND) with proper rounding
         )).ToList();
 
         var paymentResult = await _mediator.Send(new CreatePaymentCommand(

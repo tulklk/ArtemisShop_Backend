@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AtermisShop.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4eda699ab2e134254004bfbf6dc83522c2931df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a45381bb0d5b0cd8b194c354c10ed5bcfae8ad6")]
 [assembly: System.Reflection.AssemblyProductAttribute("AtermisShop.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AtermisShop.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
