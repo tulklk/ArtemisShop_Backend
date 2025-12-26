@@ -26,19 +26,34 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request, CancellationToken cancellationToken)
     {
-        var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        var order = await _mediator.Send(new CreateOrderCommand(
-            userId,
-            request.ShippingAddress != null ? new AtermisShop.Application.Orders.Commands.CreateOrder.ShippingAddressDto(
-                request.ShippingAddress.FullName,
-                request.ShippingAddress.PhoneNumber,
-                request.ShippingAddress.AddressLine,
-                request.ShippingAddress.District,
-                request.ShippingAddress.City
-            ) : null,
-            request.PaymentMethod,
-            request.VoucherCode), cancellationToken);
-        return Ok(order);
+        try
+        {
+            var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+            var order = await _mediator.Send(new CreateOrderCommand(
+                userId,
+                request.ShippingAddress != null ? new AtermisShop.Application.Orders.Commands.CreateOrder.ShippingAddressDto(
+                    request.ShippingAddress.FullName,
+                    request.ShippingAddress.PhoneNumber,
+                    request.ShippingAddress.AddressLine,
+                    request.ShippingAddress.District,
+                    request.ShippingAddress.City
+                ) : null,
+                request.PaymentMethod,
+                request.VoucherCode), cancellationToken);
+            return Ok(order);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message, statusCode = 400 });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message, statusCode = 400 });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "An error occurred while creating the order.", error = ex.Message, statusCode = 500 });
+        }
     }
 
     [HttpPost("apply-voucher")]

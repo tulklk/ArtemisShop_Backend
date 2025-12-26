@@ -1,6 +1,7 @@
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Application.Orders.Common;
 using AtermisShop.Domain.Orders;
+using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,10 +29,14 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         // Get cart from database directly to access domain entities
         var cart = await _context.Carts
             .Include(c => c.Items)
+                .ThenInclude(i => i.ProductVariant)
             .FirstOrDefaultAsync(c => c.UserId == request.UserId, cancellationToken);
             
-        if (cart == null || !cart.Items.Any())
-            throw new InvalidOperationException("Cart is empty");
+        if (cart == null)
+            throw new InvalidOperationException($"Cart not found for user {request.UserId}. Please add items to cart first.");
+            
+        if (cart.Items == null || !cart.Items.Any())
+            throw new InvalidOperationException($"Cart exists but has no items. Please add items to cart first.");
 
         var orderNumber = await OrderNumberHelper.GenerateUniqueOrderNumberAsync(_context, cancellationToken);
         var order = new Order
@@ -50,13 +55,53 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         };
 
         decimal subTotal = 0;
+        var processedItems = new List<OrderItem>();
+        
         foreach (var cartItem in cart.Items)
         {
-            var product = await _context.Products.FindAsync(new object[] { cartItem.ProductId }, cancellationToken);
+            var product = await _context.Products
+                .Include(p => p.Variants)
+                .FirstOrDefaultAsync(p => p.Id == cartItem.ProductId, cancellationToken);
+                
             if (product == null)
-                continue;
+            {
+                throw new InvalidOperationException($"Product with ID {cartItem.ProductId} not found. Please remove it from cart.");
+            }
 
-            var unitPrice = product.Price;
+            if (!product.IsActive)
+            {
+                throw new InvalidOperationException($"Product {product.Name} is not active. Please remove it from cart.");
+            }
+
+            decimal unitPrice;
+            ProductVariant? variant = null;
+            string? variantInfo = null;
+
+            // If ProductVariantId is provided, use variant price
+            if (cartItem.ProductVariantId.HasValue)
+            {
+                variant = product.Variants?.FirstOrDefault(v => v.Id == cartItem.ProductVariantId.Value && v.IsActive);
+                if (variant != null)
+                {
+                    unitPrice = variant.Price;
+                    // Build variant info string
+                    var variantParts = new List<string>();
+                    if (!string.IsNullOrEmpty(variant.Color)) variantParts.Add($"Màu: {variant.Color}");
+                    if (!string.IsNullOrEmpty(variant.Size)) variantParts.Add($"Size: {variant.Size}");
+                    if (!string.IsNullOrEmpty(variant.Spec)) variantParts.Add($"Spec: {variant.Spec}");
+                    variantInfo = string.Join(", ", variantParts);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Product variant with ID {cartItem.ProductVariantId.Value} not found or inactive. Please remove it from cart.");
+                }
+            }
+            else
+            {
+                // No variant specified, use product price
+                unitPrice = product.Price;
+            }
+
             var lineTotal = unitPrice * cartItem.Quantity;
             subTotal += lineTotal;
 
@@ -64,11 +109,25 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             {
                 OrderId = order.Id,
                 ProductId = product.Id,
+                ProductVariantId = variant?.Id,
                 Quantity = cartItem.Quantity,
                 UnitPrice = unitPrice,
                 LineTotal = lineTotal,
-                ProductNameSnapshot = product.Name
+                ProductNameSnapshot = product.Name,
+                VariantInfoSnapshot = variantInfo
             };
+            processedItems.Add(orderItem);
+        }
+
+        // Ensure we have at least one item
+        if (processedItems.Count == 0)
+        {
+            throw new InvalidOperationException("No valid items found in cart. Please add items to cart first.");
+        }
+
+        // Add all processed items to order
+        foreach (var orderItem in processedItems)
+        {
             order.Items.Add(orderItem);
         }
 
