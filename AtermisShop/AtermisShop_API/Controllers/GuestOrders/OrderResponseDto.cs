@@ -3,7 +3,7 @@ namespace AtermisShop_API.Controllers.GuestOrders;
 public class OrderResponseDto
 {
     public Guid Id { get; set; }
-    public Guid OrderNumber { get; set; }
+    public string OrderNumber { get; set; } = default!;
     public Guid? UserId { get; set; }
     public string? GuestEmail { get; set; }
     public string? GuestFullName { get; set; }

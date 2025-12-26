@@ -16,12 +16,11 @@ public sealed class LookupGuestOrderQueryHandler : IRequestHandler<LookupGuestOr
 
     public async Task<Order?> Handle(LookupGuestOrderQuery request, CancellationToken cancellationToken)
     {
-        var isGuid = Guid.TryParse(request.OrderNumber, out var orderNumberGuid);
         var query = _context.Orders
             .Include(o => o.Items)
                 .ThenInclude(i => i.Product)
             .Include(o => o.Voucher)
-            .Where(o => (isGuid ? o.OrderNumber == orderNumberGuid : false) && o.UserId == null);
+            .Where(o => o.OrderNumber == request.OrderNumber && o.UserId == null);
 
         if (!string.IsNullOrEmpty(request.Email))
         {

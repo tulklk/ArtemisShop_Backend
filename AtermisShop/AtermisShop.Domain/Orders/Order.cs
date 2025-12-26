@@ -5,7 +5,7 @@ namespace AtermisShop.Domain.Orders;
 
 public class Order : BaseEntity
 {
-    public Guid OrderNumber { get; set; }
+    public string OrderNumber { get; set; } = default!;
     public Guid? UserId { get; set; }
     public ApplicationUser? User { get; set; }
     public string? GuestEmail { get; set; }

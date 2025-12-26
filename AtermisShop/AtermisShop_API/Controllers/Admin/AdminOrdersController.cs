@@ -1,3 +1,4 @@
+using AtermisShop.Application.Orders.Commands.UpdateOrderStatus;
 using AtermisShop.Application.Orders.Queries.GetAllOrders;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using MediatR;
@@ -35,10 +36,24 @@ public class AdminOrdersController : ControllerBase
     }
 
     [HttpPut("{id}/status")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateOrderStatus(Guid id, [FromBody] UpdateOrderStatusRequest request, CancellationToken cancellationToken)
     {
-        // TODO: Implement update order status command
-        return Ok();
+        try
+        {
+            await _mediator.Send(new UpdateOrderStatusCommand(id, request.Status), cancellationToken);
+            return Ok(new { Message = "Order status updated successfully" });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { Message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(new { Message = ex.Message });
+        }
     }
 
     public record UpdateOrderStatusRequest(string Status);

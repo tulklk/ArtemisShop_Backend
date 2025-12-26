@@ -3,7 +3,7 @@ namespace AtermisShop.Application.Orders.Common;
 public sealed class OrderDto
 {
     public Guid Id { get; set; }
-    public Guid OrderNumber { get; set; }
+    public string OrderNumber { get; set; } = default!;
     public Guid? UserId { get; set; }
     public string? UserEmail { get; set; }
     public string? UserFullName { get; set; }

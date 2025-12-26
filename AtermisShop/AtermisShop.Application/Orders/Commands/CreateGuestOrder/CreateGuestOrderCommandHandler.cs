@@ -1,4 +1,5 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Application.Orders.Common;
 using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using MediatR;
@@ -29,7 +30,7 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             throw new InvalidOperationException("Order must contain at least one item.");
         }
 
-        var orderNumber = Guid.NewGuid();
+        var orderNumber = await OrderNumberHelper.GenerateUniqueOrderNumberAsync(_context, cancellationToken);
         var order = new Order
         {
             OrderNumber = orderNumber,

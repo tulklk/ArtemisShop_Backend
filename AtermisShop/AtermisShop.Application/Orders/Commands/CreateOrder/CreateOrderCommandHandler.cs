@@ -1,4 +1,5 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Application.Orders.Common;
 using AtermisShop.Domain.Orders;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         if (cart == null || !cart.Items.Any())
             throw new InvalidOperationException("Cart is empty");
 
-        var orderNumber = Guid.NewGuid();
+        var orderNumber = await OrderNumberHelper.GenerateUniqueOrderNumberAsync(_context, cancellationToken);
         var order = new Order
         {
             OrderNumber = orderNumber,
