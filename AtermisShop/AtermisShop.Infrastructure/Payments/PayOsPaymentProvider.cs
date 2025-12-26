@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 
 namespace AtermisShop.Infrastructure.Payments;
@@ -140,25 +141,41 @@ public class PayOsPaymentProvider : IPaymentProvider
             // Signature is calculated from: amount, orderCode, description, returnUrl, cancelUrl
             // PayOS requires keys to be in alphabetical order: amount, cancelUrl, description, orderCode, returnUrl
             // Using HMAC SHA256 with checksumKey
+            // IMPORTANT: PayOS requires exact JSON format - use JsonSerializer with proper options
+            
             var signatureData = new SortedDictionary<string, object>
             {
                 { "amount", (int)calculatedAmount },
                 { "cancelUrl", cancelUrl },
                 { "description", description },
-                { "orderCode", orderCode },
+                { "orderCode", orderCode }, // orderCode is long
                 { "returnUrl", returnUrl }
             };
 
-            // Create JSON string for signature calculation (keys are sorted alphabetically)
+            // Create JSON string for signature calculation
+            // PayOS requires compact JSON without spaces
+            // Use default encoder to ensure proper JSON escaping (URLs will be escaped)
             var signatureJson = JsonSerializer.Serialize(signatureData, new JsonSerializerOptions
             {
                 WriteIndented = false
+                // Use default encoder - PayOS expects standard JSON escaping
             });
 
             // Calculate HMAC SHA256 signature
             var signature = CalculateHMACSHA256(signatureJson, checksumKey);
             
-            _logger?.LogDebug("PayOS Signature Data: {SignatureData}, Signature: {Signature}", signatureJson, signature);
+            // Log detailed signature calculation info for debugging
+            _logger?.LogInformation("=== PayOS Signature Calculation ===");
+            _logger?.LogInformation("Amount: {Amount}", calculatedAmount);
+            _logger?.LogInformation("OrderCode: {OrderCode}", orderCode);
+            _logger?.LogInformation("Description: {Description}", description);
+            _logger?.LogInformation("ReturnUrl: {ReturnUrl}", returnUrl);
+            _logger?.LogInformation("CancelUrl: {CancelUrl}", cancelUrl);
+            _logger?.LogInformation("Signature JSON String: {SignatureJson}", signatureJson);
+            _logger?.LogInformation("Calculated Signature: {Signature}", signature);
+            _logger?.LogInformation("ChecksumKey Length: {KeyLength}", checksumKey?.Length ?? 0);
+            _logger?.LogInformation("ChecksumKey (first 10 chars): {KeyPreview}", 
+                checksumKey?.Length > 10 ? checksumKey.Substring(0, 10) + "..." : checksumKey);
 
             var requestBody = new
             {
