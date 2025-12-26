@@ -207,6 +207,11 @@ namespace AtermisShop_API
                         logger.LogInformation("Seeding admin user...");
                         await DatabaseSeeder.SeedAdminUserAsync(userService);
                         logger.LogInformation("Admin user seeding completed.");
+
+                        // Seed customer user
+                        logger.LogInformation("Seeding customer user...");
+                        await DatabaseSeeder.SeedCustomerUserAsync(userService);
+                        logger.LogInformation("Customer user seeding completed.");
                     }
                 }
                 catch (Npgsql.PostgresException pgEx) when (pgEx.SqlState == "28P01")

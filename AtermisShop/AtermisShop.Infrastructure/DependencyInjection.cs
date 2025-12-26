@@ -77,13 +77,22 @@ public static class DependencyInjection
                     OnAuthenticationFailed = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetService<ILogger<JwtBearerEvents>>();
-                        logger?.LogError(context.Exception, "JWT Authentication failed");
+                        var authHeader = context.Request.Headers["Authorization"].ToString();
+                        var tokenPreview = authHeader.Length > 50 ? authHeader.Substring(0, 50) + "..." : authHeader;
+                        
+                        logger?.LogError(context.Exception, 
+                            "JWT Authentication failed. Error: {Error}, Token preview: {TokenPreview}", 
+                            context.Exception.Message, tokenPreview);
                         return Task.CompletedTask;
                     },
                     OnChallenge = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetService<ILogger<JwtBearerEvents>>();
-                        logger?.LogWarning("JWT Challenge: {Error}, {ErrorDescription}", context.Error, context.ErrorDescription);
+                        var authHeader = context.Request.Headers["Authorization"].ToString();
+                        var tokenPreview = authHeader.Length > 50 ? authHeader.Substring(0, 50) + "..." : authHeader;
+                        
+                        logger?.LogWarning("JWT Challenge: {Error}, {ErrorDescription}, Token preview: {TokenPreview}", 
+                            context.Error, context.ErrorDescription, tokenPreview);
                         return Task.CompletedTask;
                     },
                     OnTokenValidated = context =>

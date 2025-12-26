@@ -66,5 +66,66 @@ public static class DatabaseSeeder
             }
         }
     }
+
+    public static async Task SeedCustomerUserAsync(IUserService userService)
+    {
+        // Tạo customer user mẫu với email đã verified
+        var customerEmail = "customer@example.com";
+        var customerPassword = "Customer@123456";
+        var customerUser = await userService.FindByEmailAsync(customerEmail);
+
+        if (customerUser == null)
+        {
+            // Tạo customer user với Role = 0 (Customer)
+            customerUser = new ApplicationUser
+            {
+                Email = customerEmail,
+                FullName = "Nguyễn Văn Customer",
+                PhoneNumber = "0901234567",
+                EmailVerified = true, // Email đã được verified
+                Role = 0, // 0 = Customer
+                IsActive = true
+            };
+
+            await userService.CreateAsync(customerUser, customerPassword);
+            Console.WriteLine($"Customer user created: {customerEmail} / Password: {customerPassword}");
+        }
+        else
+        {
+            // Đảm bảo customer user có email verified và password đúng
+            var needsUpdate = false;
+            
+            if (!customerUser.EmailVerified)
+            {
+                customerUser.EmailVerified = true;
+                needsUpdate = true;
+            }
+            
+            if (customerUser.Role != 0)
+            {
+                customerUser.Role = 0;
+                needsUpdate = true;
+            }
+            
+            // Reset password hash để đảm bảo dùng format mới
+            var correctPasswordHash = PasswordHasher.HashPassword(customerPassword);
+            if (customerUser.PasswordHash != correctPasswordHash)
+            {
+                customerUser.PasswordHash = correctPasswordHash;
+                needsUpdate = true;
+                Console.WriteLine($"Customer user password hash reset: {customerEmail} / Password: {customerPassword}");
+            }
+            
+            if (needsUpdate)
+            {
+                await userService.UpdateAsync(customerUser);
+                Console.WriteLine($"Customer user updated: {customerEmail}");
+            }
+            else
+            {
+                Console.WriteLine($"Customer user already exists with correct settings: {customerEmail}");
+            }
+        }
+    }
 }
 

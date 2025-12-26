@@ -1,6 +1,7 @@
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateOrder;
 using AtermisShop.Application.Orders.Commands.UpdateOrderPaymentTransaction;
+using AtermisShop.Application.Orders.Common;
 using AtermisShop.Application.Orders.Queries.GetMyOrders;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
@@ -40,7 +41,10 @@ public class OrdersController : ControllerBase
                 ) : null,
                 request.PaymentMethod,
                 request.VoucherCode), cancellationToken);
-            return Ok(order);
+            
+            // Map Order entity to OrderDto to avoid circular reference
+            var orderDto = await _mediator.Send(new GetOrderByIdQuery(order.Id, userId), cancellationToken);
+            return Ok(orderDto);
         }
         catch (ArgumentException ex)
         {
