@@ -1,5 +1,6 @@
 using AtermisShop.Application.Payments.Common;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -10,13 +11,15 @@ public class PayOsPaymentProvider : IPaymentProvider
 {
     private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<PayOsPaymentProvider>? _logger;
 
     public string ProviderName => "PayOS";
 
-    public PayOsPaymentProvider(IConfiguration configuration, HttpClient httpClient)
+    public PayOsPaymentProvider(IConfiguration configuration, HttpClient httpClient, ILogger<PayOsPaymentProvider>? logger = null)
     {
         _configuration = configuration;
         _httpClient = httpClient;
+        _logger = logger;
     }
 
     public async Task<PaymentUrlResult> CreatePaymentUrlAsync(CreatePaymentRequest request, CancellationToken cancellationToken)
@@ -34,56 +37,124 @@ public class PayOsPaymentProvider : IPaymentProvider
                 return new PaymentUrlResult(false, null, "PayOS configuration is missing. Please check appsettings.json");
             }
 
+            // Validate URLs
+            if (string.IsNullOrEmpty(returnUrl) || !Uri.TryCreate(returnUrl, UriKind.Absolute, out _))
+            {
+                return new PaymentUrlResult(false, null, "ReturnUrl is invalid or missing");
+            }
+
+            if (string.IsNullOrEmpty(cancelUrl) || !Uri.TryCreate(cancelUrl, UriKind.Absolute, out _))
+            {
+                return new PaymentUrlResult(false, null, "CancelUrl is invalid or missing");
+            }
+
             // Validate items
             if (request.Items == null || !request.Items.Any())
             {
                 return new PaymentUrlResult(false, null, "Payment items cannot be empty");
             }
 
-            // Use OrderId to generate a unique orderCode for PayOS
-            // PayOS requires orderCode to be unique and between 100000 and 999999999999
-            // We'll use a combination of timestamp and hash of OrderId
-            var timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            var orderIdHash = Math.Abs(request.OrderId.GetHashCode());
-            var orderCode = (timestamp % 1000000000) * 1000 + (orderIdHash % 1000);
-            if (orderCode < 100000) orderCode += 100000;
-            if (orderCode > 999999999999) orderCode = orderCode % 999999999999;
+            // Validate and sanitize items
+            var validItems = new List<object>();
+            long totalAmount = 0;
             
-            // Build items array from request.Items
-            // PayOS requires price to be in VND (integer)
-            var items = request.Items.Select(item => new
+            foreach (var item in request.Items)
             {
-                name = item.Name ?? "Product",
-                quantity = item.Quantity > 0 ? item.Quantity : 1,
-                price = item.Price > 0 ? item.Price : 0
-            }).ToArray();
+                // Validate item name
+                if (string.IsNullOrWhiteSpace(item.Name))
+                {
+                    return new PaymentUrlResult(false, null, "Item name cannot be empty");
+                }
 
-            // Calculate total amount from items (PayOS requirement: amount must equal sum of items)
-            var calculatedAmount = items.Sum(item => (decimal)item.price * item.quantity);
-            
-            // Convert to int (VND doesn't have decimals)
-            // PayOS requires amount to be the sum of all items
-            var amount = (int)Math.Round(calculatedAmount, MidpointRounding.AwayFromZero);
-            
-            // Validate amount
-            if (amount <= 0)
-            {
-                return new PaymentUrlResult(false, null, "Payment amount must be greater than 0");
+                // PayOS has a limit on item name length (typically 127 characters)
+                var itemName = item.Name.Length > 127 ? item.Name.Substring(0, 127) : item.Name;
+
+                // Validate quantity
+                if (item.Quantity <= 0)
+                {
+                    return new PaymentUrlResult(false, null, $"Item quantity must be greater than 0. Item: {itemName}");
+                }
+
+                // Validate price
+                if (item.Price <= 0)
+                {
+                    return new PaymentUrlResult(false, null, $"Item price must be greater than 0. Item: {itemName}");
+                }
+
+                // Calculate line total
+                var lineTotal = (long)item.Price * item.Quantity;
+                totalAmount += lineTotal;
+
+                validItems.Add(new
+                {
+                    name = itemName,
+                    quantity = item.Quantity,
+                    price = item.Price
+                });
             }
 
+            // Generate orderCode: PayOS requires orderCode to be unique and between 100000 and 999999999999
+            // Use timestamp (last 9 digits) + random component to ensure uniqueness
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var randomComponent = RandomNumberGenerator.GetInt32(1000, 9999); // 4-digit random
+            var orderCode = (timestamp % 1000000000) * 10000 + randomComponent;
+            
+            // Ensure orderCode is within valid range (100000 to 999999999999)
+            if (orderCode < 100000)
+            {
+                orderCode += 100000;
+            }
+            else if (orderCode > 999999999999)
+            {
+                // If too large, use modulo to bring it within range
+                orderCode = (orderCode % 999999999999);
+                if (orderCode < 100000)
+                {
+                    orderCode += 100000;
+                }
+            }
+
+            // Use calculated total amount
+            var calculatedAmount = totalAmount;
+            
+            // Validate calculated amount
+            if (calculatedAmount <= 0)
+            {
+                return new PaymentUrlResult(false, null, "Total payment amount must be greater than 0");
+            }
+
+            // Ensure amount doesn't exceed PayOS limit (typically 500,000,000 VND)
+            if (calculatedAmount > 500000000)
+            {
+                return new PaymentUrlResult(false, null, "Payment amount exceeds maximum limit (500,000,000 VND)");
+            }
+
+            // Sanitize description (PayOS may have length limits)
             var description = request.OrderDescription ?? $"Order {request.OrderId}";
+            if (description.Length > 255)
+            {
+                description = description.Substring(0, 255);
+            }
 
             var requestBody = new
             {
                 orderCode = orderCode,
-                amount = amount,
+                amount = (int)calculatedAmount,
                 description = description,
                 cancelUrl = cancelUrl,
                 returnUrl = returnUrl,
-                items = items
+                items = validItems
             };
 
-            var json = JsonSerializer.Serialize(requestBody);
+            var json = JsonSerializer.Serialize(requestBody, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            _logger?.LogInformation("PayOS Payment Request - OrderCode: {OrderCode}, Amount: {Amount}, Items: {ItemCount}", 
+                orderCode, calculatedAmount, validItems.Count);
+            _logger?.LogDebug("PayOS Request Body: {RequestBody}", json);
+
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             
             _httpClient.DefaultRequestHeaders.Clear();
@@ -93,6 +164,9 @@ public class PayOsPaymentProvider : IPaymentProvider
             var response = await _httpClient.PostAsync("https://api-merchant.payos.vn/v2/payment-requests", content, cancellationToken);
             var responseContent = await response.Content.ReadAsStringAsync(cancellationToken);
             
+            _logger?.LogInformation("PayOS API Response - Status: {StatusCode}, Content: {Content}", 
+                response.StatusCode, responseContent);
+
             if (!response.IsSuccessStatusCode)
             {
                 return new PaymentUrlResult(false, null, $"PayOS API returned status {response.StatusCode}: {responseContent}");
@@ -109,6 +183,10 @@ public class PayOsPaymentProvider : IPaymentProvider
                     var desc = result.TryGetProperty("desc", out var descElement) 
                         ? descElement.GetString() 
                         : "Unknown error";
+                    
+                    _logger?.LogError("PayOS Error - Code: {Code}, Description: {Desc}, Request: {Request}", 
+                        code, desc, json);
+                    
                     return new PaymentUrlResult(false, null, $"PayOS error: {desc} (Code: {code})");
                 }
             }
@@ -125,8 +203,11 @@ public class PayOsPaymentProvider : IPaymentProvider
                 // Check if data is an object and has checkoutUrl
                 if (data.ValueKind == JsonValueKind.Object && data.TryGetProperty("checkoutUrl", out var checkoutUrl))
                 {
+                    var paymentUrl = checkoutUrl.GetString();
+                    _logger?.LogInformation("PayOS Payment URL created successfully: {PaymentUrl}", paymentUrl);
+                    
                     // Store orderCode for later use in callback verification
-                    return new PaymentUrlResult(true, checkoutUrl.GetString(), null, orderCode.ToString());
+                    return new PaymentUrlResult(true, paymentUrl, null, orderCode.ToString());
                 }
             }
 
@@ -134,7 +215,8 @@ public class PayOsPaymentProvider : IPaymentProvider
         }
         catch (Exception ex)
         {
-            return new PaymentUrlResult(false, null, ex.Message);
+            _logger?.LogError(ex, "Error creating PayOS payment URL");
+            return new PaymentUrlResult(false, null, $"Error: {ex.Message}");
         }
     }
 
