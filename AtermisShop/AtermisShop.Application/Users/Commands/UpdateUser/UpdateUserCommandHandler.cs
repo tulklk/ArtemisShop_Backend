@@ -25,6 +25,10 @@ public sealed class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand
         if (!string.IsNullOrEmpty(request.PhoneNumber))
             user.PhoneNumber = request.PhoneNumber;
 
+        // Update Avatar if provided (can be set to null to remove avatar)
+        if (request.Avatar != null)
+            user.Avatar = request.Avatar;
+
         // Update IsActive if provided
         if (request.IsActive.HasValue)
         {

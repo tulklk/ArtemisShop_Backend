@@ -32,6 +32,8 @@ public class UsersController : ControllerBase
 
     [HttpGet("me")]
     [Authorize]
+    [ProducesResponseType(typeof(UserProfileResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetMe(CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
@@ -41,19 +43,19 @@ public class UsersController : ControllerBase
         
         var stats = await _mediator.Send(new GetUserStatsQuery(userId), cancellationToken);
         
-        // Include claims for debugging
-        var roles = User.FindAll(System.Security.Claims.ClaimTypes.Role).Select(c => c.Value).ToList();
-        
-        return Ok(new 
+        return Ok(new UserProfileResponse
         { 
-            User = user, 
-            Stats = stats,
-            Claims = new
-            {
-                Roles = roles,
-                IsAuthenticated = User.Identity?.IsAuthenticated,
-                Name = User.Identity?.Name
-            }
+            Id = user.Id,
+            Email = user.Email,
+            FullName = user.FullName,
+            PhoneNumber = user.PhoneNumber,
+            Avatar = user.Avatar,
+            Role = user.Role,
+            EmailVerified = user.EmailVerified,
+            IsActive = user.IsActive,
+            CreatedAt = user.CreatedAt,
+            UpdatedAt = user.UpdatedAt,
+            Stats = stats
         });
     }
 
@@ -79,7 +81,7 @@ public class UsersController : ControllerBase
 
         // Only admins can update IsActive status
         bool? isActive = isAdmin ? request.IsActive : null;
-        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, isActive), cancellationToken);
+        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, null, isActive), cancellationToken);
         return NoContent();
     }
 
@@ -91,17 +93,57 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
+    [HttpPut("me")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateMyProfile([FromBody] UpdateMyProfileRequest request, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+            await _mediator.Send(new UpdateUserCommand(userId, request.FullName, request.PhoneNumber, request.Avatar, null), cancellationToken);
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message, statusCode = 400 });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "An error occurred while updating profile.", error = ex.Message, statusCode = 500 });
+        }
+    }
+
     [HttpPost("me/change-password")]
     [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest request, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
         var result = await _mediator.Send(new ChangePasswordCommand(userId, request.CurrentPassword, request.NewPassword), cancellationToken);
         if (!result)
-            return BadRequest(new { message = "Failed to change password" });
+            return BadRequest(new { message = "Current password is incorrect or failed to change password", statusCode = 400 });
         return Ok(new { message = "Password changed successfully" });
     }
 
+    public sealed class UserProfileResponse
+    {
+        public Guid Id { get; set; }
+        public string Email { get; set; } = default!;
+        public string FullName { get; set; } = default!;
+        public string? PhoneNumber { get; set; }
+        public string? Avatar { get; set; }
+        public int Role { get; set; }
+        public bool EmailVerified { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public UserStatsDto? Stats { get; set; }
+    }
+
+    public record UpdateMyProfileRequest(string? FullName, string? PhoneNumber, string? Avatar = null);
     public record UpdateUserRequest(string? FullName, string? PhoneNumber, bool? IsActive = null);
     public record ChangePasswordRequest(string CurrentPassword, string NewPassword);
 }

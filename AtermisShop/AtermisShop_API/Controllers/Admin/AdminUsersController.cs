@@ -39,7 +39,7 @@ public class AdminUsersController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserRequest request, CancellationToken cancellationToken)
     {
-        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, request.IsActive), cancellationToken);
+        await _mediator.Send(new UpdateUserCommand(id, request.FullName, request.PhoneNumber, null, request.IsActive), cancellationToken);
         return NoContent();
     }
 
