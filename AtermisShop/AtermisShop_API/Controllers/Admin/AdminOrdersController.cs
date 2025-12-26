@@ -1,3 +1,4 @@
+using AtermisShop.Application.Orders.Queries.GetAllOrders;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -20,8 +21,8 @@ public class AdminOrdersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetOrders(CancellationToken cancellationToken)
     {
-        // TODO: Implement get all orders query
-        return Ok(new List<object>());
+        var orders = await _mediator.Send(new GetAllOrdersQuery(), cancellationToken);
+        return Ok(orders);
     }
 
     [HttpGet("{id}")]
