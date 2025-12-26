@@ -54,16 +54,19 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             ShippingCity = request.ShippingAddress?.City
         };
 
+        // Load all products at once to avoid N+1 query problem
+        var productIds = cart.Items.Select(ci => ci.ProductId).Distinct().ToList();
+        var products = await _context.Products
+            .Include(p => p.Variants)
+            .Where(p => productIds.Contains(p.Id))
+            .ToDictionaryAsync(p => p.Id, cancellationToken);
+
         decimal subTotal = 0;
         var processedItems = new List<OrderItem>();
         
         foreach (var cartItem in cart.Items)
         {
-            var product = await _context.Products
-                .Include(p => p.Variants)
-                .FirstOrDefaultAsync(p => p.Id == cartItem.ProductId, cancellationToken);
-                
-            if (product == null)
+            if (!products.TryGetValue(cartItem.ProductId, out var product))
             {
                 throw new InvalidOperationException($"Product with ID {cartItem.ProductId} not found. Please remove it from cart.");
             }

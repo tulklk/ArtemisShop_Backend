@@ -50,19 +50,18 @@ public class GlobalExceptionHandlerMiddleware
         {
             context.Response.StatusCode = exception switch
             {
+                ArgumentException => (int)HttpStatusCode.BadRequest,
                 InvalidOperationException => (int)HttpStatusCode.BadRequest,
                 UnauthorizedAccessException => (int)HttpStatusCode.Unauthorized,
                 _ => (int)HttpStatusCode.InternalServerError
             };
         }
 
+        // Return consistent error format that matches controller responses
         var response = new
         {
-            error = new
-            {
-                message = errorMessage,
-                statusCode = context.Response.StatusCode
-            }
+            message = errorMessage,
+            statusCode = context.Response.StatusCode
         };
 
         var jsonOptions = new JsonSerializerOptions
