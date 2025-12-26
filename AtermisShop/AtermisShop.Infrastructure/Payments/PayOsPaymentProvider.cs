@@ -136,6 +136,30 @@ public class PayOsPaymentProvider : IPaymentProvider
                 description = description.Substring(0, 255);
             }
 
+            // Calculate signature for PayOS
+            // Signature is calculated from: amount, orderCode, description, returnUrl, cancelUrl
+            // PayOS requires keys to be in alphabetical order: amount, cancelUrl, description, orderCode, returnUrl
+            // Using HMAC SHA256 with checksumKey
+            var signatureData = new SortedDictionary<string, object>
+            {
+                { "amount", (int)calculatedAmount },
+                { "cancelUrl", cancelUrl },
+                { "description", description },
+                { "orderCode", orderCode },
+                { "returnUrl", returnUrl }
+            };
+
+            // Create JSON string for signature calculation (keys are sorted alphabetically)
+            var signatureJson = JsonSerializer.Serialize(signatureData, new JsonSerializerOptions
+            {
+                WriteIndented = false
+            });
+
+            // Calculate HMAC SHA256 signature
+            var signature = CalculateHMACSHA256(signatureJson, checksumKey);
+            
+            _logger?.LogDebug("PayOS Signature Data: {SignatureData}, Signature: {Signature}", signatureJson, signature);
+
             var requestBody = new
             {
                 orderCode = orderCode,
@@ -143,7 +167,8 @@ public class PayOsPaymentProvider : IPaymentProvider
                 description = description,
                 cancelUrl = cancelUrl,
                 returnUrl = returnUrl,
-                items = validItems
+                items = validItems,
+                signature = signature
             };
 
             var json = JsonSerializer.Serialize(requestBody, new JsonSerializerOptions
@@ -286,6 +311,18 @@ public class PayOsPaymentProvider : IPaymentProvider
         catch (Exception ex)
         {
             return Task.FromResult(new PaymentCallbackResult(false, "", 0, "", ex.Message));
+        }
+    }
+
+    /// <summary>
+    /// Calculate HMAC SHA256 signature for PayOS
+    /// </summary>
+    private string CalculateHMACSHA256(string data, string key)
+    {
+        using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key)))
+        {
+            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(data));
+            return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
         }
     }
 }
