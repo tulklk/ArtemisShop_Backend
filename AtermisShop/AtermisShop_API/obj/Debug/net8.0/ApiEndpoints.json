@@ -756,7 +756,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.TestEmailRequest",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

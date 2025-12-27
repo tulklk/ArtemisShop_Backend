@@ -6,6 +6,7 @@ using AtermisShop.Application.Auth.Commands.Register;
 using AtermisShop.Application.Auth.Commands.ResendVerification;
 using AtermisShop.Application.Auth.Commands.VerifyEmail;
 using AtermisShop.Application.Auth.Queries.GetMe;
+using AtermisShop.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,20 @@ namespace AtermisShop_API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IUserService _userService;
+    private readonly IEmailVerificationTokenService _tokenService;
+    private readonly IEmailService _emailService;
 
-    public AuthController(IMediator mediator)
+    public AuthController(
+        IMediator mediator,
+        IUserService userService,
+        IEmailVerificationTokenService tokenService,
+        IEmailService emailService)
     {
         _mediator = mediator;
+        _userService = userService;
+        _tokenService = tokenService;
+        _emailService = emailService;
     }
 
     [HttpPost("register")]
@@ -82,8 +93,10 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new VerifyEmailCommand(request.UserId, request.Token), cancellationToken);
-        return Ok(new { success = result });
+        var result = await _mediator.Send(new VerifyEmailCommand(request.Token), cancellationToken);
+        if (!result)
+            return BadRequest(new { success = false, message = "Invalid or expired verification token" });
+        return Ok(new { success = true });
     }
 
     [HttpPost("resend-verification")]
@@ -104,10 +117,49 @@ public class AuthController : ControllerBase
 
     [HttpPost("test-email")]
     [AllowAnonymous]
-    public IActionResult TestEmail()
+    public async Task<IActionResult> TestEmail([FromBody] TestEmailRequest request, CancellationToken cancellationToken)
     {
-        // TODO: Implement test email sending
-        return Ok(new { message = "Email test endpoint - not implemented yet" });
+        if (string.IsNullOrEmpty(request.Email))
+        {
+            return BadRequest(new { success = false, message = "Email is required" });
+        }
+
+        // Find user by email
+        var user = await _userService.FindByEmailAsync(request.Email);
+
+        if (user == null)
+        {
+            return NotFound(new { success = false, message = "User not found" });
+        }
+
+        try
+        {
+            // Generate verification token
+            var token = await _tokenService.GenerateTokenAsync(user.Id, cancellationToken);
+
+            // Send verification email
+            await _emailService.SendEmailVerificationAsync(
+                user.Email,
+                user.FullName ?? user.Email,
+                token,
+                cancellationToken);
+
+            return Ok(new 
+            { 
+                success = true, 
+                message = "Test verification email sent successfully",
+                email = user.Email
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new 
+            { 
+                success = false, 
+                message = "Failed to send test email",
+                error = ex.Message
+            });
+        }
     }
 }
 
@@ -136,7 +188,6 @@ public sealed class RefreshTokenRequest
 
 public sealed class VerifyEmailRequest
 {
-    public string UserId { get; set; } = default!;
     public string Token { get; set; } = default!;
 }
 
@@ -146,6 +197,11 @@ public sealed class ResendVerificationRequest
 }
 
 public sealed class ForgotPasswordRequest
+{
+    public string Email { get; set; } = default!;
+}
+
+public sealed class TestEmailRequest
 {
     public string Email { get; set; } = default!;
 }

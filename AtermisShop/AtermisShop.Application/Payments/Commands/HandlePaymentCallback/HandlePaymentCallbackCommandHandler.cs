@@ -3,6 +3,7 @@ using AtermisShop.Application.Payments.Common;
 using AtermisShop.Domain.Orders;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Payments.Commands.HandlePaymentCallback;
 
@@ -10,24 +11,38 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
 {
     private readonly IApplicationDbContext _context;
     private readonly IEnumerable<IPaymentProvider> _paymentProviders;
+    private readonly ILogger<HandlePaymentCallbackCommandHandler>? _logger;
 
     public HandlePaymentCallbackCommandHandler(
         IApplicationDbContext context,
-        IEnumerable<IPaymentProvider> paymentProviders)
+        IEnumerable<IPaymentProvider> paymentProviders,
+        ILogger<HandlePaymentCallbackCommandHandler>? logger = null)
     {
         _context = context;
         _paymentProviders = paymentProviders;
+        _logger = logger;
     }
 
     public async Task<Order?> Handle(HandlePaymentCallbackCommand request, CancellationToken cancellationToken)
     {
+        _logger?.LogInformation("Processing payment callback for provider: {Provider}", request.Provider);
+
         var provider = _paymentProviders.FirstOrDefault(p => p.ProviderName.Equals(request.Provider, StringComparison.OrdinalIgnoreCase));
         if (provider == null)
+        {
+            _logger?.LogWarning("Payment provider not found: {Provider}", request.Provider);
             return null;
+        }
 
         var callbackResult = await provider.VerifyCallbackAsync(request.CallbackData, cancellationToken);
         if (!callbackResult.Success)
+        {
+            _logger?.LogWarning("Payment callback verification failed. Error: {Error}", callbackResult.ErrorMessage);
             return null;
+        }
+
+        _logger?.LogInformation("Callback verified successfully. OrderId: {OrderId}, Amount: {Amount}", 
+            callbackResult.OrderId, callbackResult.Amount);
 
         // For PayOS, OrderId in callback result is actually the orderCode (string)
         // We need to find the order by PaymentTransactionId (which stores the orderCode)
@@ -38,6 +53,9 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
             // PayOS returns orderCode as OrderId, find order by PaymentTransactionId
             order = await _context.Orders
                 .FirstOrDefaultAsync(o => o.PaymentTransactionId == callbackResult.OrderId, cancellationToken);
+            
+            _logger?.LogInformation("Searching for PayOS order with PaymentTransactionId: {OrderCode}. Found: {Found}", 
+                callbackResult.OrderId, order != null);
         }
         else
         {
@@ -49,13 +67,43 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
             }
         }
 
-        if (order == null || order.OrderStatus != (int)OrderStatus.Pending)
+        if (order == null)
+        {
+            _logger?.LogWarning("Order not found for callback. OrderId: {OrderId}", callbackResult.OrderId);
             return null;
+        }
 
-        // Update order status to Paid
-        order.OrderStatus = (int)OrderStatus.Paid;
+        // Check if payment is already processed
+        if (order.PaymentStatus == 1) // Already paid
+        {
+            _logger?.LogInformation("Order {OrderId} already has PaymentStatus = Paid. Skipping update.", order.Id);
+            return order;
+        }
+
+        _logger?.LogInformation("Updating order {OrderId}. Current OrderStatus: {OrderStatus}, PaymentStatus: {PaymentStatus}", 
+            order.Id, order.OrderStatus, order.PaymentStatus);
+
+        // Update payment status to Paid
+        // Note: We update PaymentStatus regardless of OrderStatus, because payment can succeed
+        // even if order is in Processing or other states
         order.PaymentStatus = 1; // Paid
+        
+        // Only update OrderStatus to Paid if it's currently Pending
+        // This allows orders that are already Processing to keep their status
+        if (order.OrderStatus == (int)OrderStatus.Pending)
+        {
+            order.OrderStatus = (int)OrderStatus.Paid;
+            _logger?.LogInformation("Updated OrderStatus from Pending to Paid");
+        }
+        else
+        {
+            _logger?.LogInformation("OrderStatus remains {OrderStatus}, only PaymentStatus updated to Paid", order.OrderStatus);
+        }
+
         await _context.SaveChangesAsync(cancellationToken);
+
+        _logger?.LogInformation("Order {OrderId} payment status updated successfully. OrderStatus: {OrderStatus}, PaymentStatus: {PaymentStatus}", 
+            order.Id, order.OrderStatus, order.PaymentStatus);
 
         return order;
     }

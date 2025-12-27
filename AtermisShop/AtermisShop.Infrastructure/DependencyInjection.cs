@@ -115,6 +115,12 @@ public static class DependencyInjection
 
         services.AddScoped<IJwtTokenService, Auth.JwtTokenService>();
 
+        // Register email service
+        services.AddScoped<Application.Common.Interfaces.IEmailService, EmailService>();
+
+        // Register email verification token service
+        services.AddScoped<Application.Common.Interfaces.IEmailVerificationTokenService, EmailVerificationTokenService>();
+
         // Register payment providers
         services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.PayOsPaymentProvider>();
 

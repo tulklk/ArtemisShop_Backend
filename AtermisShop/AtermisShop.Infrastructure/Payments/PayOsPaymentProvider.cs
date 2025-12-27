@@ -247,7 +247,7 @@ public class PayOsPaymentProvider : IPaymentProvider
                                 // Note: PayOS SDK Webhooks.VerifyAsync expects WebhookData model
                                 // If the model exists, deserialize and verify. Otherwise use fallback validation.
                                 _logger?.LogInformation("PayOS Webhook received - OrderCode: {OrderCode}, Amount: {Amount}. Signature present, will verify using SDK if available.", 
-                                    orderCodeLong, amountInt);
+                                orderCodeLong, amountInt);
                                 
                                 // For SDK 2.0.1, the WebhookData type might be in a different namespace or structure
                                 // The main signature fix (payment creation with proper Items) should resolve the Code 201 error
