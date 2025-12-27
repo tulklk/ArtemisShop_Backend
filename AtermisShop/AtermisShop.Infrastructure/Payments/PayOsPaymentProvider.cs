@@ -27,11 +27,12 @@ public class PayOsPaymentProvider : IPaymentProvider
     {
         try
         {
-            var clientId = _configuration["Payment:PayOS:ClientId"];
-            var apiKey = _configuration["Payment:PayOS:ApiKey"];
-            var checksumKey = _configuration["Payment:PayOS:ChecksumKey"];
-            var returnUrl = request.ReturnUrl ?? _configuration["Payment:PayOS:ReturnUrl"];
-            var cancelUrl = request.CancelUrl ?? _configuration["Payment:PayOS:CancelUrl"];
+            // Read PayOS configuration - using PayOS: prefix as per PayOS standard
+            var clientId = _configuration["PayOS:ClientId"];
+            var apiKey = _configuration["PayOS:ApiKey"];
+            var checksumKey = _configuration["PayOS:ChecksumKey"];
+            var returnUrl = request.ReturnUrl ?? _configuration["PayOS:ReturnUrl"];
+            var cancelUrl = request.CancelUrl ?? _configuration["PayOS:CancelUrl"];
 
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(checksumKey))
             {
@@ -262,7 +263,7 @@ public class PayOsPaymentProvider : IPaymentProvider
     {
         try
         {
-            var checksumKey = _configuration["Payment:PayOS:ChecksumKey"];
+            var checksumKey = _configuration["PayOS:ChecksumKey"];
             
             // Extract data from callback - PayOS can send data in different formats
             // For Return URL: query params like code, id, cancel, status, orderCode
