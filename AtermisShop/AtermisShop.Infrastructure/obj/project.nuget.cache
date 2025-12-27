@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VOtrBh2h9oI=",
+  "dgSpecHash": "oDyiTSsRKD8=",
   "success": true,
   "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.0\\microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.diagnostics\\10.0.1\\microsoft.extensions.diagnostics.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\10.0.1\\microsoft.extensions.diagnostics.abstractions.10.0.1.nupkg.sha512",
+    "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.http\\8.0.0\\microsoft.extensions.http.8.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.identity.core\\10.0.1\\microsoft.extensions.identity.core.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.identity.stores\\10.0.1\\microsoft.extensions.identity.stores.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.logging\\10.0.1\\microsoft.extensions.logging.10.0.1.nupkg.sha512",
@@ -56,6 +57,7 @@
     "C:\\Users\\Tus\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\npgsql\\8.0.0\\npgsql.8.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.0\\npgsql.entityframeworkcore.postgresql.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tus\\.nuget\\packages\\payos\\2.0.1\\payos.2.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
@@ -74,7 +76,7 @@
     "C:\\Users\\Tus\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\Tus\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tus\\.nuget\\packages\\system.text.json\\8.0.6\\system.text.json.8.0.6.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
   "logs": []
