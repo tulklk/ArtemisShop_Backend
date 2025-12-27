@@ -86,11 +86,15 @@ public class PayOsPaymentProvider : IPaymentProvider
                 var lineTotal = (long)item.Price * item.Quantity;
                 totalAmount += lineTotal;
 
+                // PayOS items format: name, quantity, price are required
+                // unit and taxPercentage are optional
                 validItems.Add(new
                 {
                     name = itemName,
                     quantity = item.Quantity,
                     price = item.Price
+                    // Note: unit and taxPercentage are optional fields in PayOS API
+                    // If needed in the future, they can be added here
                 });
             }
 
@@ -163,6 +167,9 @@ public class PayOsPaymentProvider : IPaymentProvider
             _logger?.LogInformation("ChecksumKey (first 10 chars): {KeyPreview}", 
                 checksumKey?.Length > 10 ? checksumKey.Substring(0, 10) + "..." : checksumKey);
 
+            // Build request body according to PayOS API specification
+            // Required fields: orderCode, amount, description, cancelUrl, returnUrl, signature
+            // Optional fields: buyerName, buyerEmail, buyerPhone, buyerCompanyName, buyerTaxCode, buyerAddress, invoice, expiredAt
             var requestBody = new
             {
                 orderCode = orderCode,
@@ -172,6 +179,9 @@ public class PayOsPaymentProvider : IPaymentProvider
                 returnUrl = returnUrl,
                 items = validItems,
                 signature = signature
+                // Optional fields can be added here if needed:
+                // buyerName, buyerEmail, buyerPhone, buyerCompanyName, buyerTaxCode, buyerAddress
+                // invoice, expiredAt
             };
 
             var json = JsonSerializer.Serialize(requestBody, new JsonSerializerOptions
