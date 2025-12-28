@@ -1,6 +1,7 @@
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateGuestOrder;
 using AtermisShop.Application.Orders.Commands.CreateOrder;
+using AtermisShop.Application.Orders.Common;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Orders.Queries.LookupGuestOrder;
 using AtermisShop.Application.Payments.Commands.CreatePayment;
@@ -150,14 +151,38 @@ public class GuestOrdersController : ControllerBase
         return Ok(order);
     }
 
+    /// <summary>
+    /// Get order status by order number for guest
+    /// </summary>
+    /// <param name="orderNumber">Order number</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Order status information</returns>
+    /// <response code="200">Order found</response>
+    /// <response code="404">Order not found</response>
     [HttpGet("status/{orderNumber}")]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(OrderStatusResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetOrderStatus(string orderNumber, CancellationToken cancellationToken)
     {
         var order = await _mediator.Send(new LookupGuestOrderQuery(orderNumber), cancellationToken);
         if (order == null)
             return NotFound();
-        return Ok(new { Status = ((AtermisShop.Domain.Orders.OrderStatus)order.OrderStatus).ToString(), OrderNumber = order.OrderNumber });
+
+        var response = new OrderStatusResponseDto
+        {
+            OrderId = order.Id,
+            OrderNumber = order.OrderNumber,
+            OrderStatus = OrderStatusHelper.FromInt(order.OrderStatus),
+            PaymentStatus = PaymentStatusHelper.FromInt(order.PaymentStatus),
+            PaymentMethod = PaymentMethod.FromInt(order.PaymentMethod),
+            TotalAmount = order.TotalAmount,
+            CreatedAt = order.CreatedAt,
+            UpdatedAt = order.UpdatedAt ?? order.CreatedAt,
+            StatusDescription = OrderStatusHelper.FromInt(order.OrderStatus)
+        };
+
+        return Ok(response);
     }
 
     [HttpPost("apply-voucher")]

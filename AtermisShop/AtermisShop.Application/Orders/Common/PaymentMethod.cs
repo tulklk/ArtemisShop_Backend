@@ -19,5 +19,15 @@ public static class PaymentMethod
             _ => throw new ArgumentException($"Invalid payment method: {method}")
         };
     }
+
+    public static string FromInt(int method)
+    {
+        return method switch
+        {
+            0 => COD,
+            1 => PayOS,
+            _ => throw new ArgumentException($"Invalid payment method integer: {method}")
+        };
+    }
 }
 
