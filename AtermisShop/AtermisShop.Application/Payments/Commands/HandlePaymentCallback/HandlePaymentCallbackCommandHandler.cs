@@ -11,15 +11,21 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
 {
     private readonly IApplicationDbContext _context;
     private readonly IEnumerable<IPaymentProvider> _paymentProviders;
+    private readonly IEmailService _emailService;
+    private readonly IUserService _userService;
     private readonly ILogger<HandlePaymentCallbackCommandHandler>? _logger;
 
     public HandlePaymentCallbackCommandHandler(
         IApplicationDbContext context,
         IEnumerable<IPaymentProvider> paymentProviders,
+        IEmailService emailService,
+        IUserService userService,
         ILogger<HandlePaymentCallbackCommandHandler>? logger = null)
     {
         _context = context;
         _paymentProviders = paymentProviders;
+        _emailService = emailService;
+        _userService = userService;
         _logger = logger;
     }
 
@@ -104,6 +110,40 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
 
         _logger?.LogInformation("Order {OrderId} payment status updated successfully. OrderStatus: {OrderStatus}, PaymentStatus: {PaymentStatus}", 
             order.Id, order.OrderStatus, order.PaymentStatus);
+
+        // Send order confirmation email after successful payment (PayOS)
+        if (order.UserId.HasValue)
+        {
+            try
+            {
+                var user = await _userService.FindByIdAsync(order.UserId.Value);
+                if (user != null && !string.IsNullOrEmpty(user.Email))
+                {
+                    // Load order with items for email
+                    var orderWithItems = await _context.Orders
+                        .Include(o => o.Items)
+                        .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
+
+                    if (orderWithItems != null)
+                    {
+                        await _emailService.SendOrderConfirmationAsync(
+                            user.Email,
+                            user.FullName ?? user.Email,
+                            orderWithItems,
+                            cancellationToken);
+                        
+                        _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber} after payment", 
+                            user.Email, order.OrderNumber);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber} after payment. Payment was processed successfully.", 
+                    order.OrderNumber);
+                // Don't throw - payment is processed successfully, email failure shouldn't fail the callback
+            }
+        }
 
         return order;
     }

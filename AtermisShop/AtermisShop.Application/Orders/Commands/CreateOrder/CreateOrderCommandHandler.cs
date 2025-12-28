@@ -4,6 +4,7 @@ using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Orders.Commands.CreateOrder;
 
@@ -11,11 +12,22 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
 {
     private readonly IApplicationDbContext _context;
     private readonly IMediator _mediator;
+    private readonly IEmailService _emailService;
+    private readonly IUserService _userService;
+    private readonly ILogger<CreateOrderCommandHandler>? _logger;
 
-    public CreateOrderCommandHandler(IApplicationDbContext context, IMediator mediator)
+    public CreateOrderCommandHandler(
+        IApplicationDbContext context, 
+        IMediator mediator,
+        IEmailService emailService,
+        IUserService userService,
+        ILogger<CreateOrderCommandHandler>? logger = null)
     {
         _context = context;
         _mediator = mediator;
+        _emailService = emailService;
+        _userService = userService;
+        _logger = logger;
     }
 
     public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
@@ -170,6 +182,38 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         _context.CartItems.RemoveRange(cart.Items);
 
         await _context.SaveChangesAsync(cancellationToken);
+
+        // Send order confirmation email
+        try
+        {
+            var user = await _userService.FindByIdAsync(request.UserId);
+            if (user != null && !string.IsNullOrEmpty(user.Email))
+            {
+                // Load order with items for email
+                var orderWithItems = await _context.Orders
+                    .Include(o => o.Items)
+                    .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
+
+                if (orderWithItems != null)
+                {
+                    await _emailService.SendOrderConfirmationAsync(
+                        user.Email,
+                        user.FullName ?? user.Email,
+                        orderWithItems,
+                        cancellationToken);
+                    
+                    _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber}", 
+                        user.Email, order.OrderNumber);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber}. Order was created successfully.", 
+                order.OrderNumber);
+            // Don't throw - order is created successfully, email failure shouldn't fail the request
+        }
+
         return order;
     }
 }

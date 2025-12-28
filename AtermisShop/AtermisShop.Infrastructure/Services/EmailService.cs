@@ -360,6 +360,225 @@ public class EmailService : IEmailService
         await SendEmailAsync(email, name, subject, body, cancellationToken);
     }
 
+    public async Task SendOrderConfirmationAsync(string email, string name, AtermisShop.Domain.Orders.Order order, CancellationToken cancellationToken)
+    {
+        var paymentMethodName = order.PaymentMethod == 0 ? "COD (Thanh toán khi nhận hàng)" : "PayOS (Thanh toán online)";
+        var orderStatusName = order.OrderStatus switch
+        {
+            0 => "Chờ xử lý",
+            1 => "Đã thanh toán",
+            2 => "Đang xử lý",
+            3 => "Đang giao hàng",
+            4 => "Đã giao hàng",
+            5 => "Đã hủy",
+            _ => "Chờ xử lý"
+        };
+
+        var itemsHtml = string.Join("", order.Items.Select(item => $@"
+                    <tr>
+                        <td style='padding: 12px; border-bottom: 1px solid #eee;'>
+                            <strong>{item.ProductNameSnapshot}</strong>
+                            {(string.IsNullOrEmpty(item.VariantInfoSnapshot) ? "" : $"<br><small style='color: #666;'>{item.VariantInfoSnapshot}</small>")}
+                        </td>
+                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: center;'>{item.Quantity}</td>
+                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'>{item.UnitPrice:N0} ₫</td>
+                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'><strong>{item.LineTotal:N0} ₫</strong></td>
+                    </tr>"));
+
+        var shippingAddress = $"{order.ShippingAddressLine}, {order.ShippingDistrict}, {order.ShippingCity}";
+        if (string.IsNullOrEmpty(order.ShippingAddressLine))
+            shippingAddress = "Chưa cập nhật";
+
+        var subject = $"Xác nhận đơn hàng #{order.OrderNumber} - ARTEMIS Shop";
+        var body = $@"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <style>
+        body {{ 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0;
+            padding: 0;
+            background-color: #fef7f7;
+        }}
+        .email-wrapper {{
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }}
+        .header {{
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }}
+        .header h1 {{
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }}
+        .header .subtitle {{
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.95;
+        }}
+        .content {{
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }}
+        .greeting {{
+            font-size: 20px;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }}
+        .order-info {{
+            background-color: #fff5f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ff6b9d;
+        }}
+        .order-info p {{
+            margin: 8px 0;
+            color: #555;
+        }}
+        .order-info strong {{
+            color: #ff6b9d;
+        }}
+        .items-table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }}
+        .items-table th {{
+            background-color: #ff6b9d;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }}
+        .items-table td {{
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }}
+        .total-section {{
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff5f8;
+            border-radius: 8px;
+        }}
+        .total-row {{
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }}
+        .total-row:last-child {{
+            border-bottom: none;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff6b9d;
+        }}
+        .footer {{
+            padding: 25px 30px;
+            background-color: #fef7f7;
+            border-top: 1px solid #ffe5eb;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+        }}
+        .footer p {{
+            margin: 5px 0;
+            font-size: 13px;
+            color: #999;
+        }}
+        .footer .signature {{
+            color: #ff6b9d;
+            font-weight: 600;
+            margin-top: 10px;
+        }}
+    </style>
+</head>
+<body>
+    <div style='padding: 20px 0;'>
+        <div class='email-wrapper'>
+            <div class='header'>
+                <h1>✨ ARTEMIS ✨</h1>
+                <div class='subtitle'>Vòng tay thông minh</div>
+            </div>
+            <div class='content'>
+                <div class='greeting'>Xin chào {name}! 👋</div>
+                <p>Cảm ơn bạn đã đặt hàng tại <strong>ARTEMIS Shop</strong>! Chúng tôi đã nhận được đơn hàng của bạn và đang xử lý.</p>
+                
+                <div class='order-info'>
+                    <p><strong>Mã đơn hàng:</strong> #{order.OrderNumber}</p>
+                    <p><strong>Trạng thái:</strong> {orderStatusName}</p>
+                    <p><strong>Phương thức thanh toán:</strong> {paymentMethodName}</p>
+                    <p><strong>Địa chỉ giao hàng:</strong> {shippingAddress}</p>
+                    {(string.IsNullOrEmpty(order.ShippingPhoneNumber) ? "" : $"<p><strong>Số điện thoại:</strong> {order.ShippingPhoneNumber}</p>")}
+                </div>
+
+                <h3 style='color: #ff6b9d; margin-top: 30px;'>Chi tiết đơn hàng:</h3>
+                <table class='items-table'>
+                    <thead>
+                        <tr>
+                            <th style='text-align: left;'>Sản phẩm</th>
+                            <th style='text-align: center;'>Số lượng</th>
+                            <th style='text-align: right;'>Đơn giá</th>
+                            <th style='text-align: right;'>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {itemsHtml}
+                    </tbody>
+                </table>
+
+                <div class='total-section'>
+                    <div class='total-row'>
+                        <span>Tạm tính:</span>
+                        <span>{(order.TotalAmount + (order.VoucherDiscountAmount ?? 0)):N0} ₫</span>
+                    </div>
+                    {(order.VoucherDiscountAmount.HasValue && order.VoucherDiscountAmount > 0 ? $@"
+                    <div class='total-row'>
+                        <span>Giảm giá:</span>
+                        <span style='color: #28a745;'>-{order.VoucherDiscountAmount.Value:N0} ₫</span>
+                    </div>" : "")}
+                    <div class='total-row'>
+                        <span>Phí vận chuyển:</span>
+                        <span>30.000 ₫</span>
+                    </div>
+                    <div class='total-row'>
+                        <span><strong>Tổng cộng:</strong></span>
+                        <span><strong>{order.TotalAmount:N0} ₫</strong></span>
+                    </div>
+                </div>
+
+                <p style='margin-top: 25px; font-size: 13px; color: #888;'>
+                    {(order.PaymentMethod == 0 
+                        ? "Đơn hàng của bạn sẽ được giao trong vòng 3-5 ngày làm việc. Bạn sẽ thanh toán khi nhận hàng." 
+                        : "Đơn hàng của bạn đã được thanh toán thành công. Chúng tôi sẽ giao hàng trong vòng 3-5 ngày làm việc.")}
+                </p>
+            </div>
+            <div class='footer'>
+                <p>Chúc bạn có trải nghiệm mua sắm tuyệt vời!</p>
+                <div class='signature'>Đội ngũ ARTEMIS Shop 💖</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>";
+
+        await SendEmailAsync(email, name, subject, body, cancellationToken);
+    }
+
     private async Task SendEmailAsync(string toEmail, string toName, string subject, string body, CancellationToken cancellationToken)
     {
         if (string.IsNullOrEmpty(_smtpUsername) || string.IsNullOrEmpty(_smtpPassword))
