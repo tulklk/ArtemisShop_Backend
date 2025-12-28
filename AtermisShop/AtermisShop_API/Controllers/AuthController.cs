@@ -10,6 +10,7 @@ using AtermisShop.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace AtermisShop_API.Controllers;
 
@@ -21,25 +22,83 @@ public class AuthController : ControllerBase
     private readonly IUserService _userService;
     private readonly IEmailVerificationTokenService _tokenService;
     private readonly IEmailService _emailService;
+    private readonly ILogger<AuthController> _logger;
 
     public AuthController(
         IMediator mediator,
         IUserService userService,
         IEmailVerificationTokenService tokenService,
-        IEmailService emailService)
+        IEmailService emailService,
+        ILogger<AuthController> logger)
     {
         _mediator = mediator;
         _userService = userService;
         _tokenService = tokenService;
         _emailService = emailService;
+        _logger = logger;
     }
 
     [HttpPost("register")]
     [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request, CancellationToken cancellationToken)
     {
-        var id = await _mediator.Send(new RegisterCommand(request.Email, request.Password, request.FullName), cancellationToken);
-        return Ok(new { id });
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(new { message = "Dữ liệu không hợp lệ." });
+        }
+
+        if (request == null)
+        {
+            return BadRequest(new { message = "Request body không được để trống." });
+        }
+
+        // Validate required fields
+        if (string.IsNullOrWhiteSpace(request.Email))
+        {
+            return BadRequest(new { message = "Email là bắt buộc." });
+        }
+
+        if (string.IsNullOrWhiteSpace(request.Password))
+        {
+            return BadRequest(new { message = "Mật khẩu là bắt buộc." });
+        }
+
+        if (string.IsNullOrWhiteSpace(request.ConfirmPassword))
+        {
+            return BadRequest(new { message = "Xác nhận mật khẩu là bắt buộc." });
+        }
+
+        if (string.IsNullOrWhiteSpace(request.FullName))
+        {
+            return BadRequest(new { message = "Họ tên là bắt buộc." });
+        }
+
+        if (string.IsNullOrWhiteSpace(request.PhoneNumber))
+        {
+            return BadRequest(new { message = "Số điện thoại là bắt buộc." });
+        }
+
+        try
+        {
+            var userId = await _mediator.Send(new RegisterCommand(
+                request.Email,
+                request.Password,
+                request.ConfirmPassword,
+                request.FullName,
+                request.PhoneNumber
+            ), cancellationToken);
+            
+            return Ok(new { message = "Đăng ký thành công. Vui lòng kiểm tra email để xác thực tài khoản." });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during registration for email: {Email}", request?.Email ?? "unknown");
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau." });
+        }
     }
 
     [HttpPost("login")]
@@ -163,13 +222,6 @@ public class AuthController : ControllerBase
     }
 }
 
-public sealed class RegisterRequest
-{
-    public string Email { get; set; } = default!;
-    public string Password { get; set; } = default!;
-    public string? FullName { get; set; }
-}
-
 public sealed class LoginRequest
 {
     public string Email { get; set; } = default!;
@@ -204,6 +256,15 @@ public sealed class ForgotPasswordRequest
 public sealed class TestEmailRequest
 {
     public string Email { get; set; } = default!;
+}
+
+public sealed class RegisterRequest
+{
+    public string Email { get; set; } = default!;
+    public string Password { get; set; } = default!;
+    public string ConfirmPassword { get; set; } = default!;
+    public string FullName { get; set; } = default!;
+    public string PhoneNumber { get; set; } = default!;
 }
 
 

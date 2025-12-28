@@ -172,12 +172,7 @@ public class EmailService : IEmailService
                 <p>Để hoàn tất đăng ký, vui lòng xác thực địa chỉ email của bạn bằng cách nhấp vào nút bên dưới:</p>
                 
                 <div class='button-wrapper'>
-                    <a href='{verificationUrl}' class='button'>✅ Xác thực email</a>
-                </div>
-
-                <div class='link-fallback'>
-                    <p style='margin-bottom: 8px; font-weight: 600; color: #ff6b9d;'>Hoặc copy và dán link sau vào trình duyệt:</p>
-                    <p><a href='{verificationUrl}'>{verificationUrl}</a></p>
+                    <a href='{verificationUrl}' class='button'>Xác thực email</a>
                 </div>
 
                 <div class='warning'>
@@ -189,7 +184,6 @@ public class EmailService : IEmailService
             <div class='footer'>
                 <p>Chúc bạn có trải nghiệm mua sắm tuyệt vời!</p>
                 <div class='signature'>Đội ngũ ARTEMIS Shop 💖</div>
-                <p style='margin-top: 15px;'>🌐 <a href='{_frontendUrl}' style='color: #ff6b9d; text-decoration: none;'>{_frontendUrl}</a></p>
             </div>
         </div>
     </div>

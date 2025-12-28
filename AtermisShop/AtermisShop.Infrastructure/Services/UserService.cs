@@ -35,15 +35,37 @@ public class UserService : IUserService
 
     public async Task<ApplicationUser> CreateAsync(ApplicationUser user, string password)
     {
-        user.Id = Guid.NewGuid();
-        user.PasswordHash = PasswordHasher.HashPassword(password);
-        user.CreatedAt = DateTime.UtcNow;
-        user.UpdatedAt = DateTime.UtcNow;
-        
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync(CancellationToken.None);
-        
-        return user;
+        try
+        {
+            user.Id = Guid.NewGuid();
+            user.PasswordHash = PasswordHasher.HashPassword(password);
+            user.CreatedAt = DateTime.UtcNow;
+            user.UpdatedAt = DateTime.UtcNow;
+            
+            // Ensure required fields are set
+            if (string.IsNullOrWhiteSpace(user.FullName))
+                user.FullName = user.Email;
+            
+            // Ensure boolean fields are explicitly set
+            user.IsActive = true; // Ensure default value
+            user.EmailVerified = false; // Ensure default value - explicitly set to avoid null constraint violation
+            
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync(CancellationToken.None);
+            
+            _logger.LogInformation("User created successfully. Email: {Email}, Id: {UserId}", user.Email, user.Id);
+            return user;
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Database error while creating user with email: {Email}", user.Email);
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error while creating user with email: {Email}", user.Email);
+            throw;
+        }
     }
 
     public async Task UpdateAsync(ApplicationUser user)

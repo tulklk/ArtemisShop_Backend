@@ -13,7 +13,7 @@ public class ApplicationUser
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     public string? GoogleId { get; set; }
     public string? Avatar { get; set; }
-    public bool EmailVerified { get; set; }
+    public bool EmailVerified { get; set; } = false;
 }
 
 
