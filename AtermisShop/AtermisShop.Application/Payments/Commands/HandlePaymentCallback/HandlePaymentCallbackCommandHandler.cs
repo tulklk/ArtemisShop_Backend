@@ -119,9 +119,11 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
                 var user = await _userService.FindByIdAsync(order.UserId.Value);
                 if (user != null && !string.IsNullOrEmpty(user.Email))
                 {
-                    // Load order with items for email
+                    // Load order with items and product images for email
                     var orderWithItems = await _context.Orders
                         .Include(o => o.Items)
+                            .ThenInclude(i => i.Product)
+                                .ThenInclude(p => p.Images)
                         .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
 
                     if (orderWithItems != null)

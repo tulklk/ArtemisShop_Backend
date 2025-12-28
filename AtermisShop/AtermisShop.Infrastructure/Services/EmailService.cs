@@ -374,16 +374,34 @@ public class EmailService : IEmailService
             _ => "Chờ xử lý"
         };
 
-        var itemsHtml = string.Join("", order.Items.Select(item => $@"
+        var itemsHtml = string.Join("", order.Items.Select(item => 
+        {
+            // Get product image - prefer primary image, otherwise first image
+            var productImage = item.Product?.Images?.FirstOrDefault(img => img.IsPrimary) 
+                ?? item.Product?.Images?.FirstOrDefault();
+            var imageUrl = productImage?.ImageUrl ?? "";
+            var imageHtml = string.IsNullOrEmpty(imageUrl) 
+                ? "<div style='width: 80px; height: 80px; background-color: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 12px;'>No Image</div>"
+                : $"<img src='{imageUrl}' alt='{item.ProductNameSnapshot}' style='width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #eee;' />";
+            
+            return $@"
                     <tr>
                         <td style='padding: 12px; border-bottom: 1px solid #eee;'>
-                            <strong>{item.ProductNameSnapshot}</strong>
-                            {(string.IsNullOrEmpty(item.VariantInfoSnapshot) ? "" : $"<br><small style='color: #666;'>{item.VariantInfoSnapshot}</small>")}
+                            <div style='display: flex; align-items: center; gap: 12px;'>
+                                <div style='flex-shrink: 0;'>
+                                    {imageHtml}
+                                </div>
+                                <div>
+                                    <strong>{item.ProductNameSnapshot}</strong>
+                                    {(string.IsNullOrEmpty(item.VariantInfoSnapshot) ? "" : $"<br><small style='color: #666;'>{item.VariantInfoSnapshot}</small>")}
+                                </div>
+                            </div>
                         </td>
                         <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: center;'>{item.Quantity}</td>
                         <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'>{item.UnitPrice:N0} ₫</td>
                         <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'><strong>{item.LineTotal:N0} ₫</strong></td>
-                    </tr>"));
+                    </tr>";
+        }));
 
         var shippingAddress = $"{order.ShippingAddressLine}, {order.ShippingDistrict}, {order.ShippingCity}";
         if (string.IsNullOrEmpty(order.ShippingAddressLine))
@@ -527,13 +545,13 @@ public class EmailService : IEmailService
                 </div>
 
                 <h3 style='color: #ff6b9d; margin-top: 30px;'>Chi tiết đơn hàng:</h3>
-                <table class='items-table'>
+                <table class='items-table' style='width: 100%; border-collapse: collapse; margin: 20px 0;'>
                     <thead>
                         <tr>
-                            <th style='text-align: left;'>Sản phẩm</th>
-                            <th style='text-align: center;'>Số lượng</th>
-                            <th style='text-align: right;'>Đơn giá</th>
-                            <th style='text-align: right;'>Thành tiền</th>
+                            <th style='text-align: left; padding: 12px; background-color: #ff6b9d; color: white; font-weight: 600;'>Sản phẩm</th>
+                            <th style='text-align: center; padding: 12px; background-color: #ff6b9d; color: white; font-weight: 600; width: 80px;'>Số lượng</th>
+                            <th style='text-align: right; padding: 12px; background-color: #ff6b9d; color: white; font-weight: 600; width: 120px;'>Đơn giá</th>
+                            <th style='text-align: right; padding: 12px; background-color: #ff6b9d; color: white; font-weight: 600; width: 120px;'>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -543,20 +561,20 @@ public class EmailService : IEmailService
 
                 <div class='total-section'>
                     <div class='total-row'>
-                        <span>Tạm tính:</span>
+                        <span>Tạm tính : </span>
                         <span>{(order.TotalAmount + (order.VoucherDiscountAmount ?? 0)):N0} ₫</span>
                     </div>
                     {(order.VoucherDiscountAmount.HasValue && order.VoucherDiscountAmount > 0 ? $@"
                     <div class='total-row'>
-                        <span>Giảm giá:</span>
+                        <span>Giảm giá : </span>
                         <span style='color: #28a745;'>-{order.VoucherDiscountAmount.Value:N0} ₫</span>
                     </div>" : "")}
                     <div class='total-row'>
-                        <span>Phí vận chuyển:</span>
+                        <span>Phí vận chuyển : </span>
                         <span>30.000 ₫</span>
                     </div>
                     <div class='total-row'>
-                        <span><strong>Tổng cộng:</strong></span>
+                        <span><strong>Tổng cộng : </strong></span>
                         <span><strong>{order.TotalAmount:N0} ₫</strong></span>
                     </div>
                 </div>
