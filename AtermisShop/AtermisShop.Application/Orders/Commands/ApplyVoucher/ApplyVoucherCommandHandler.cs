@@ -1,4 +1,5 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,56 @@ public sealed class ApplyVoucherCommandHandler : IRequestHandler<ApplyVoucherCom
     {
         decimal orderAmount = 0;
         
-        // If OrderAmount is provided, use it (for guest orders)
-        if (request.OrderAmount.HasValue)
+        // If GuestItems is provided, calculate order amount from items
+        if (request.GuestItems != null && request.GuestItems.Any())
+        {
+            foreach (var item in request.GuestItems)
+            {
+                if (item.Quantity <= 0)
+                {
+                    return new ApplyVoucherResult(false, 0, $"Invalid quantity for product {item.ProductId}. Quantity must be greater than 0.");
+                }
+
+                var product = await _context.Products
+                    .Include(p => p.Variants)
+                    .FirstOrDefaultAsync(p => p.Id == item.ProductId, cancellationToken);
+                
+                if (product == null)
+                {
+                    return new ApplyVoucherResult(false, 0, $"Product with ID {item.ProductId} not found.");
+                }
+
+                if (!product.IsActive)
+                {
+                    return new ApplyVoucherResult(false, 0, $"Product {product.Name} is not active.");
+                }
+
+                decimal unitPrice;
+
+                // If ProductVariantId is provided, use variant price
+                if (item.ProductVariantId.HasValue)
+                {
+                    var variant = product.Variants?.FirstOrDefault(v => v.Id == item.ProductVariantId.Value && v.IsActive);
+                    if (variant != null)
+                    {
+                        unitPrice = variant.Price;
+                    }
+                    else
+                    {
+                        return new ApplyVoucherResult(false, 0, $"Product variant with ID {item.ProductVariantId.Value} not found or inactive.");
+                    }
+                }
+                else
+                {
+                    // No variant specified, use product price
+                    unitPrice = product.Price;
+                }
+
+                orderAmount += unitPrice * item.Quantity;
+            }
+        }
+        // If OrderAmount is provided, use it (for guest orders with pre-calculated amount)
+        else if (request.OrderAmount.HasValue)
         {
             orderAmount = request.OrderAmount.Value;
         }

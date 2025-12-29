@@ -185,11 +185,31 @@ public class GuestOrdersController : ControllerBase
         return Ok(response);
     }
 
+    /// <summary>
+    /// Apply voucher for guest order
+    /// </summary>
+    /// <param name="request">Voucher application request with email, code, and items</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>Voucher application result</returns>
+    /// <response code="200">Voucher applied successfully</response>
+    /// <response code="400">Invalid voucher or validation error</response>
     [HttpPost("apply-voucher")]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(AtermisShop.Application.Orders.Commands.ApplyVoucher.ApplyVoucherResult), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ApplyVoucher([FromBody] ApplyVoucherRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new ApplyVoucherCommand(request.Code, null, request.OrderAmount), cancellationToken);
+        var guestItems = request.Items?.Select(item => new AtermisShop.Application.Orders.Commands.ApplyVoucher.GuestOrderItem(
+            item.ProductId,
+            item.ProductVariantId,
+            item.Quantity)).ToList();
+
+        var result = await _mediator.Send(new ApplyVoucherCommand(
+            request.Code, 
+            null, 
+            null, 
+            guestItems), cancellationToken);
+        
         return Ok(result);
     }
 
@@ -244,8 +264,9 @@ public class GuestOrdersController : ControllerBase
         int Quantity);
     public sealed class ApplyVoucherRequest
     {
+        public string Email { get; set; } = default!;
         public string Code { get; set; } = default!;
-        public decimal OrderAmount { get; set; }
+        public List<GuestOrderItem> Items { get; set; } = new();
     }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
 }
