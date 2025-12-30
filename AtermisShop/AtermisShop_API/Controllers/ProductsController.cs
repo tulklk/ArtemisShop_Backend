@@ -1,6 +1,8 @@
 using AtermisShop.Application.Products.Commands.CreateProduct;
+using AtermisShop.Application.Products.Common;
 using AtermisShop.Application.Products.Queries.GetFeaturedProducts;
 using AtermisShop.Application.Products.Queries.GetProductByIdOrSlug;
+using AtermisShop.Application.Products.Queries.GetProductStatistics;
 using AtermisShop.Application.Products.Queries.GetProducts;
 using AtermisShop.Application.Products.Queries.SearchProducts;
 using MediatR;
@@ -51,6 +53,17 @@ public class ProductsController : ControllerBase
     {
         var products = await _mediator.Send(new SearchProductsQuery(keyword), cancellationToken);
         return Ok(products);
+    }
+
+    [HttpGet("{productId}/statistics")]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(ProductStatisticsDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetStatistics(Guid productId, CancellationToken cancellationToken)
+    {
+        var statistics = await _mediator.Send(new GetProductStatisticsQuery(productId), cancellationToken);
+        if (statistics is null) return NotFound();
+        return Ok(statistics);
     }
 
     [HttpPost]

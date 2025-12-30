@@ -1475,6 +1475,41 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AtermisShop_API.Controllers.ProductsController",
+    "Method": "GetStatistics",
+    "RelativePath": "api/Products/{productId}/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Common.ProductStatisticsDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
     "ContainingType": "AtermisShop_API.Controllers.ProductReviewsController",
     "Method": "GetReviews",
     "RelativePath": "api/products/{productIdOrSlug}/reviews",
