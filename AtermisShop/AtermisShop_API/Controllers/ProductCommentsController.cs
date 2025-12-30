@@ -1,5 +1,6 @@
 using AtermisShop.Application.Products.Comments.Commands.CreateProductComment;
 using AtermisShop.Application.Products.Comments.Commands.DeleteProductComment;
+using AtermisShop.Application.Products.Comments.Commands.ReplyProductComment;
 using AtermisShop.Application.Products.Comments.Commands.UpdateProductComment;
 using AtermisShop.Application.Products.Comments.Common;
 using AtermisShop.Application.Products.Comments.Queries.GetProductComments;
@@ -58,7 +59,24 @@ public class ProductCommentsController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost("{parentCommentId}/reply")]
+    [Authorize]
+    [ProducesResponseType(typeof(ProductCommentDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ReplyComment(
+        string slug,
+        Guid parentCommentId,
+        [FromBody] ReplyCommentRequest request,
+        CancellationToken cancellationToken)
+    {
+        var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+        var comment = await _mediator.Send(new ReplyProductCommentCommand(
+            userId, slug, parentCommentId, request.Content), cancellationToken);
+        return Ok(comment);
+    }
+
     public record CreateCommentRequest(string Content);
     public record UpdateCommentRequest(string Content);
+    public record ReplyCommentRequest(string Content);
 }
 

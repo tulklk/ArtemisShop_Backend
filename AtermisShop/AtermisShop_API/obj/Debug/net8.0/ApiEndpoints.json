@@ -1662,6 +1662,51 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
+    "Method": "ReplyComment",
+    "RelativePath": "api/products/slug/{slug}/comments/{parentCommentId}/reply",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "parentCommentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.ProductCommentsController\u002BReplyCommentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Comments.Common.ProductCommentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
     "ContainingType": "AtermisShop_API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",
