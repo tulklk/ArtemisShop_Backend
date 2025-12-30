@@ -1,6 +1,7 @@
 using AtermisShop.Application.Products.Comments.Commands.CreateProductComment;
 using AtermisShop.Application.Products.Comments.Commands.DeleteProductComment;
 using AtermisShop.Application.Products.Comments.Commands.UpdateProductComment;
+using AtermisShop.Application.Products.Comments.Common;
 using AtermisShop.Application.Products.Comments.Queries.GetProductComments;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AtermisShop_API.Controllers;
 
 [ApiController]
-[Route("api/products/{productIdOrSlug}/comments")]
+[Route("api/products/slug/{slug}/comments")]
 public class ProductCommentsController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -21,25 +22,27 @@ public class ProductCommentsController : ControllerBase
 
     [HttpGet]
     [AllowAnonymous]
-    public async Task<IActionResult> GetComments(string productIdOrSlug, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(IReadOnlyList<ProductCommentDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetComments(string slug, CancellationToken cancellationToken)
     {
-        var comments = await _mediator.Send(new GetProductCommentsQuery(productIdOrSlug), cancellationToken);
+        var comments = await _mediator.Send(new GetProductCommentsQuery(slug), cancellationToken);
         return Ok(comments);
     }
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> CreateComment(string productIdOrSlug, [FromBody] CreateCommentRequest request, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(ProductCommentDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> CreateComment(string slug, [FromBody] CreateCommentRequest request, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        var commentId = await _mediator.Send(new CreateProductCommentCommand(
-            userId, productIdOrSlug, request.Content, request.ParentCommentId), cancellationToken);
-        return Ok(new { CommentId = commentId });
+        var comment = await _mediator.Send(new CreateProductCommentCommand(
+            userId, slug, request.Content, null), cancellationToken);
+        return Ok(comment);
     }
 
     [HttpPut("{commentId}")]
     [Authorize]
-    public async Task<IActionResult> UpdateComment(string productIdOrSlug, Guid commentId, [FromBody] UpdateCommentRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateComment(string slug, Guid commentId, [FromBody] UpdateCommentRequest request, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
         await _mediator.Send(new UpdateProductCommentCommand(commentId, userId, request.Content), cancellationToken);
@@ -48,14 +51,14 @@ public class ProductCommentsController : ControllerBase
 
     [HttpDelete("{commentId}")]
     [Authorize]
-    public async Task<IActionResult> DeleteComment(string productIdOrSlug, Guid commentId, CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteComment(string slug, Guid commentId, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
         await _mediator.Send(new DeleteProductCommentCommand(commentId, userId), cancellationToken);
         return NoContent();
     }
 
-    public record CreateCommentRequest(string Content, Guid? ParentCommentId);
+    public record CreateCommentRequest(string Content);
     public record UpdateCommentRequest(string Content);
 }
 

@@ -1,11 +1,12 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Application.Products.Reviews.Common;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AtermisShop.Application.Products.Reviews.Queries.GetProductReviews;
 
-public sealed class GetProductReviewsQueryHandler : IRequestHandler<GetProductReviewsQuery, IReadOnlyList<ProductReview>>
+public sealed class GetProductReviewsQueryHandler : IRequestHandler<GetProductReviewsQuery, IReadOnlyList<ProductReviewDto>>
 {
     private readonly IApplicationDbContext _context;
 
@@ -14,7 +15,7 @@ public sealed class GetProductReviewsQueryHandler : IRequestHandler<GetProductRe
         _context = context;
     }
 
-    public async Task<IReadOnlyList<ProductReview>> Handle(GetProductReviewsQuery request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<ProductReviewDto>> Handle(GetProductReviewsQuery request, CancellationToken cancellationToken)
     {
         var isGuid = Guid.TryParse(request.ProductIdOrSlug, out var productId);
         
@@ -23,13 +24,28 @@ public sealed class GetProductReviewsQueryHandler : IRequestHandler<GetProductRe
             : await _context.Products.FirstOrDefaultAsync(p => p.Slug == request.ProductIdOrSlug, cancellationToken);
 
         if (product == null)
-            return Array.Empty<ProductReview>();
+            return Array.Empty<ProductReviewDto>();
 
-        return await _context.ProductReviews
+        var reviews = await _context.ProductReviews
             .Include(r => r.User)
             .Where(r => r.ProductId == product.Id)
             .OrderByDescending(r => r.CreatedAt)
             .ToListAsync(cancellationToken);
+
+        return reviews.Select(r => new ProductReviewDto
+        {
+            Id = r.Id,
+            ProductId = r.ProductId,
+            UserId = r.UserId,
+            FullName = r.FullName ?? r.User?.FullName,
+            PhoneNumber = r.PhoneNumber ?? r.User?.PhoneNumber,
+            Email = r.Email ?? r.User?.Email,
+            Rating = r.Rating,
+            Comment = r.Comment,
+            ReviewImageUrl = r.ReviewImageUrl,
+            CreatedAt = r.CreatedAt,
+            UpdatedAt = r.UpdatedAt
+        }).ToList();
     }
 }
 

@@ -22,6 +22,7 @@ public sealed class UpdateProductCommentCommandHandler : IRequestHandler<UpdateP
             throw new InvalidOperationException("Comment not found");
 
         comment.Content = request.Content;
+        comment.IsEdited = true;
         comment.UpdatedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellationToken);
         return Unit.Value;

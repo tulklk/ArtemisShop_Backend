@@ -1,4 +1,5 @@
 using AtermisShop.Application.Products.Reviews.Commands.CreateProductReview;
+using AtermisShop.Application.Products.Reviews.Common;
 using AtermisShop.Application.Products.Reviews.Queries.GetProductReviews;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +20,7 @@ public class ProductReviewsController : ControllerBase
 
     [HttpGet]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(IReadOnlyList<ProductReviewDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetReviews(string productIdOrSlug, CancellationToken cancellationToken)
     {
         var reviews = await _mediator.Send(new GetProductReviewsQuery(productIdOrSlug), cancellationToken);
@@ -26,15 +28,34 @@ public class ProductReviewsController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(ProductReviewDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateReview(string productIdOrSlug, [FromBody] CreateReviewRequest request, CancellationToken cancellationToken)
     {
-        var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        var reviewId = await _mediator.Send(new CreateProductReviewCommand(
-            userId, productIdOrSlug, request.Rating, request.Comment), cancellationToken);
-        return Ok(new { ReviewId = reviewId });
+        Guid? userId = null;
+        if (User.Identity?.IsAuthenticated == true)
+        {
+            userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+        }
+
+        var review = await _mediator.Send(new CreateProductReviewCommand(
+            userId, 
+            productIdOrSlug, 
+            request.FullName, 
+            request.PhoneNumber, 
+            request.Email, 
+            request.Rating, 
+            request.Comment, 
+            request.ReviewImageUrl), cancellationToken);
+        return Ok(review);
     }
 
-    public record CreateReviewRequest(int Rating, string Comment);
+    public record CreateReviewRequest(
+        string? FullName,
+        string? PhoneNumber,
+        string? Email,
+        int Rating,
+        string Comment,
+        string? ReviewImageUrl);
 }
 

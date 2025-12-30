@@ -1,4 +1,5 @@
 using AtermisShop.Application.Chat.Commands.ChatWithGemini;
+using AtermisShop.Application.Chat.Common;
 using AtermisShop.Application.Chat.Commands.SendMessage;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -22,29 +23,44 @@ public class ChatController : ControllerBase
     /// </summary>
     /// <param name="request">Chat message request</param>
     /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns>AI response</returns>
-    /// <response code="200">Returns AI response</response>
+    /// <returns>AI response with suggested products</returns>
+    /// <response code="200">Returns AI response with suggested products</response>
     [HttpPost("message")]
     [AllowAnonymous]
-    [ProducesResponseType(typeof(ChatResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ChatResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request, CancellationToken cancellationToken)
     {
-        Guid? userId = null;
-        if (User.Identity?.IsAuthenticated == true)
+        try
         {
-            userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        }
+            Guid? userId = null;
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+            }
 
-        var result = await _mediator.Send(new ChatWithGeminiCommand(
-            request.Message, 
-            request.SessionId, 
-            userId), cancellationToken);
-        
-        return Ok(new ChatResponse
+            var result = await _mediator.Send(new ChatWithGeminiCommand(
+                request.Message, 
+                request.SessionId, 
+                userId), cancellationToken);
+            
+            return Ok(new ChatResponseDto
+            {
+                Message = result.Response,
+                Success = true,
+                Error = null,
+                SuggestedProducts = result.SuggestedProducts
+            });
+        }
+        catch (Exception ex)
         {
-            Response = result.Response,
-            SessionId = result.SessionId
-        });
+            return Ok(new ChatResponseDto
+            {
+                Message = "Xin lỗi, tôi gặp lỗi khi xử lý câu hỏi của bạn. Vui lòng thử lại sau.",
+                Success = false,
+                Error = ex.Message,
+                SuggestedProducts = new List<SuggestedProductDto>()
+            });
+        }
     }
 
     [HttpGet("health")]
@@ -62,11 +78,5 @@ public class ChatController : ControllerBase
     }
 
     public record SendMessageRequest(string Message, string? SessionId);
-    
-    public class ChatResponse
-    {
-        public string Response { get; set; } = default!;
-        public string SessionId { get; set; } = default!;
-    }
 }
 

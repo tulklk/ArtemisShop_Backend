@@ -1,11 +1,12 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Application.Products.Comments.Common;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AtermisShop.Application.Products.Comments.Commands.CreateProductComment;
 
-public sealed class CreateProductCommentCommandHandler : IRequestHandler<CreateProductCommentCommand, Guid>
+public sealed class CreateProductCommentCommandHandler : IRequestHandler<CreateProductCommentCommand, ProductCommentDto>
 {
     private readonly IApplicationDbContext _context;
 
@@ -14,13 +15,10 @@ public sealed class CreateProductCommentCommandHandler : IRequestHandler<CreateP
         _context = context;
     }
 
-    public async Task<Guid> Handle(CreateProductCommentCommand request, CancellationToken cancellationToken)
+    public async Task<ProductCommentDto> Handle(CreateProductCommentCommand request, CancellationToken cancellationToken)
     {
-        var isGuid = Guid.TryParse(request.ProductIdOrSlug, out var productId);
-        
-        var product = isGuid
-            ? await _context.Products.FindAsync(new object[] { productId }, cancellationToken)
-            : await _context.Products.FirstOrDefaultAsync(p => p.Slug == request.ProductIdOrSlug, cancellationToken);
+        var product = await _context.Products
+            .FirstOrDefaultAsync(p => p.Slug == request.Slug, cancellationToken);
 
         if (product == null)
             throw new InvalidOperationException("Product not found");
@@ -44,7 +42,26 @@ public sealed class CreateProductCommentCommandHandler : IRequestHandler<CreateP
         _context.ProductComments.Add(comment);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return comment.Id;
+        // Reload comment with user to map to DTO
+        var commentWithUser = await _context.ProductComments
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.Id == comment.Id, cancellationToken);
+
+        return new ProductCommentDto
+        {
+            Id = commentWithUser!.Id,
+            ProductId = commentWithUser.ProductId,
+            UserId = commentWithUser.UserId,
+            UserName = commentWithUser.User?.FullName ?? "Unknown",
+            UserAvatar = commentWithUser.User?.Avatar,
+            IsAdmin = commentWithUser.User?.Role == 1, // Assuming 1 is Admin role
+            ParentCommentId = commentWithUser.ParentCommentId,
+            Content = commentWithUser.Content,
+            IsEdited = commentWithUser.IsEdited,
+            CreatedAt = commentWithUser.CreatedAt,
+            UpdatedAt = commentWithUser.UpdatedAt,
+            Replies = new List<ProductCommentDto>()
+        };
     }
 }
 

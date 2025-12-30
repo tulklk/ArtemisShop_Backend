@@ -1,3 +1,4 @@
+using AtermisShop.Application.Chat.Common;
 using MediatR;
 
 namespace AtermisShop.Application.Chat.Commands.ChatWithGemini;
@@ -9,5 +10,6 @@ public sealed record ChatWithGeminiCommand(
 
 public sealed record ChatWithGeminiResult(
     string Response,
-    string SessionId);
+    string SessionId,
+    List<SuggestedProductDto> SuggestedProducts);
 

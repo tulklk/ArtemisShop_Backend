@@ -1025,7 +1025,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "AtermisShop_API.Controllers.ChatController\u002BChatResponse",
+        "Type": "AtermisShop.Application.Chat.Common.ChatResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1475,90 +1475,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
-    "Method": "GetComments",
-    "RelativePath": "api/products/{productIdOrSlug}/comments",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productIdOrSlug",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
-    "Method": "CreateComment",
-    "RelativePath": "api/products/{productIdOrSlug}/comments",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productIdOrSlug",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "AtermisShop_API.Controllers.ProductCommentsController\u002BCreateCommentRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
-    "Method": "UpdateComment",
-    "RelativePath": "api/products/{productIdOrSlug}/comments/{commentId}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productIdOrSlug",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "commentId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "AtermisShop_API.Controllers.ProductCommentsController\u002BUpdateCommentRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
-    "Method": "DeleteComment",
-    "RelativePath": "api/products/{productIdOrSlug}/comments/{commentId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productIdOrSlug",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "commentId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "AtermisShop_API.Controllers.ProductReviewsController",
     "Method": "GetReviews",
     "RelativePath": "api/products/{productIdOrSlug}/reviews",
@@ -1572,7 +1488,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[AtermisShop.Application.Products.Reviews.Common.ProductReviewDto, AtermisShop.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.ProductReviewsController",
@@ -1593,7 +1519,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Reviews.Common.ProductReviewDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.ProductsController",
@@ -1617,6 +1553,110 @@
         "Name": "keyword",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
+    "Method": "GetComments",
+    "RelativePath": "api/products/slug/{slug}/comments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[AtermisShop.Application.Products.Comments.Common.ProductCommentDto, AtermisShop.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
+    "Method": "CreateComment",
+    "RelativePath": "api/products/slug/{slug}/comments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.ProductCommentsController\u002BCreateCommentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Comments.Common.ProductCommentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
+    "Method": "UpdateComment",
+    "RelativePath": "api/products/slug/{slug}/comments/{commentId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.ProductCommentsController\u002BUpdateCommentRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductCommentsController",
+    "Method": "DeleteComment",
+    "RelativePath": "api/products/slug/{slug}/comments/{commentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "commentId",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
