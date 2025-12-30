@@ -1,3 +1,4 @@
+using AtermisShop.Application.Chat.Commands.ChatWithGemini;
 using AtermisShop.Application.Chat.Commands.SendMessage;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,8 +17,16 @@ public class ChatController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Chat with AI assistant (Gemini)
+    /// </summary>
+    /// <param name="request">Chat message request</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns>AI response</returns>
+    /// <response code="200">Returns AI response</response>
     [HttpPost("message")]
     [AllowAnonymous]
+    [ProducesResponseType(typeof(ChatResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest request, CancellationToken cancellationToken)
     {
         Guid? userId = null;
@@ -26,8 +35,16 @@ public class ChatController : ControllerBase
             userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
         }
 
-        var messageId = await _mediator.Send(new SendMessageCommand(userId, request.Message, request.SessionId), cancellationToken);
-        return Ok(new { MessageId = messageId });
+        var result = await _mediator.Send(new ChatWithGeminiCommand(
+            request.Message, 
+            request.SessionId, 
+            userId), cancellationToken);
+        
+        return Ok(new ChatResponse
+        {
+            Response = result.Response,
+            SessionId = result.SessionId
+        });
     }
 
     [HttpGet("health")]
@@ -45,5 +62,11 @@ public class ChatController : ControllerBase
     }
 
     public record SendMessageRequest(string Message, string? SessionId);
+    
+    public class ChatResponse
+    {
+        public string Response { get; set; } = default!;
+        public string SessionId { get; set; } = default!;
+    }
 }
 

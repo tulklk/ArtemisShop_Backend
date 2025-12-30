@@ -124,6 +124,9 @@ public static class DependencyInjection
         // Register payment providers
         services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.PayOsPaymentProvider>();
 
+        // Register Gemini AI service
+        services.AddHttpClient<Application.Common.Interfaces.IGeminiService, Services.GeminiService>();
+
         return services;
     }
 }
