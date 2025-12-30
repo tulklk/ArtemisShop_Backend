@@ -29,9 +29,11 @@ public sealed class UpdateProductCommandHandler : IRequestHandler<UpdateProductC
         product.Price = request.Price;
         product.CategoryId = request.CategoryId;
 
-        // Update optional properties if provided
+        // Update OriginalPrice: if null, product is normal (no discount), otherwise use provided value
         if (request.OriginalPrice.HasValue)
             product.OriginalPrice = request.OriginalPrice.Value;
+        else
+            product.OriginalPrice = null; // Normal product (no discount)
 
         if (request.StockQuantity.HasValue)
             product.StockQuantity = request.StockQuantity.Value;

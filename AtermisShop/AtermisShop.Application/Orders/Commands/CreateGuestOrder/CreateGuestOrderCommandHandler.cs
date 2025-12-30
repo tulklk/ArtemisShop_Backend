@@ -4,16 +4,24 @@ using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Orders.Commands.CreateGuestOrder;
 
 public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuestOrderCommand, Order>
 {
     private readonly IApplicationDbContext _context;
+    private readonly IEmailService _emailService;
+    private readonly ILogger<CreateGuestOrderCommandHandler>? _logger;
 
-    public CreateGuestOrderCommandHandler(IApplicationDbContext context)
+    public CreateGuestOrderCommandHandler(
+        IApplicationDbContext context,
+        IEmailService emailService,
+        ILogger<CreateGuestOrderCommandHandler>? logger = null)
     {
         _context = context;
+        _emailService = emailService;
+        _logger = logger;
     }
 
     public async Task<Order> Handle(CreateGuestOrderCommand request, CancellationToken cancellationToken)
@@ -167,6 +175,39 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
 
         _context.Orders.Add(order);
         await _context.SaveChangesAsync(cancellationToken);
+
+        // Send order confirmation email to guest
+        try
+        {
+            if (!string.IsNullOrEmpty(request.Email))
+            {
+                // Load order with items and product images for email
+                var orderWithItems = await _context.Orders
+                    .Include(o => o.Items)
+                        .ThenInclude(i => i.Product)
+                            .ThenInclude(p => p.Images)
+                    .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
+
+                if (orderWithItems != null)
+                {
+                    await _emailService.SendOrderConfirmationAsync(
+                        request.Email,
+                        request.FullName ?? request.Email,
+                        orderWithItems,
+                        cancellationToken);
+                    
+                    _logger?.LogInformation("Order confirmation email sent to guest {Email} for order {OrderNumber}", 
+                        request.Email, order.OrderNumber);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to send order confirmation email to guest {Email} for order {OrderNumber}. Order was created successfully.", 
+                request.Email, order.OrderNumber);
+            // Don't throw - order is created successfully, email failure shouldn't fail the request
+        }
+
         return order;
     }
 }

@@ -9,7 +9,7 @@ public sealed class ProductDto
     public string Slug { get; set; } = default!;
     public string? Description { get; set; }
     public decimal Price { get; set; }
-    public decimal OriginalPrice { get; set; }
+    public decimal? OriginalPrice { get; set; }
     public int StockQuantity { get; set; }
     public string? Brand { get; set; }
     public bool IsActive { get; set; }

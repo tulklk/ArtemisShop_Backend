@@ -7,7 +7,7 @@ public sealed record CreateProductCommand(
     string? Description,
     Guid CategoryId,
     decimal Price,
-    decimal OriginalPrice,
+    decimal? OriginalPrice,
     int StockQuantity,
     string? Brand,
     bool IsActive,
@@ -19,7 +19,7 @@ public sealed record ProductVariantDto(
     string? Size,
     string? Spec,
     decimal Price,
-    decimal OriginalPrice,
+    decimal? OriginalPrice,
     int StockQuantity,
     bool IsActive);
 

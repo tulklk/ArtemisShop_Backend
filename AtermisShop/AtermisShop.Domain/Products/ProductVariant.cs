@@ -10,7 +10,7 @@ public class ProductVariant : BaseEntity
     public string? Size { get; set; }
     public string? Spec { get; set; }
     public decimal Price { get; set; }
-    public decimal OriginalPrice { get; set; }
+    public decimal? OriginalPrice { get; set; }
     public int StockQuantity { get; set; }
     public bool IsActive { get; set; }
 }

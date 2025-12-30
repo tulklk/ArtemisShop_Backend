@@ -49,7 +49,7 @@ public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductC
             Slug = slug,
             Description = request.Description,
             Price = request.Price,
-            OriginalPrice = request.OriginalPrice,
+            OriginalPrice = request.OriginalPrice, // If null, product is normal (no discount)
             StockQuantity = request.StockQuantity,
             Brand = request.Brand,
             IsActive = request.IsActive,
@@ -89,7 +89,7 @@ public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductC
                     Size = variantDto.Size,
                     Spec = variantDto.Spec,
                     Price = variantDto.Price,
-                    OriginalPrice = variantDto.OriginalPrice,
+                    OriginalPrice = variantDto.OriginalPrice, // If null, variant is normal (no discount)
                     StockQuantity = variantDto.StockQuantity,
                     IsActive = variantDto.IsActive
                 };

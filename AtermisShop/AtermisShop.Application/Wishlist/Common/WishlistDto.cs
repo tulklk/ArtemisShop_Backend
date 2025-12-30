@@ -8,7 +8,7 @@ public sealed class WishlistDto
     public string? ProductDescription { get; set; }
     public string? ProductImageUrl { get; set; }
     public decimal Price { get; set; }
-    public decimal OriginalPrice { get; set; }
+    public decimal? OriginalPrice { get; set; }
     public bool IsActive { get; set; }
     public bool HasVariants { get; set; }
     public DateTime AddedAt { get; set; }

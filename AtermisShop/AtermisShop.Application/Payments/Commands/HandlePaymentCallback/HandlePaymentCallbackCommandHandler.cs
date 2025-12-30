@@ -112,39 +112,55 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
             order.Id, order.OrderStatus, order.PaymentStatus);
 
         // Send order confirmation email after successful payment (PayOS)
-        if (order.UserId.HasValue)
+        try
         {
-            try
+            string? email = null;
+            string? name = null;
+
+            // Check if it's a logged-in user order
+            if (order.UserId.HasValue)
             {
                 var user = await _userService.FindByIdAsync(order.UserId.Value);
                 if (user != null && !string.IsNullOrEmpty(user.Email))
                 {
-                    // Load order with items and product images for email
-                    var orderWithItems = await _context.Orders
-                        .Include(o => o.Items)
-                            .ThenInclude(i => i.Product)
-                                .ThenInclude(p => p.Images)
-                        .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
-
-                    if (orderWithItems != null)
-                    {
-                        await _emailService.SendOrderConfirmationAsync(
-                            user.Email,
-                            user.FullName ?? user.Email,
-                            orderWithItems,
-                            cancellationToken);
-                        
-                        _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber} after payment", 
-                            user.Email, order.OrderNumber);
-                    }
+                    email = user.Email;
+                    name = user.FullName ?? user.Email;
                 }
             }
-            catch (Exception ex)
+            // Check if it's a guest order
+            else if (!string.IsNullOrEmpty(order.GuestEmail))
             {
-                _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber} after payment. Payment was processed successfully.", 
-                    order.OrderNumber);
-                // Don't throw - payment is processed successfully, email failure shouldn't fail the callback
+                email = order.GuestEmail;
+                name = order.GuestFullName ?? order.GuestEmail;
             }
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                // Load order with items and product images for email
+                var orderWithItems = await _context.Orders
+                    .Include(o => o.Items)
+                        .ThenInclude(i => i.Product)
+                            .ThenInclude(p => p.Images)
+                    .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
+
+                if (orderWithItems != null)
+                {
+                    await _emailService.SendOrderConfirmationAsync(
+                        email,
+                        name ?? email,
+                        orderWithItems,
+                        cancellationToken);
+                    
+                    _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber} after payment", 
+                        email, order.OrderNumber);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber} after payment. Payment was processed successfully.", 
+                order.OrderNumber);
+            // Don't throw - payment is processed successfully, email failure shouldn't fail the callback
         }
 
         return order;
