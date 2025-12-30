@@ -41,14 +41,14 @@ public class CartController : ControllerBase
     public async Task<IActionResult> AddItem([FromBody] AddCartItemRequest request, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        var cartId = await _mediator.Send(new AddCartItemCommand(userId, request.ProductId, request.Quantity), cancellationToken);
+        var cartId = await _mediator.Send(new AddCartItemCommand(userId, request.ProductId, request.Quantity, request.EngravingText), cancellationToken);
         return Ok(new { CartId = cartId });
     }
 
     [HttpPut("items/{cartItemId}")]
     public async Task<IActionResult> UpdateItem(Guid cartItemId, [FromBody] UpdateCartItemRequest request, CancellationToken cancellationToken)
     {
-        await _mediator.Send(new UpdateCartItemCommand(cartItemId, request.Quantity), cancellationToken);
+        await _mediator.Send(new UpdateCartItemCommand(cartItemId, request.Quantity, request.EngravingText), cancellationToken);
         return NoContent();
     }
 
@@ -59,7 +59,7 @@ public class CartController : ControllerBase
         return NoContent();
     }
 
-    public record AddCartItemRequest(Guid ProductId, int Quantity);
-    public record UpdateCartItemRequest(int Quantity);
+    public record AddCartItemRequest(Guid ProductId, int Quantity, string? EngravingText = null);
+    public record UpdateCartItemRequest(int Quantity, string? EngravingText = null);
 }
 

@@ -4,6 +4,7 @@ using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Orders.Commands.CreateOrder;
@@ -14,6 +15,7 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
     private readonly IMediator _mediator;
     private readonly IEmailService _emailService;
     private readonly IUserService _userService;
+    private readonly IConfiguration _configuration;
     private readonly ILogger<CreateOrderCommandHandler>? _logger;
 
     public CreateOrderCommandHandler(
@@ -21,12 +23,14 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         IMediator mediator,
         IEmailService emailService,
         IUserService userService,
+        IConfiguration configuration,
         ILogger<CreateOrderCommandHandler>? logger = null)
     {
         _context = context;
         _mediator = mediator;
         _emailService = emailService;
         _userService = userService;
+        _configuration = configuration;
         _logger = logger;
     }
 
@@ -117,6 +121,12 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
                 unitPrice = product.Price;
             }
 
+            // Normalize engraving text (trim and convert to uppercase)
+            var normalizedEngravingText = string.IsNullOrWhiteSpace(cartItem.EngravingText)
+                ? null
+                : cartItem.EngravingText.Trim().ToUpperInvariant();
+
+            // Engraving is free, no fee calculation
             var lineTotal = unitPrice * cartItem.Quantity;
             subTotal += lineTotal;
 
@@ -129,7 +139,8 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
                 UnitPrice = unitPrice,
                 LineTotal = lineTotal,
                 ProductNameSnapshot = product.Name,
-                VariantInfoSnapshot = variantInfo
+                VariantInfoSnapshot = variantInfo,
+                EngravingText = normalizedEngravingText
             };
             processedItems.Add(orderItem);
         }

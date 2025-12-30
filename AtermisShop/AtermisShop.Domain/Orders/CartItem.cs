@@ -13,5 +13,6 @@ public class CartItem : BaseEntity
     public ProductVariant? ProductVariant { get; set; }
     public int Quantity { get; set; }
     public decimal UnitPriceSnapshot { get; set; }
+    public string? EngravingText { get; set; }
 }
 

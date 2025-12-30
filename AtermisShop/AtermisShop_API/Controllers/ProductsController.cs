@@ -1,10 +1,12 @@
 using AtermisShop.Application.Products.Commands.CreateProduct;
 using AtermisShop.Application.Products.Common;
+using AtermisShop.Application.Products.Queries.GetEngravingInfo;
 using AtermisShop.Application.Products.Queries.GetFeaturedProducts;
 using AtermisShop.Application.Products.Queries.GetProductByIdOrSlug;
 using AtermisShop.Application.Products.Queries.GetProductStatistics;
 using AtermisShop.Application.Products.Queries.GetProducts;
 using AtermisShop.Application.Products.Queries.SearchProducts;
+using AtermisShop.Application.Products.Queries.ValidateEngravingText;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,6 +68,30 @@ public class ProductsController : ControllerBase
         return Ok(statistics);
     }
 
+    /// <summary>
+    /// Get engraving information (rules, max length, etc.)
+    /// </summary>
+    [HttpGet("engraving/info")]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(EngravingInfoDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetEngravingInfo(CancellationToken cancellationToken)
+    {
+        var info = await _mediator.Send(new GetEngravingInfoQuery(), cancellationToken);
+        return Ok(info);
+    }
+
+    /// <summary>
+    /// Validate engraving text
+    /// </summary>
+    [HttpPost("engraving/validate")]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(ValidateEngravingTextResult), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ValidateEngravingText([FromBody] ValidateEngravingTextRequest request, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new ValidateEngravingTextQuery(request.EngravingText), cancellationToken);
+        return Ok(result);
+    }
+
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateProductRequest request, CancellationToken cancellationToken)
@@ -99,5 +125,7 @@ public sealed class CreateProductRequest
     public List<string>? ImageUrls { get; set; }
     public List<ProductVariantDto>? Variants { get; set; }
 }
+
+public sealed record ValidateEngravingTextRequest(string? EngravingText);
 
 

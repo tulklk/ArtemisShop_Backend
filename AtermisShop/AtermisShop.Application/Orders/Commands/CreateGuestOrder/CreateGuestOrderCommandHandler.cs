@@ -1,9 +1,11 @@
+using AtermisShop.Application.Common.Helpers;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Application.Orders.Common;
 using AtermisShop.Domain.Orders;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace AtermisShop.Application.Orders.Commands.CreateGuestOrder;
@@ -12,15 +14,18 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
 {
     private readonly IApplicationDbContext _context;
     private readonly IEmailService _emailService;
+    private readonly IConfiguration _configuration;
     private readonly ILogger<CreateGuestOrderCommandHandler>? _logger;
 
     public CreateGuestOrderCommandHandler(
         IApplicationDbContext context,
         IEmailService emailService,
+        IConfiguration configuration,
         ILogger<CreateGuestOrderCommandHandler>? logger = null)
     {
         _context = context;
         _emailService = emailService;
+        _configuration = configuration;
         _logger = logger;
     }
 
@@ -63,6 +68,12 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             if (item.Quantity <= 0)
             {
                 throw new ArgumentException($"Invalid quantity for product {item.ProductId}. Quantity must be greater than 0.");
+            }
+
+            // Validate engraving text if provided
+            if (!EngravingTextValidator.TryValidate(item.EngravingText, out var engravingError))
+            {
+                throw new ArgumentException(engravingError ?? "Invalid engraving text");
             }
 
             var product = await _context.Products
@@ -120,6 +131,12 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
                 }
             }
 
+            // Normalize engraving text (trim and convert to uppercase)
+            var normalizedEngravingText = string.IsNullOrWhiteSpace(item.EngravingText)
+                ? null
+                : item.EngravingText.Trim().ToUpperInvariant();
+
+            // Engraving is free, no fee calculation
             var lineTotal = unitPrice * item.Quantity;
             subTotal += lineTotal;
 
@@ -132,7 +149,8 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
                 UnitPrice = unitPrice,
                 LineTotal = lineTotal,
                 ProductNameSnapshot = product.Name,
-                VariantInfoSnapshot = variantInfo
+                VariantInfoSnapshot = variantInfo,
+                EngravingText = normalizedEngravingText
             };
             processedItems.Add(orderItem);
         }

@@ -56,7 +56,8 @@ public sealed class GetCartQueryHandler : IRequestHandler<GetCartQuery, CartDto?
                     VariantInfo = string.IsNullOrEmpty(variantInfo) ? null : variantInfo,
                     UnitPrice = item.UnitPriceSnapshot,
                     Quantity = item.Quantity,
-                    LineTotal = item.Quantity * item.UnitPriceSnapshot
+                    LineTotal = item.Quantity * item.UnitPriceSnapshot,
+                    EngravingText = item.EngravingText
                 };
             }).ToList()
         };

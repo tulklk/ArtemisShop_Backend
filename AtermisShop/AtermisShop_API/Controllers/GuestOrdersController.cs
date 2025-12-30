@@ -55,7 +55,8 @@ public class GuestOrdersController : ControllerBase
             var orderItems = request.Items.Select(item => new AtermisShop.Application.Orders.Commands.CreateGuestOrder.GuestOrderItem(
                 item.ProductId, 
                 item.ProductVariantId, 
-                item.Quantity)).ToList();
+                item.Quantity,
+                item.EngravingText)).ToList();
             
             var shippingAddressDto = request.ShippingAddress != null 
                 ? new ShippingAddressDto(
@@ -105,7 +106,8 @@ public class GuestOrdersController : ControllerBase
                     VariantInfoSnapshot = item.VariantInfoSnapshot,
                     Quantity = item.Quantity,
                     UnitPrice = item.UnitPrice,
-                    LineTotal = item.LineTotal
+                    LineTotal = item.LineTotal,
+                    EngravingText = item.EngravingText
                 }).ToList(),
                 CreatedAt = order.CreatedAt,
                 UpdatedAt = order.UpdatedAt
@@ -261,7 +263,8 @@ public class GuestOrdersController : ControllerBase
     public record GuestOrderItem(
         Guid ProductId,
         Guid? ProductVariantId,
-        int Quantity);
+        int Quantity,
+        string? EngravingText = null);
     public sealed class ApplyVoucherRequest
     {
         public string Email { get; set; } = default!;

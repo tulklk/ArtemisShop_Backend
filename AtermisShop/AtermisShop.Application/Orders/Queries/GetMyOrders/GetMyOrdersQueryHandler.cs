@@ -58,7 +58,8 @@ public sealed class GetMyOrdersQueryHandler : IRequestHandler<GetMyOrdersQuery, 
                 VariantInfoSnapshot = item.VariantInfoSnapshot,
                 Quantity = item.Quantity,
                 UnitPrice = item.UnitPrice,
-                LineTotal = item.LineTotal
+                LineTotal = item.LineTotal,
+                EngravingText = item.EngravingText
             }).ToList(),
             CreatedAt = order.CreatedAt,
             UpdatedAt = order.UpdatedAt

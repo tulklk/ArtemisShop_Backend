@@ -15,5 +15,6 @@ public sealed record CreateGuestOrderCommand(
 public sealed record GuestOrderItem(
     Guid ProductId,
     Guid? ProductVariantId,
-    int Quantity);
+    int Quantity,
+    string? EngravingText = null);
 

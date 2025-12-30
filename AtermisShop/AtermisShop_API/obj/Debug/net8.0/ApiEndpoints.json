@@ -1568,6 +1568,52 @@
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.ProductsController",
+    "Method": "GetEngravingInfo",
+    "RelativePath": "api/Products/engraving/info",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Queries.GetEngravingInfo.EngravingInfoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductsController",
+    "Method": "ValidateEngravingText",
+    "RelativePath": "api/Products/engraving/validate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.ValidateEngravingTextRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "AtermisShop.Application.Products.Queries.ValidateEngravingText.ValidateEngravingTextResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.ProductsController",
     "Method": "GetFeatured",
     "RelativePath": "api/Products/featured",
     "HttpMethod": "GET",
