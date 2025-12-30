@@ -17,10 +17,30 @@ public sealed class AddCartItemCommandHandler : IRequestHandler<AddCartItemComma
 
     public async Task<Guid> Handle(AddCartItemCommand request, CancellationToken cancellationToken)
     {
-        // Validate engraving text if provided
-        if (!EngravingTextValidator.TryValidate(request.EngravingText, out var errorMessage))
+        var product = await _context.Products.FindAsync(new object[] { request.ProductId }, cancellationToken);
+        if (product == null)
         {
-            throw new ArgumentException(errorMessage ?? "Invalid engraving text");
+            throw new InvalidOperationException("Product not found");
+        }
+
+        // Validate engraving text: only allow if product supports engraving
+        if (!string.IsNullOrWhiteSpace(request.EngravingText))
+        {
+            if (!product.HasEngraving)
+            {
+                throw new ArgumentException("Product does not support engraving");
+            }
+
+            // Validate engraving text format
+            if (!EngravingTextValidator.TryValidate(request.EngravingText, out var errorMessage))
+            {
+                throw new ArgumentException(errorMessage ?? "Invalid engraving text");
+            }
+        }
+        else if (product.HasEngraving && !string.IsNullOrWhiteSpace(product.DefaultEngravingText))
+        {
+            // If product has default engraving text and user didn't provide one, use default
+            // This is optional - you can remove this if you want engraving to be always optional
         }
 
         var cart = await _context.Carts
@@ -53,12 +73,6 @@ public sealed class AddCartItemCommandHandler : IRequestHandler<AddCartItemComma
         }
         else
         {
-            var product = await _context.Products.FindAsync(new object[] { request.ProductId }, cancellationToken);
-            if (product == null)
-            {
-                throw new InvalidOperationException("Product not found");
-            }
-
             var cartItem = new CartItem
             {
                 CartId = cart.Id,

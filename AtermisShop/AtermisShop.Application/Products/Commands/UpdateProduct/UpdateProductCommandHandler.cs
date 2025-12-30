@@ -44,6 +44,25 @@ public sealed class UpdateProductCommandHandler : IRequestHandler<UpdateProductC
         if (request.IsActive.HasValue)
             product.IsActive = request.IsActive.Value;
 
+        if (request.HasEngraving.HasValue)
+        {
+            product.HasEngraving = request.HasEngraving.Value;
+            // If HasEngraving is false, clear DefaultEngravingText
+            if (!request.HasEngraving.Value)
+            {
+                product.DefaultEngravingText = null;
+            }
+            else if (request.DefaultEngravingText != null)
+            {
+                product.DefaultEngravingText = request.DefaultEngravingText;
+            }
+        }
+        else if (request.DefaultEngravingText != null && product.HasEngraving)
+        {
+            // Only update DefaultEngravingText if HasEngraving is already true
+            product.DefaultEngravingText = request.DefaultEngravingText;
+        }
+
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

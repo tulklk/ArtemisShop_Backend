@@ -105,6 +105,8 @@ public class ProductsController : ControllerBase
             request.StockQuantity,
             request.Brand,
             request.IsActive,
+            request.HasEngraving,
+            request.DefaultEngravingText,
             request.ImageUrls,
             request.Variants), cancellationToken);
 
@@ -118,10 +120,12 @@ public sealed class CreateProductRequest
     public string? Description { get; set; }
     public Guid CategoryId { get; set; }
     public decimal Price { get; set; }
-    public decimal OriginalPrice { get; set; }
+    public decimal? OriginalPrice { get; set; }
     public int StockQuantity { get; set; }
     public string? Brand { get; set; }
     public bool IsActive { get; set; }
+    public bool HasEngraving { get; set; }
+    public string? DefaultEngravingText { get; set; }
     public List<string>? ImageUrls { get; set; }
     public List<ProductVariantDto>? Variants { get; set; }
 }

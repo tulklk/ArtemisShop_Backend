@@ -40,6 +40,8 @@ public class AdminProductsController : ControllerBase
             request.StockQuantity,
             request.Brand,
             request.IsActive,
+            request.HasEngraving,
+            request.DefaultEngravingText,
             request.ImageUrls,
             request.Variants), cancellationToken);
         return Ok(new { Id = id });
@@ -69,7 +71,9 @@ public class AdminProductsController : ControllerBase
                 request.OriginalPrice,
                 request.StockQuantity,
                 request.Brand,
-                request.IsActive), cancellationToken);
+                request.IsActive,
+                request.HasEngraving,
+                request.DefaultEngravingText), cancellationToken);
             return Ok();
         }
         catch (InvalidOperationException ex)
@@ -97,10 +101,12 @@ public class AdminProductsController : ControllerBase
         string? Description,
         Guid CategoryId,
         decimal Price,
-        decimal OriginalPrice,
+        decimal? OriginalPrice,
         int StockQuantity,
         string? Brand,
         bool IsActive,
+        bool HasEngraving,
+        string? DefaultEngravingText,
         List<string>? ImageUrls,
         List<ProductVariantDto>? Variants);
     public record UpdateProductRequest(
@@ -112,6 +118,8 @@ public class AdminProductsController : ControllerBase
         decimal? OriginalPrice = null,
         int? StockQuantity = null,
         string? Brand = null,
-        bool? IsActive = null);
+        bool? IsActive = null,
+        bool? HasEngraving = null,
+        string? DefaultEngravingText = null);
 }
 

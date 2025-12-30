@@ -70,12 +70,6 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
                 throw new ArgumentException($"Invalid quantity for product {item.ProductId}. Quantity must be greater than 0.");
             }
 
-            // Validate engraving text if provided
-            if (!EngravingTextValidator.TryValidate(item.EngravingText, out var engravingError))
-            {
-                throw new ArgumentException(engravingError ?? "Invalid engraving text");
-            }
-
             var product = await _context.Products
                 .Include(p => p.Variants)
                 .FirstOrDefaultAsync(p => p.Id == item.ProductId, cancellationToken);
@@ -88,6 +82,21 @@ public sealed class CreateGuestOrderCommandHandler : IRequestHandler<CreateGuest
             if (!product.IsActive)
             {
                 throw new InvalidOperationException($"Product {product.Name} is not active.");
+            }
+
+            // Validate engraving text: only allow if product supports engraving
+            if (!string.IsNullOrWhiteSpace(item.EngravingText))
+            {
+                if (!product.HasEngraving)
+                {
+                    throw new ArgumentException($"Product {product.Name} does not support engraving");
+                }
+
+                // Validate engraving text format
+                if (!EngravingTextValidator.TryValidate(item.EngravingText, out var engravingError))
+                {
+                    throw new ArgumentException(engravingError ?? "Invalid engraving text");
+                }
             }
 
             decimal unitPrice;

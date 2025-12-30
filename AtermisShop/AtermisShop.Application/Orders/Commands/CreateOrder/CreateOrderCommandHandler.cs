@@ -121,10 +121,18 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
                 unitPrice = product.Price;
             }
 
-            // Normalize engraving text (trim and convert to uppercase)
-            var normalizedEngravingText = string.IsNullOrWhiteSpace(cartItem.EngravingText)
-                ? null
-                : cartItem.EngravingText.Trim().ToUpperInvariant();
+            // Validate engraving text: only allow if product supports engraving
+            string? normalizedEngravingText = null;
+            if (!string.IsNullOrWhiteSpace(cartItem.EngravingText))
+            {
+                if (!product.HasEngraving)
+                {
+                    throw new InvalidOperationException($"Product {product.Name} does not support engraving. Please remove engraving text from cart item.");
+                }
+
+                // Normalize engraving text (trim and convert to uppercase)
+                normalizedEngravingText = cartItem.EngravingText.Trim().ToUpperInvariant();
+            }
 
             // Engraving is free, no fee calculation
             var lineTotal = unitPrice * cartItem.Quantity;

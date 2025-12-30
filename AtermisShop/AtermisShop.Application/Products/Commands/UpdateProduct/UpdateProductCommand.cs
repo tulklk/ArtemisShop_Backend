@@ -12,5 +12,7 @@ public sealed record UpdateProductCommand(
     decimal? OriginalPrice = null,
     int? StockQuantity = null,
     string? Brand = null,
-    bool? IsActive = null) : IRequest;
+    bool? IsActive = null,
+    bool? HasEngraving = null,
+    string? DefaultEngravingText = null) : IRequest;
 

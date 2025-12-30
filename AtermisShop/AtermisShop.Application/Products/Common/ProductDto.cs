@@ -14,6 +14,8 @@ public sealed class ProductDto
     public string? Brand { get; set; }
     public bool IsActive { get; set; }
     public bool HasVariants { get; set; }
+    public bool HasEngraving { get; set; }
+    public string? DefaultEngravingText { get; set; }
     public Guid CategoryId { get; set; }
     public List<string> ImageUrls { get; set; } = new();
     public List<ProductVariantDto> Variants { get; set; } = new();

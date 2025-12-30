@@ -11,6 +11,8 @@ public sealed record CreateProductCommand(
     int StockQuantity,
     string? Brand,
     bool IsActive,
+    bool HasEngraving,
+    string? DefaultEngravingText,
     List<string>? ImageUrls,
     List<ProductVariantDto>? Variants) : IRequest<Guid>;
 
