@@ -6,6 +6,7 @@ using AtermisShop.Infrastructure;
 using AtermisShop.Domain.Users;
 using AtermisShop.Infrastructure.Persistence;
 using AtermisShop.Infrastructure.Services;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Npgsql;
@@ -181,18 +182,22 @@ namespace AtermisShop_API
             // Enable static files for wwwroot (if needed for other static files)
             app.UseStaticFiles();
 
+            // Map content-type for glb/gltf
+            var contentTypeProvider = new FileExtensionContentTypeProvider();
+            contentTypeProvider.Mappings[".glb"] = "model/gltf-binary";
+            contentTypeProvider.Mappings[".gltf"] = "model/gltf+json";
+
             // Serve files from /data/uploads as /uploads/...
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(volumeUploadsPath),
                 RequestPath = "/uploads",
+                ContentTypeProvider = contentTypeProvider,
+                // Nếu sau này có extension lạ, có thể bật thêm dòng dưới:
+                // ServeUnknownFileTypes = true,
+                // DefaultContentType = "application/octet-stream",
                 OnPrepareResponse = ctx =>
                 {
-                    // Set proper MIME type for GLB files
-                    if (ctx.File.Name.EndsWith(".glb", StringComparison.OrdinalIgnoreCase))
-                    {
-                        ctx.Context.Response.ContentType = "model/gltf-binary";
-                    }
                     // Allow CORS for static files
                     ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
                 }
