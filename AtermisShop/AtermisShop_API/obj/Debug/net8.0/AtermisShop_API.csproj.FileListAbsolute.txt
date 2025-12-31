@@ -290,3 +290,4 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.Text.Json.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.staticwebassets.runtime.json

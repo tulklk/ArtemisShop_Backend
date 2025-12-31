@@ -7,6 +7,7 @@ using AtermisShop.Domain.Users;
 using AtermisShop.Infrastructure.Persistence;
 using AtermisShop.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Npgsql;
 
 namespace AtermisShop_API
@@ -167,23 +168,23 @@ namespace AtermisShop_API
             }
 
             // Configure uploads directory on volume (/data/uploads)
-            var uploadsRoot = Path.Combine("/data", "uploads");
-            var models3dRoot = Path.Combine(uploadsRoot, "models3d");
+            var volumeUploadsPath = Path.Combine("/data", "uploads");
+            var dataModelsPath = Path.Combine(volumeUploadsPath, "models3d");
             
             // Create directories if they don't exist
-            if (!Directory.Exists(models3dRoot))
+            if (!Directory.Exists(dataModelsPath))
             {
-                Directory.CreateDirectory(models3dRoot);
-                Console.WriteLine($"Created uploads directory on volume: {models3dRoot}");
+                Directory.CreateDirectory(dataModelsPath);
+                Console.WriteLine($"Created uploads directory on volume: {dataModelsPath}");
             }
 
             // Enable static files for wwwroot (if needed for other static files)
             app.UseStaticFiles();
 
-            // Enable static files for uploads from volume (/data/uploads)
+            // Serve files from /data/uploads as /uploads/...
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(uploadsRoot),
+                FileProvider = new PhysicalFileProvider(volumeUploadsPath),
                 RequestPath = "/uploads",
                 OnPrepareResponse = ctx =>
                 {
