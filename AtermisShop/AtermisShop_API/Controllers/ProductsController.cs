@@ -138,20 +138,22 @@ public class ProductsController : ControllerBase
 
         try
         {
-            // Create uploads directory if it doesn't exist
-            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "models3d");
-            if (!Directory.Exists(uploadsFolder))
+            // Save to volume directory (/data/uploads/models3d)
+            var savePath = Path.Combine("/data", "uploads", "models3d");
+            
+            // Create directory if it doesn't exist
+            if (!Directory.Exists(savePath))
             {
-                Directory.CreateDirectory(uploadsFolder);
-                Console.WriteLine($"Created uploads directory: {uploadsFolder}");
+                Directory.CreateDirectory(savePath);
+                Console.WriteLine($"Created uploads directory on volume: {savePath}");
             }
 
             // Generate unique filename
             var fileName = $"{Guid.NewGuid()}{fileExtension}";
-            var filePath = Path.Combine(uploadsFolder, fileName);
+            var filePath = Path.Combine(savePath, fileName);
 
             // Save file
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            using (var stream = System.IO.File.Create(filePath))
             {
                 await file.CopyToAsync(stream, cancellationToken);
             }

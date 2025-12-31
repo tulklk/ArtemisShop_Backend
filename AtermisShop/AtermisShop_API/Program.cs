@@ -158,7 +158,7 @@ namespace AtermisShop_API
 
             app.UseHttpsRedirection();
 
-            // Ensure wwwroot directory exists
+            // Ensure wwwroot directory exists (for other static files if needed)
             var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
             if (!Directory.Exists(wwwrootPath))
             {
@@ -166,17 +166,25 @@ namespace AtermisShop_API
                 Console.WriteLine("Created wwwroot directory");
             }
 
-            // Ensure uploads/models3d directory exists
-            var uploadsPath = Path.Combine(wwwrootPath, "uploads", "models3d");
-            if (!Directory.Exists(uploadsPath))
+            // Configure uploads directory on volume (/data/uploads)
+            var uploadsRoot = Path.Combine("/data", "uploads");
+            var models3dRoot = Path.Combine(uploadsRoot, "models3d");
+            
+            // Create directories if they don't exist
+            if (!Directory.Exists(models3dRoot))
             {
-                Directory.CreateDirectory(uploadsPath);
-                Console.WriteLine("Created uploads/models3d directory");
+                Directory.CreateDirectory(models3dRoot);
+                Console.WriteLine($"Created uploads directory on volume: {models3dRoot}");
             }
 
-            // Enable static files (for serving uploaded 3D models)
+            // Enable static files for wwwroot (if needed for other static files)
+            app.UseStaticFiles();
+
+            // Enable static files for uploads from volume (/data/uploads)
             app.UseStaticFiles(new StaticFileOptions
             {
+                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(uploadsRoot),
+                RequestPath = "/uploads",
                 OnPrepareResponse = ctx =>
                 {
                     // Set proper MIME type for GLB files
