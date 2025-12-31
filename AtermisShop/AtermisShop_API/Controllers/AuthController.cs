@@ -1,5 +1,6 @@
 using AtermisShop.Application.Auth.Commands.ForgotPassword;
 using AtermisShop.Application.Auth.Commands.Login;
+using AtermisShop.Application.Auth.Commands.LoginFacebook;
 using AtermisShop.Application.Auth.Commands.LoginGoogle;
 using AtermisShop.Application.Auth.Commands.RefreshToken;
 using AtermisShop.Application.Auth.Commands.Register;
@@ -119,6 +120,16 @@ public class AuthController : ControllerBase
         return Ok(tokens);
     }
 
+    [HttpPost("login/facebook")]
+    [AllowAnonymous]
+    public async Task<IActionResult> LoginFacebook([FromBody] LoginFacebookRequest request, CancellationToken cancellationToken)
+    {
+        var tokens = await _mediator.Send(new LoginFacebookCommand(request.AccessToken), cancellationToken);
+        if (tokens == null)
+            return Unauthorized();
+        return Ok(tokens);
+    }
+
     [HttpPost("refresh")]
     [AllowAnonymous]
     public async Task<IActionResult> Refresh([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
@@ -231,6 +242,11 @@ public sealed class LoginRequest
 public sealed class LoginGoogleRequest
 {
     public string IdToken { get; set; } = default!;
+}
+
+public sealed class LoginFacebookRequest
+{
+    public string AccessToken { get; set; } = default!;
 }
 
 public sealed class RefreshTokenRequest

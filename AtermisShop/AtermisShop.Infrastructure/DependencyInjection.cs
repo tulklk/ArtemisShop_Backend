@@ -127,6 +127,9 @@ public static class DependencyInjection
         // Register Gemini AI service
         services.AddHttpClient<Application.Common.Interfaces.IGeminiService, Services.GeminiService>();
 
+        // Register HttpClientFactory for Facebook OAuth
+        services.AddHttpClient();
+
         return services;
     }
 }

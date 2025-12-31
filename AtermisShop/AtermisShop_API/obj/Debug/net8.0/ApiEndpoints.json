@@ -786,6 +786,22 @@
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.AuthController",
+    "Method": "LoginFacebook",
+    "RelativePath": "api/Auth/login/facebook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AtermisShop_API.Controllers.LoginFacebookRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.AuthController",
     "Method": "LoginGoogle",
     "RelativePath": "api/Auth/login/google",
     "HttpMethod": "POST",

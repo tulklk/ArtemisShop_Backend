@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FenNqWCi7VQ=",
+  "dgSpecHash": "IgaxRkDKUrM=",
   "success": true,
   "projectFilePath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
   "expectedPackageFiles": [
@@ -40,7 +40,7 @@
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.0\\microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.diagnostics\\10.0.1\\microsoft.extensions.diagnostics.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\10.0.1\\microsoft.extensions.diagnostics.abstractions.10.0.1.nupkg.sha512",
-    "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.http\\8.0.0\\microsoft.extensions.http.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.http\\10.0.1\\microsoft.extensions.http.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.identity.core\\10.0.1\\microsoft.extensions.identity.core.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.identity.stores\\10.0.1\\microsoft.extensions.identity.stores.10.0.1.nupkg.sha512",
     "C:\\Users\\Tus\\.nuget\\packages\\microsoft.extensions.logging\\10.0.1\\microsoft.extensions.logging.10.0.1.nupkg.sha512",
