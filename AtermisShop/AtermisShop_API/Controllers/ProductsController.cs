@@ -107,10 +107,60 @@ public class ProductsController : ControllerBase
             request.IsActive,
             request.HasEngraving,
             request.DefaultEngravingText,
+            request.Model3DUrl,
             request.ImageUrls,
             request.Variants), cancellationToken);
 
         return Ok(new { id });
+    }
+
+    /// <summary>
+    /// Upload 3D model file (GLB format) for a product
+    /// </summary>
+    [HttpPost("upload-model3d")]
+    [Authorize(Roles = "Admin")]
+    [RequestSizeLimit(50_000_000)] // 50MB limit
+    public async Task<IActionResult> UploadModel3D(IFormFile file, CancellationToken cancellationToken)
+    {
+        if (file == null || file.Length == 0)
+            return BadRequest(new { error = "No file uploaded" });
+
+        // Validate file extension
+        var allowedExtensions = new[] { ".glb", ".GLB" };
+        var fileExtension = Path.GetExtension(file.FileName);
+        if (!allowedExtensions.Contains(fileExtension))
+            return BadRequest(new { error = "Only GLB files are allowed" });
+
+        // Validate file size (max 50MB)
+        const long maxFileSize = 50_000_000; // 50MB
+        if (file.Length > maxFileSize)
+            return BadRequest(new { error = "File size exceeds 50MB limit" });
+
+        try
+        {
+            // Create uploads directory if it doesn't exist
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "models3d");
+            if (!Directory.Exists(uploadsFolder))
+                Directory.CreateDirectory(uploadsFolder);
+
+            // Generate unique filename
+            var fileName = $"{Guid.NewGuid()}{fileExtension}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            // Save file
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream, cancellationToken);
+            }
+
+            // Return URL path
+            var fileUrl = $"/uploads/models3d/{fileName}";
+            return Ok(new { url = fileUrl });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = $"Failed to upload file: {ex.Message}" });
+        }
     }
 }
 
@@ -126,6 +176,7 @@ public sealed class CreateProductRequest
     public bool IsActive { get; set; }
     public bool HasEngraving { get; set; }
     public string? DefaultEngravingText { get; set; }
+    public string? Model3DUrl { get; set; }
     public List<string>? ImageUrls { get; set; }
     public List<ProductVariantDto>? Variants { get; set; }
 }

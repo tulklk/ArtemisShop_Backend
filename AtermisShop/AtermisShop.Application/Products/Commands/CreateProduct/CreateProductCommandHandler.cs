@@ -56,6 +56,8 @@ public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductC
             HasVariants = request.Variants != null && request.Variants.Count > 0,
             HasEngraving = request.HasEngraving,
             DefaultEngravingText = request.HasEngraving ? request.DefaultEngravingText : null,
+            // Normalize Model3DUrl: empty string becomes null
+            Model3DUrl = string.IsNullOrWhiteSpace(request.Model3DUrl) ? null : request.Model3DUrl,
             CategoryId = request.CategoryId
         };
 

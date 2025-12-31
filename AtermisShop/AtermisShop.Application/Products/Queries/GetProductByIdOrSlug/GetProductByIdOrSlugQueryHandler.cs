@@ -53,6 +53,7 @@ public sealed class GetProductByIdOrSlugQueryHandler : IRequestHandler<GetProduc
             HasVariants = product.HasVariants,
             HasEngraving = product.HasEngraving,
             DefaultEngravingText = product.DefaultEngravingText,
+            Model3DUrl = product.Model3DUrl,
             CategoryId = product.CategoryId,
             ImageUrls = product.Images.Select(img => img.ImageUrl).ToList(),
             Variants = product.Variants.Select(v => new ProductVariantDto(

@@ -14,5 +14,6 @@ public sealed record UpdateProductCommand(
     string? Brand = null,
     bool? IsActive = null,
     bool? HasEngraving = null,
-    string? DefaultEngravingText = null) : IRequest;
+    string? DefaultEngravingText = null,
+    string? Model3DUrl = null) : IRequest;
 

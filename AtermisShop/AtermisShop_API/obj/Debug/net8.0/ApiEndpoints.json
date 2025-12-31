@@ -1804,6 +1804,22 @@
     ]
   },
   {
+    "ContainingType": "AtermisShop_API.Controllers.ProductsController",
+    "Method": "UploadModel3D",
+    "RelativePath": "api/Products/upload-model3d",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AtermisShop_API.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",

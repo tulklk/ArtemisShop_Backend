@@ -13,6 +13,7 @@ public sealed record CreateProductCommand(
     bool IsActive,
     bool HasEngraving,
     string? DefaultEngravingText,
+    string? Model3DUrl,
     List<string>? ImageUrls,
     List<ProductVariantDto>? Variants) : IRequest<Guid>;
 

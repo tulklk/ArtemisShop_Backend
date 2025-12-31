@@ -38,6 +38,7 @@ public sealed class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, 
             HasVariants = p.HasVariants,
             HasEngraving = p.HasEngraving,
             DefaultEngravingText = p.DefaultEngravingText,
+            Model3DUrl = p.Model3DUrl,
             CategoryId = p.CategoryId,
             ImageUrls = p.Images.Select(img => img.ImageUrl).ToList(),
             Variants = p.Variants.Select(v => new ProductVariantDto(

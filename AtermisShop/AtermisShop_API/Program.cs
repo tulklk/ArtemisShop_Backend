@@ -158,6 +158,9 @@ namespace AtermisShop_API
 
             app.UseHttpsRedirection();
 
+            // Enable static files (for serving uploaded 3D models)
+            app.UseStaticFiles();
+
             // Enable CORS - must be before UseAuthentication and UseAuthorization
             app.UseCors("AllowFrontend");
 

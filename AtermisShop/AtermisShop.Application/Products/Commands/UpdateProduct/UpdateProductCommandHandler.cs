@@ -63,6 +63,19 @@ public sealed class UpdateProductCommandHandler : IRequestHandler<UpdateProductC
             product.DefaultEngravingText = request.DefaultEngravingText;
         }
 
+        // Update Model3DUrl: Model3DUrl is optional
+        // If a non-null value is provided, update it (normalize empty string to null)
+        // If null is provided (default), don't update (keep existing value)
+        // Note: Since Model3DUrl has default value null, we can't distinguish between "not provided" and "set to null"
+        // So we only update if a non-null value is provided
+        // To clear Model3DUrl, admin can pass an empty string, which we'll normalize to null
+        if (request.Model3DUrl != null)
+        {
+            // Normalize empty string to null
+            product.Model3DUrl = string.IsNullOrWhiteSpace(request.Model3DUrl) ? null : request.Model3DUrl;
+        }
+        // If request.Model3DUrl is null (default), don't update - keep existing value
+
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

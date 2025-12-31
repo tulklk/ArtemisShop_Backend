@@ -15,6 +15,7 @@ public class Product : BaseEntity
     public bool HasVariants { get; set; }
     public bool HasEngraving { get; set; }
     public string? DefaultEngravingText { get; set; }
+    public string? Model3DUrl { get; set; }
     public Guid CategoryId { get; set; }
     public ProductCategory Category { get; set; } = default!;
     public ICollection<ProductVariant> Variants { get; set; } = new List<ProductVariant>();
