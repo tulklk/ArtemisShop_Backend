@@ -141,7 +141,10 @@ public class ProductsController : ControllerBase
             // Create uploads directory if it doesn't exist
             var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "models3d");
             if (!Directory.Exists(uploadsFolder))
+            {
                 Directory.CreateDirectory(uploadsFolder);
+                Console.WriteLine($"Created uploads directory: {uploadsFolder}");
+            }
 
             // Generate unique filename
             var fileName = $"{Guid.NewGuid()}{fileExtension}";
@@ -153,12 +156,23 @@ public class ProductsController : ControllerBase
                 await file.CopyToAsync(stream, cancellationToken);
             }
 
+            // Verify file was saved
+            if (!System.IO.File.Exists(filePath))
+            {
+                return StatusCode(500, new { error = "File was not saved successfully" });
+            }
+
+            var fileInfo = new FileInfo(filePath);
+            Console.WriteLine($"File uploaded successfully: {fileName}, Size: {fileInfo.Length} bytes, Path: {filePath}");
+
             // Return URL path
             var fileUrl = $"/uploads/models3d/{fileName}";
-            return Ok(new { url = fileUrl });
+            return Ok(new { url = fileUrl, fileName = fileName, size = fileInfo.Length });
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Error uploading file: {ex.Message}");
+            Console.WriteLine($"Stack trace: {ex.StackTrace}");
             return StatusCode(500, new { error = $"Failed to upload file: {ex.Message}" });
         }
     }

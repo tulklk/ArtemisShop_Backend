@@ -158,8 +158,36 @@ namespace AtermisShop_API
 
             app.UseHttpsRedirection();
 
+            // Ensure wwwroot directory exists
+            var wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+            if (!Directory.Exists(wwwrootPath))
+            {
+                Directory.CreateDirectory(wwwrootPath);
+                Console.WriteLine("Created wwwroot directory");
+            }
+
+            // Ensure uploads/models3d directory exists
+            var uploadsPath = Path.Combine(wwwrootPath, "uploads", "models3d");
+            if (!Directory.Exists(uploadsPath))
+            {
+                Directory.CreateDirectory(uploadsPath);
+                Console.WriteLine("Created uploads/models3d directory");
+            }
+
             // Enable static files (for serving uploaded 3D models)
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    // Set proper MIME type for GLB files
+                    if (ctx.File.Name.EndsWith(".glb", StringComparison.OrdinalIgnoreCase))
+                    {
+                        ctx.Context.Response.ContentType = "model/gltf-binary";
+                    }
+                    // Allow CORS for static files
+                    ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+                }
+            });
 
             // Enable CORS - must be before UseAuthentication and UseAuthorization
             app.UseCors("AllowFrontend");
