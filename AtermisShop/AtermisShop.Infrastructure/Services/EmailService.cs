@@ -362,7 +362,7 @@ public class EmailService : IEmailService
 
     public async Task SendOrderConfirmationAsync(string email, string name, AtermisShop.Domain.Orders.Order order, CancellationToken cancellationToken)
     {
-        var paymentMethodName = order.PaymentMethod == 0 ? "COD (Thanh toán khi nhận hàng)" : "PayOS (Thanh toán online)";
+        var paymentMethodName = order.PaymentMethod == 0 ? "COD (Thanh toán khi nhận hàng)" : "Chuyển khoản";
         var orderStatusName = order.OrderStatus switch
         {
             0 => "Chờ xử lý",
@@ -498,16 +498,16 @@ public class EmailService : IEmailService
         .total-section {{
             margin-top: 20px;
             padding: 20px;
-            background-color: #2a2a2a;
             border-radius: 8px;
+            border-left: 4px solid #ff6b9d;
         }}
         .total-row {{
             display: flex;
             justify-content: space-between;
             margin: 8px 0;
             padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
+            border-bottom: 1px solid #eee;
+            color: #555;
             font-size: 14px;
         }}
         .total-row:last-child {{
@@ -628,20 +628,20 @@ public class EmailService : IEmailService
                 <div class='total-section'>
                     <div class='total-row'>
                         <span>Tạm tính ({order.Items.Count} sản phẩm) : </span>
-                        <span>{subtotal:N0} ₫</span>
+                        <span> {subtotal:N0}₫</span>
                     </div>
                     {(order.VoucherDiscountAmount.HasValue && order.VoucherDiscountAmount > 0 ? $@"
                     <div class='total-row'>
                         <span>Giảm giá : </span>
-                        <span style='color: #4ade80;'>-{order.VoucherDiscountAmount.Value: N0} ₫</span>
+                        <span style='color: #4ade80;'>-{order.VoucherDiscountAmount.Value:N0}₫</span>
                     </div>" : "")}
                     <div class='total-row'>
                         <span>Phí vận chuyển : </span>
-                        <span>{shippingFee: N0} ₫</span>
+                        <span> {shippingFee:N0}₫</span>
                     </div>
                     <div class='total-row'>
                         <span><strong>Tổng cộng : </strong></span>
-                        <span><strong>{order.TotalAmount: N0} ₫</strong></span>
+                        <span><strong> {order.TotalAmount:N0}₫</strong></span>
                     </div>
                 </div>
 
