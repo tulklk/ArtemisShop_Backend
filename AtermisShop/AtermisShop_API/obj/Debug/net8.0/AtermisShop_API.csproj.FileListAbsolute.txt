@@ -141,6 +141,7 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\Aterm
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\appsettings.Development.json
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\appsettings.json
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.staticwebassets.runtime.json
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.staticwebassets.endpoints.json
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.exe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.deps.json
@@ -178,6 +179,7 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
@@ -196,6 +198,7 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Newtonsoft.Json.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Npgsql.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\PayOS.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -208,6 +211,7 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.Management.dll
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.Text.Json.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -280,14 +284,10 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.build.json.cache
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.development.json
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\AtermisS.0A680CD4.Up2Date
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\AtermisShop_API.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\refint\AtermisShop_API.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\AtermisShop_API.pdb
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\AtermisShop_API.genruntimeconfig.cache
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\ref\AtermisShop_API.dll
-E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\PayOS.dll
-E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.Text.Json.dll
-E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
-E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.staticwebassets.runtime.json

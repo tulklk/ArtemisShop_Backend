@@ -374,6 +374,10 @@ public class EmailService : IEmailService
             _ => "Chờ xử lý"
         };
 
+        // Calculate subtotal from items
+        var subtotal = order.Items.Sum(item => item.LineTotal);
+        const decimal shippingFee = 30000m;
+
         var itemsHtml = string.Join("", order.Items.Select(item => 
         {
             // Get product image - prefer primary image, otherwise first image
@@ -386,7 +390,7 @@ public class EmailService : IEmailService
             
             return $@"
                     <tr>
-                        <td style='padding: 12px; border-bottom: 1px solid #eee;'>
+                        <td data-label='Sản phẩm' style='padding: 12px; border-bottom: 1px solid #eee;'>
                             <div style='display: flex; align-items: center; gap: 12px;'>
                                 <div style='flex-shrink: 0;'>
                                     {imageHtml}
@@ -397,9 +401,9 @@ public class EmailService : IEmailService
                                 </div>
                             </div>
                         </td>
-                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: center;'>{item.Quantity}</td>
-                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'>{item.UnitPrice:N0} ₫</td>
-                        <td style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'><strong>{item.LineTotal:N0} ₫</strong></td>
+                        <td data-label='Số lượng' style='padding: 12px; border-bottom: 1px solid #eee; text-align: center;'>{item.Quantity}</td>
+                        <td data-label='Đơn giá' style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'>{item.UnitPrice:N0} ₫</td>
+                        <td data-label='Thành tiền' style='padding: 12px; border-bottom: 1px solid #eee; text-align: right;'><strong>{item.LineTotal:N0} ₫</strong></td>
                     </tr>";
         }));
 
@@ -467,6 +471,8 @@ public class EmailService : IEmailService
         .order-info p {{
             margin: 8px 0;
             color: #555;
+            font-size: 14px;
+            word-break: break-word;
         }}
         .order-info strong {{
             color: #ff6b9d;
@@ -482,15 +488,17 @@ public class EmailService : IEmailService
             padding: 12px;
             text-align: left;
             font-weight: 600;
+            font-size: 14px;
         }}
         .items-table td {{
             padding: 12px;
             border-bottom: 1px solid #eee;
+            font-size: 14px;
         }}
         .total-section {{
             margin-top: 20px;
             padding: 20px;
-            background-color: #fff5f8;
+            background-color: #2a2a2a;
             border-radius: 8px;
         }}
         .total-row {{
@@ -498,13 +506,18 @@ public class EmailService : IEmailService
             justify-content: space-between;
             margin: 8px 0;
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 14px;
         }}
         .total-row:last-child {{
             border-bottom: none;
             font-size: 18px;
             font-weight: 700;
             color: #ff6b9d;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 2px solid rgba(255, 107, 157, 0.3);
         }}
         .footer {{
             padding: 25px 30px;
@@ -522,6 +535,59 @@ public class EmailService : IEmailService
             color: #ff6b9d;
             font-weight: 600;
             margin-top: 10px;
+        }}
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {{
+            .email-wrapper {{
+                width: 100% !important;
+                margin: 0 !important;
+            }}
+            .content {{
+                padding: 20px 15px !important;
+            }}
+            .header {{
+                padding: 30px 15px !important;
+            }}
+            .header h1 {{
+                font-size: 24px !important;
+            }}
+            .order-info {{
+                padding: 15px !important;
+            }}
+            .order-info p {{
+                font-size: 13px !important;
+            }}
+            .items-table {{
+                font-size: 12px !important;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }}
+            .items-table th,
+            .items-table td {{
+                padding: 8px 6px !important;
+                font-size: 12px !important;
+            }}
+            .items-table th:nth-child(2),
+            .items-table th:nth-child(3),
+            .items-table th:nth-child(4),
+            .items-table td:nth-child(2),
+            .items-table td:nth-child(3),
+            .items-table td:nth-child(4) {{
+                min-width: 70px !important;
+            }}
+            .total-section {{
+                padding: 15px !important;
+            }}
+            .total-row {{
+                font-size: 13px !important;
+            }}
+            .total-row:last-child {{
+                font-size: 16px !important;
+            }}
+            .footer {{
+                padding: 20px 15px !important;
+            }}
         }}
     </style>
 </head>
@@ -561,21 +627,21 @@ public class EmailService : IEmailService
 
                 <div class='total-section'>
                     <div class='total-row'>
-                        <span>Tạm tính : </span>
-                        <span>{(order.TotalAmount + (order.VoucherDiscountAmount ?? 0)):N0} ₫</span>
+                        <span>Tạm tính ({order.Items.Count} sản phẩm) : </span>
+                        <span>{subtotal:N0} ₫</span>
                     </div>
                     {(order.VoucherDiscountAmount.HasValue && order.VoucherDiscountAmount > 0 ? $@"
                     <div class='total-row'>
                         <span>Giảm giá : </span>
-                        <span style='color: #28a745;'>-{order.VoucherDiscountAmount.Value:N0} ₫</span>
+                        <span style='color: #4ade80;'>-{order.VoucherDiscountAmount.Value: N0} ₫</span>
                     </div>" : "")}
                     <div class='total-row'>
                         <span>Phí vận chuyển : </span>
-                        <span>30.000 ₫</span>
+                        <span>{shippingFee: N0} ₫</span>
                     </div>
                     <div class='total-row'>
                         <span><strong>Tổng cộng : </strong></span>
-                        <span><strong>{order.TotalAmount:N0} ₫</strong></span>
+                        <span><strong>{order.TotalAmount: N0} ₫</strong></span>
                     </div>
                 </div>
 

@@ -66,7 +66,7 @@ public class PayOsPaymentProvider : IPaymentProvider
 
             // Validate and prepare items for PayOS SDK
             var payOSItems = new List<PayOS.Models.V2.PaymentRequests.PaymentLinkItem>();
-            long totalAmount = 0;
+            long itemsTotalAmount = 0;
             
             foreach (var item in request.Items)
             {
@@ -93,7 +93,7 @@ public class PayOsPaymentProvider : IPaymentProvider
 
                 // Calculate line total
                 var lineTotal = (long)item.Price * item.Quantity;
-                totalAmount += lineTotal;
+                itemsTotalAmount += lineTotal;
 
                 // Create PayOS PaymentLinkItem with proper SDK structure
                 payOSItems.Add(new PayOS.Models.V2.PaymentRequests.PaymentLinkItem
@@ -103,6 +103,34 @@ public class PayOsPaymentProvider : IPaymentProvider
                     Price = item.Price
                 });
             }
+
+            // Calculate shipping fee: difference between total amount and items total
+            // The request.Amount includes shipping fee, so we need to add it as a separate item
+            var totalAmountFromRequest = (long)Math.Round(request.Amount, MidpointRounding.AwayFromZero);
+            var shippingFee = totalAmountFromRequest - itemsTotalAmount;
+
+            // Validate that shipping fee is not negative (shouldn't happen, but safety check)
+            if (shippingFee < 0)
+            {
+                _logger?.LogWarning("Shipping fee is negative: {ShippingFee}. Total: {Total}, Items: {ItemsTotal}", 
+                    shippingFee, totalAmountFromRequest, itemsTotalAmount);
+                // If negative, something is wrong - use items total instead
+                shippingFee = 0;
+            }
+
+            // Add shipping fee as a separate item if there's a difference
+            if (shippingFee > 0)
+            {
+                payOSItems.Add(new PayOS.Models.V2.PaymentRequests.PaymentLinkItem
+                {
+                    Name = "Phí vận chuyển",
+                    Quantity = 1,
+                    Price = (int)shippingFee
+                });
+            }
+
+            // Use the total amount from request (which includes shipping fee)
+            var totalAmount = totalAmountFromRequest;
 
             // Generate orderCode: PayOS requires orderCode to be unique and between 100000 and 999999999999
             // Use timestamp (last 9 digits) + random component to ensure uniqueness
