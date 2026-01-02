@@ -30,6 +30,7 @@ namespace AtermisShop_API
             // Add services to the container.
             try
             {
+                builder.Services.AddHttpContextAccessor();
                 builder.Services
                     .AddApplication()
                     .AddInfrastructure(builder.Configuration);
