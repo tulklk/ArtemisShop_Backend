@@ -113,6 +113,70 @@ public class AdminNewsController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Upload image for news content
+    /// </summary>
+    [HttpPost("upload-image")]
+    [RequestSizeLimit(10_000_000)] // 10MB limit
+    public async Task<IActionResult> UploadImage(IFormFile file, CancellationToken cancellationToken)
+    {
+        if (file == null || file.Length == 0)
+            return BadRequest(new { error = "No file uploaded" });
+
+        // Validate file extension - allow common image formats
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp", ".JPG", ".JPEG", ".PNG", ".GIF", ".WEBP" };
+        var fileExtension = Path.GetExtension(file.FileName);
+        if (!allowedExtensions.Contains(fileExtension))
+            return BadRequest(new { error = "Only image files are allowed (jpg, jpeg, png, gif, webp)" });
+
+        // Validate file size (max 10MB)
+        const long maxFileSize = 10_000_000; // 10MB
+        if (file.Length > maxFileSize)
+            return BadRequest(new { error = "File size exceeds 10MB limit" });
+
+        try
+        {
+            // Save to volume directory (/data/uploads/news)
+            var savePath = Path.Combine("/data", "uploads", "news");
+            
+            // Create directory if it doesn't exist
+            if (!Directory.Exists(savePath))
+            {
+                Directory.CreateDirectory(savePath);
+                Console.WriteLine($"Created news uploads directory: {savePath}");
+            }
+
+            // Generate unique filename
+            var fileName = $"{Guid.NewGuid()}{fileExtension}";
+            var filePath = Path.Combine(savePath, fileName);
+
+            // Save file
+            using (var stream = System.IO.File.Create(filePath))
+            {
+                await file.CopyToAsync(stream, cancellationToken);
+            }
+
+            // Verify file was saved
+            if (!System.IO.File.Exists(filePath))
+            {
+                return StatusCode(500, new { error = "File was not saved successfully" });
+            }
+
+            var fileInfo = new FileInfo(filePath);
+            Console.WriteLine($"News image uploaded successfully: {fileName}, Size: {fileInfo.Length} bytes, Path: {filePath}");
+
+            // Return URL path - this URL can be used in HTML content
+            var fileUrl = $"/uploads/news/{fileName}";
+            return Ok(new { url = fileUrl, fileName = fileName, size = fileInfo.Length });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error uploading news image: {ex.Message}");
+            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            return StatusCode(500, new { error = $"Failed to upload file: {ex.Message}" });
+        }
+    }
+
     public record CreateNewsRequest(
         string Title,
         string Content,

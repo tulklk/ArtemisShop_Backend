@@ -172,6 +172,7 @@ namespace AtermisShop_API
             // Configure uploads directory on volume (/data/uploads)
             var volumeUploadsPath = Path.Combine("/data", "uploads");
             var dataModelsPath = Path.Combine(volumeUploadsPath, "models3d");
+            var dataNewsPath = Path.Combine(volumeUploadsPath, "news");
             
             // Create directories if they don't exist
             if (!Directory.Exists(dataModelsPath))
@@ -179,14 +180,25 @@ namespace AtermisShop_API
                 Directory.CreateDirectory(dataModelsPath);
                 Console.WriteLine($"Created uploads directory on volume: {dataModelsPath}");
             }
+            
+            if (!Directory.Exists(dataNewsPath))
+            {
+                Directory.CreateDirectory(dataNewsPath);
+                Console.WriteLine($"Created news uploads directory on volume: {dataNewsPath}");
+            }
 
             // Enable static files for wwwroot (if needed for other static files)
             app.UseStaticFiles();
 
-            // Map content-type for glb/gltf
+            // Map content-type for glb/gltf and images
             var contentTypeProvider = new FileExtensionContentTypeProvider();
             contentTypeProvider.Mappings[".glb"] = "model/gltf-binary";
             contentTypeProvider.Mappings[".gltf"] = "model/gltf+json";
+            contentTypeProvider.Mappings[".jpg"] = "image/jpeg";
+            contentTypeProvider.Mappings[".jpeg"] = "image/jpeg";
+            contentTypeProvider.Mappings[".png"] = "image/png";
+            contentTypeProvider.Mappings[".gif"] = "image/gif";
+            contentTypeProvider.Mappings[".webp"] = "image/webp";
 
             // Serve files from /data/uploads as /uploads/...
             app.UseStaticFiles(new StaticFileOptions
