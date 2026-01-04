@@ -503,12 +503,6 @@ public class EmailService : IEmailService
                     <div class='password-value'>{newPassword}</div>
                 </div>
 
-                <div class='info-box'>
-                    <p>💡 <strong>Hướng dẫn:</strong></p>
-                    <p>1. Sử dụng mật khẩu trên để đăng nhập vào tài khoản</p>
-                    <p>2. Sau khi đăng nhập, vui lòng đổi mật khẩu mới để bảo mật tài khoản</p>
-                </div>
-
                 <div class='warning'>
                     <p>⚠️ <strong>Lưu ý bảo mật:</strong></p>
                     <p>• Vui lòng không chia sẻ mật khẩu này với bất kỳ ai</p>
@@ -519,7 +513,6 @@ public class EmailService : IEmailService
             <div class='footer'>
                 <p>Chúc bạn có trải nghiệm mua sắm tuyệt vời!</p>
                 <div class='signature'>Đội ngũ ARTEMIS Shop 💖</div>
-                {(string.IsNullOrEmpty(_frontendUrl) ? "" : $"<p style='margin-top: 15px;'>🌐 <a href='{_frontendUrl}' style='color: #ff6b9d; text-decoration: none;'>{_frontendUrl}</a></p>")}
             </div>
         </div>
     </div>
