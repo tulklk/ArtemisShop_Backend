@@ -93,6 +93,20 @@ public class UserService : IUserService
         return true;
     }
 
+    public async Task<bool> ResetPasswordAsync(Guid userId, string newPassword)
+    {
+        var user = await FindByIdAsync(userId);
+        if (user == null)
+            return false;
+
+        // Update password without verifying current password
+        user.PasswordHash = PasswordHasher.HashPassword(newPassword);
+        await UpdateAsync(user);
+        
+        _logger.LogInformation("Password reset successfully for user {UserId}", userId);
+        return true;
+    }
+
     public Task<bool> IsAdminAsync(ApplicationUser user)
     {
         // Role 1 = Admin (you can adjust this based on your role enum)

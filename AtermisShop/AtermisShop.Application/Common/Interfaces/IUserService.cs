@@ -10,6 +10,7 @@ public interface IUserService
     Task<ApplicationUser> CreateAsync(ApplicationUser user, string password);
     Task UpdateAsync(ApplicationUser user);
     Task<bool> ChangePasswordAsync(Guid userId, string currentPassword, string newPassword);
+    Task<bool> ResetPasswordAsync(Guid userId, string newPassword);
     Task<bool> IsAdminAsync(ApplicationUser user);
 }
 

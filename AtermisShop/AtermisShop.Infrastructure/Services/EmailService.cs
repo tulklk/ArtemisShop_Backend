@@ -360,6 +360,175 @@ public class EmailService : IEmailService
         await SendEmailAsync(email, name, subject, body, cancellationToken);
     }
 
+    public async Task SendNewPasswordAsync(string email, string name, string newPassword, CancellationToken cancellationToken)
+    {
+        var subject = "Mật khẩu mới - ARTEMIS Shop";
+        var body = $@"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <style>
+        body {{ 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0;
+            padding: 0;
+            background-color: #fef7f7;
+        }}
+        .email-wrapper {{
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }}
+        .header {{
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }}
+        .header h1 {{
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }}
+        .header .subtitle {{
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.95;
+        }}
+        .content {{
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }}
+        .greeting {{
+            font-size: 20px;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }}
+        .content p {{
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }}
+        .password-box {{
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffe5eb 100%);
+            border: 2px dashed #ff6b9d;
+            border-radius: 12px;
+            text-align: center;
+        }}
+        .password-label {{
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }}
+        .password-value {{
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff6b9d;
+            letter-spacing: 4px;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            display: inline-block;
+            min-width: 200px;
+        }}
+        .warning {{
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }}
+        .warning p {{
+            margin: 5px 0;
+            font-size: 13px;
+            color: #856404;
+        }}
+        .info-box {{
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            border-radius: 4px;
+        }}
+        .info-box p {{
+            margin: 5px 0;
+            font-size: 13px;
+            color: #0d47a1;
+        }}
+        .footer {{
+            padding: 25px 30px;
+            background-color: #fef7f7;
+            border-top: 1px solid #ffe5eb;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+        }}
+        .footer p {{
+            margin: 5px 0;
+            font-size: 13px;
+            color: #999;
+        }}
+        .footer .signature {{
+            color: #ff6b9d;
+            font-weight: 600;
+            margin-top: 10px;
+        }}
+    </style>
+</head>
+<body>
+    <div style='padding: 20px 0;'>
+        <div class='email-wrapper'>
+            <div class='header'>
+                <h1>✨ ARTEMIS ✨</h1>
+                <div class='subtitle'>Vòng tay thông minh</div>
+            </div>
+            <div class='content'>
+                <div class='greeting'>Xin chào {name}! 👋</div>
+                <p>Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản <strong>ARTEMIS Shop</strong> của bạn.</p>
+                <p>Mật khẩu mới của bạn đã được tạo. Vui lòng sử dụng mật khẩu sau để đăng nhập:</p>
+                
+                <div class='password-box'>
+                    <div class='password-label'>Mật khẩu mới của bạn:</div>
+                    <div class='password-value'>{newPassword}</div>
+                </div>
+
+                <div class='info-box'>
+                    <p>💡 <strong>Hướng dẫn:</strong></p>
+                    <p>1. Sử dụng mật khẩu trên để đăng nhập vào tài khoản</p>
+                    <p>2. Sau khi đăng nhập, vui lòng đổi mật khẩu mới để bảo mật tài khoản</p>
+                </div>
+
+                <div class='warning'>
+                    <p>⚠️ <strong>Lưu ý bảo mật:</strong></p>
+                    <p>• Vui lòng không chia sẻ mật khẩu này với bất kỳ ai</p>
+                    <p>• Đổi mật khẩu ngay sau khi đăng nhập</p>
+                    <p>• Nếu bạn không yêu cầu đặt lại mật khẩu, vui lòng liên hệ với chúng tôi ngay</p>
+                </div>
+            </div>
+            <div class='footer'>
+                <p>Chúc bạn có trải nghiệm mua sắm tuyệt vời!</p>
+                <div class='signature'>Đội ngũ ARTEMIS Shop 💖</div>
+                {(string.IsNullOrEmpty(_frontendUrl) ? "" : $"<p style='margin-top: 15px;'>🌐 <a href='{_frontendUrl}' style='color: #ff6b9d; text-decoration: none;'>{_frontendUrl}</a></p>")}
+            </div>
+        </div>
+    </div>
+</body>
+</html>";
+
+        await SendEmailAsync(email, name, subject, body, cancellationToken);
+    }
+
     public async Task SendOrderConfirmationAsync(string email, string name, AtermisShop.Domain.Orders.Order order, CancellationToken cancellationToken)
     {
         var paymentMethodName = order.PaymentMethod == 0 ? "COD (Thanh toán khi nhận hàng)" : "Chuyển khoản";
