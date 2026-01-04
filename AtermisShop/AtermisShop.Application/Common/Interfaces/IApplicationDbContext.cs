@@ -39,6 +39,7 @@ public interface IApplicationDbContext
     // Users
     DbSet<RefreshToken> RefreshTokens { get; }
     DbSet<EmailVerificationToken> EmailVerificationTokens { get; }
+    DbSet<PasswordResetToken> PasswordResetTokens { get; }
 
     // Chat
     DbSet<ChatMessage> ChatMessages { get; }

@@ -79,6 +79,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<EmailVerificationToken> EmailVerificationTokens => Set<EmailVerificationToken>();
+    public DbSet<PasswordResetToken> PasswordResetTokens => Set<PasswordResetToken>();
 
     // Chat
     public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();

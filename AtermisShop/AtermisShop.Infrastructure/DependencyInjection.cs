@@ -121,6 +121,9 @@ public static class DependencyInjection
         // Register email verification token service
         services.AddScoped<Application.Common.Interfaces.IEmailVerificationTokenService, EmailVerificationTokenService>();
 
+        // Register password reset token service
+        services.AddScoped<Application.Common.Interfaces.IPasswordResetTokenService, PasswordResetTokenService>();
+
         // Register payment providers
         services.AddScoped<Application.Payments.Common.IPaymentProvider, Payments.PayOsPaymentProvider>();
 
