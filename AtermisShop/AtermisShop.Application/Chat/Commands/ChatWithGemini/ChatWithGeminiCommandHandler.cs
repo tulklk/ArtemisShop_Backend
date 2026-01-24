@@ -57,8 +57,11 @@ public sealed class ChatWithGeminiCommandHandler : IRequestHandler<ChatWithGemin
             .Select(g => new { ProductId = g.Key, TotalSold = g.Sum(x => x.OrderItem.Quantity) })
             .ToDictionaryAsync(x => x.ProductId, x => x.TotalSold, cancellationToken);
 
+        // Build personalized context based on user type (Guest vs Customer)
+        string userContext = await BuildUserContextAsync(request.UserId, activeProducts, cancellationToken);
+
         // Build system context with product information and FAQ
-        var systemContext = BuildSystemContext(activeProducts, productSales);
+        var systemContext = BuildSystemContext(activeProducts, productSales, userContext);
 
         // Get chat history for context (last 5 messages)
         var chatHistory = await _context.ChatMessages
@@ -70,12 +73,13 @@ public sealed class ChatWithGeminiCommandHandler : IRequestHandler<ChatWithGemin
 
         // Build conversation context (last 3 messages for context)
         var recentHistory = chatHistory.TakeLast(3).ToList();
+        var userLabel = request.UserId.HasValue ? "Customer" : "Guest";
         var conversationContext = string.Join("\n", recentHistory.Select(m => 
-            $"{(m.UserId.HasValue ? "User" : "Guest")}: {m.Message}"));
+            $"{(m.UserId.HasValue ? userLabel : "AI")}: {m.Message}"));
 
         var fullUserMessage = string.IsNullOrEmpty(conversationContext) 
             ? request.Message 
-            : $"{conversationContext}\nUser: {request.Message}";
+            : $"{conversationContext}\n{userLabel}: {request.Message}";
 
         // Call Gemini API with system context and user message
         var response = await _geminiService.ChatAsync(fullUserMessage, systemContext, cancellationToken);
@@ -100,9 +104,86 @@ public sealed class ChatWithGeminiCommandHandler : IRequestHandler<ChatWithGemin
         return new ChatWithGeminiResult(response, sessionId, suggestedProducts);
     }
 
+    private async Task<string> BuildUserContextAsync(
+        Guid? userId,
+        List<AtermisShop.Application.Products.Common.ProductDto> products,
+        CancellationToken cancellationToken)
+    {
+        if (!userId.HasValue)
+        {
+            // Guest user - no personalized context
+            return @"THÔNG TIN KHÁCH HÀNG:
+- Loại: Khách vãng lai (Guest)
+- Gợi ý: Hãy giới thiệu các sản phẩm bán chạy và phổ biến nhất";
+        }
+
+        // Customer - build personalized context
+        var user = await _context.Users
+            .Where(u => u.Id == userId.Value)
+            .Select(u => new { u.FullName, u.Email })
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (user == null)
+        {
+            return "THÔNG TIN KHÁCH HÀNG: Không tìm thấy thông tin";
+        }
+
+        // Get customer's purchase history
+        var canceledStatus = (int)OrderStatus.Canceled;
+        var customerOrders = await _context.Orders
+            .Where(o => o.UserId == userId.Value && o.OrderStatus != canceledStatus)
+            .Include(o => o.Items)
+            .OrderByDescending(o => o.CreatedAt)
+            .Take(5)
+            .ToListAsync(cancellationToken);
+
+        var totalOrders = customerOrders.Count;
+        var totalSpent = customerOrders.Sum(o => o.TotalAmount);
+
+        // Get purchased products
+        var purchasedProductIds = customerOrders
+            .SelectMany(o => o.Items)
+            .Select(oi => oi.ProductId)
+            .Distinct()
+            .ToList();
+
+        var purchasedProducts = products
+            .Where(p => purchasedProductIds.Contains(p.Id))
+            .Select(p => p.Name)
+            .ToList();
+
+        // Get most recent order
+        var recentOrder = customerOrders.FirstOrDefault();
+        var recentOrderInfo = recentOrder != null
+            ? $"Đơn hàng gần nhất: {recentOrder.CreatedAt:dd/MM/yyyy} - {recentOrder.TotalAmount:N0} VNĐ"
+            : "Chưa có đơn hàng nào";
+
+        var contextBuilder = new System.Text.StringBuilder();
+        contextBuilder.AppendLine("THÔNG TIN KHÁCH HÀNG:");
+        contextBuilder.AppendLine($"- Loại: Khách hàng đã đăng ký (Customer)");
+        contextBuilder.AppendLine($"- Tên: {user.FullName}");
+        contextBuilder.AppendLine($"- Email: {user.Email}");
+        contextBuilder.AppendLine($"- Tổng số đơn hàng: {totalOrders}");
+        contextBuilder.AppendLine($"- Tổng chi tiêu: {totalSpent:N0} VNĐ");
+        contextBuilder.AppendLine($"- {recentOrderInfo}");
+
+        if (purchasedProducts.Any())
+        {
+            contextBuilder.AppendLine($"- Sản phẩm đã mua: {string.Join(", ", purchasedProducts)}");
+            contextBuilder.AppendLine("- Gợi ý: Ưu tiên giới thiệu sản phẩm liên quan hoặc nâng cấp từ sản phẩm đã mua");
+        }
+        else
+        {
+            contextBuilder.AppendLine("- Gợi ý: Khách hàng mới, hãy giới thiệu các sản phẩm phổ biến và bán chạy");
+        }
+
+        return contextBuilder.ToString();
+    }
+
     private string BuildSystemContext(
         List<AtermisShop.Application.Products.Common.ProductDto> products,
-        Dictionary<Guid, int> productSales)
+        Dictionary<Guid, int> productSales,
+        string userContext)
     {
         // Sort products by sales (best selling first), then by name
         var productsWithSales = products.Select(p => new
@@ -139,6 +220,8 @@ public sealed class ChatWithGeminiCommandHandler : IRequestHandler<ChatWithGemin
         }));
 
         return $@"Bạn là trợ lý AI thông minh của cửa hàng ARTEMIS - chuyên bán vòng tay thông minh với GPS. Nhiệm vụ của bạn là trả lời các câu hỏi của khách hàng một cách thân thiện, chuyên nghiệp và chính xác bằng tiếng Việt.
+
+{userContext}
 
 THÔNG TIN SẢN PHẨM:
 {productList}

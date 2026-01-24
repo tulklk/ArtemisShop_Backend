@@ -67,7 +67,12 @@ public class EmailVerificationTokenService : IEmailVerificationTokenService
     public async Task<EmailVerificationToken?> ValidateTokenAsync(string token, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(token))
+        {
+            _logger.LogWarning("ValidateTokenAsync called with null or empty token.");
             return null;
+        }
+
+        _logger.LogInformation("Validating token: {Token}", token);
 
         var verificationToken = await _context.EmailVerificationTokens
             .Include(t => t.User)
@@ -75,22 +80,30 @@ public class EmailVerificationTokenService : IEmailVerificationTokenService
 
         if (verificationToken == null)
         {
-            _logger.LogWarning("Email verification token not found: {Token}", token);
+            _logger.LogWarning("Email verification token not found in database: {Token}", token);
+            // Let's also check if it exists case-insensitively just in case
+            var existsCaseInsensitive = await _context.EmailVerificationTokens.AnyAsync(t => t.Token.ToLower() == token.ToLower(), cancellationToken);
+            if (existsCaseInsensitive)
+            {
+                _logger.LogWarning("Token exists in database but with different casing: {Token}", token);
+            }
             return null;
         }
 
         if (verificationToken.IsUsed)
         {
-            _logger.LogWarning("Email verification token already used: {Token}", token);
+            _logger.LogWarning("Email verification token already used: {Token}. Used status: {IsUsed}", token, verificationToken.IsUsed);
             return null;
         }
 
         if (verificationToken.ExpiresAt < DateTime.UtcNow)
         {
-            _logger.LogWarning("Email verification token expired: {Token}, Expired at {ExpiresAt}", token, verificationToken.ExpiresAt);
+            _logger.LogWarning("Email verification token expired: {Token}. Expired at {ExpiresAt}, Current time {CurrentTime}", 
+                token, verificationToken.ExpiresAt, DateTime.UtcNow);
             return null;
         }
 
+        _logger.LogInformation("Email verification token successfully validated for user {UserId}", verificationToken.UserId);
         return verificationToken;
     }
 

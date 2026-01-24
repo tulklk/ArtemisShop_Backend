@@ -133,6 +133,9 @@ public static class DependencyInjection
         // Register HttpClientFactory for Facebook OAuth
         services.AddHttpClient();
 
+        // Register RSS Feed Service
+        services.AddHttpClient<IRssFeedService, RssFeedService>();
+
         return services;
     }
 }

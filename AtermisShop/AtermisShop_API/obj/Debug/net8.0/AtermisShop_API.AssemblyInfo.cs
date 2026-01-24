@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AtermisShop_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66b502662e76d6e6a1166b2a17e40bc2f3349fb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0f8629b81c01a17ddd48b216aec5a6509dc6e75")]
 [assembly: System.Reflection.AssemblyProductAttribute("AtermisShop_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AtermisShop_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

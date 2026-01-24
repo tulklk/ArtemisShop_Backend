@@ -134,7 +134,7 @@ public sealed class LoginGoogleCommandHandler : IRequestHandler<LoginGoogleComma
             }
 
             // Generate JWT tokens
-            var tokens = await _jwtTokenService.GenerateTokensAsync(user);
+            var tokens = await _jwtTokenService.GenerateTokensAsync(user, cancellationToken);
             
             // Add user information to response
             tokens.User = new Common.UserDto

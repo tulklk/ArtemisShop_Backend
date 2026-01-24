@@ -5,7 +5,7 @@ namespace AtermisShop.Application.Common.Interfaces;
 
 public interface IJwtTokenService
 {
-    Task<JwtTokenResult> GenerateTokensAsync(ApplicationUser user);
+    Task<JwtTokenResult> GenerateTokensAsync(ApplicationUser user, CancellationToken cancellationToken = default);
 }
 
 

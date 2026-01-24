@@ -2,11 +2,8 @@ using AtermisShop.Application.Auth.Common;
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Domain.Users;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace AtermisShop.Application.Auth.Commands.RefreshToken;
 
@@ -15,45 +12,47 @@ public sealed class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCom
     private readonly IUserService _userService;
     private readonly IConfiguration _configuration;
     private readonly IJwtTokenService _jwtTokenService;
+    private readonly IApplicationDbContext _context;
 
     public RefreshTokenCommandHandler(
         IUserService userService,
         IConfiguration configuration,
-        IJwtTokenService jwtTokenService)
+        IJwtTokenService jwtTokenService,
+        IApplicationDbContext context)
     {
         _userService = userService;
         _configuration = configuration;
         _jwtTokenService = jwtTokenService;
+        _context = context;
     }
 
     public async Task<JwtTokenResult?> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
     {
-        // For simplicity, we'll use JWT validation. In production, store refresh tokens in DB
         try
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]!);
-            var validationParameters = new TokenValidationParameters
+            var refreshTokenEntity = await _context.RefreshTokens
+                .FirstOrDefaultAsync(t => t.Token == request.RefreshToken && 
+                                         t.ExpiresAt > DateTime.UtcNow && 
+                                         t.RevokedAt == null, cancellationToken);
+
+            if (refreshTokenEntity == null)
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(key),
-                ValidateIssuer = true,
-                ValidIssuer = _configuration["Jwt:Issuer"],
-                ValidateAudience = true,
-                ValidAudience = _configuration["Jwt:Audience"],
-                ValidateLifetime = false // Don't validate expiry for refresh token check
-            };
-
-            var principal = tokenHandler.ValidateToken(request.RefreshToken, validationParameters, out var validatedToken);
-            var userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
                 return null;
+            }
 
-            var user = await _userService.FindByIdAsync(userId);
-            if (user == null)
+            var user = await _userService.FindByIdAsync(refreshTokenEntity.UserId);
+            if (user == null || !user.IsActive)
+            {
                 return null;
+            }
 
-            var tokens = await _jwtTokenService.GenerateTokensAsync(user);
+            // Revoke current token
+            refreshTokenEntity.RevokedAt = DateTime.UtcNow;
+            _context.RefreshTokens.Update(refreshTokenEntity);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            // Generate new ones
+            var tokens = await _jwtTokenService.GenerateTokensAsync(user, cancellationToken);
             
             // Add user information to response
             tokens.User = new Common.UserDto

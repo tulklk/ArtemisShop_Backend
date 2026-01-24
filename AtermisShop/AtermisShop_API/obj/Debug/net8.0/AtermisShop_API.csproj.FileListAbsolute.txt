@@ -445,4 +445,5 @@ C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\D
 C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\AtermisShop_API.genruntimeconfig.cache
 C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\ref\AtermisShop_API.dll
 C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\AtermisShop_API.staticwebassets.runtime.json
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\bin\Debug\net8.0\System.ServiceModel.Syndication.dll
 C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop_API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
