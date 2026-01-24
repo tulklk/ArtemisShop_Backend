@@ -19,7 +19,13 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection") ?? configuration["DATABASE_URL"];
+        // Prioritize DATABASE_URL (Render format) over local appsettings
+        var connectionString = configuration["DATABASE_URL"];
+        
+        if (string.IsNullOrWhiteSpace(connectionString))
+        {
+            connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
 
         if (!string.IsNullOrEmpty(connectionString) && (connectionString.StartsWith("postgres://") || connectionString.StartsWith("postgresql://")))
         {
@@ -33,6 +39,17 @@ public static class DependencyInjection
                                $"Username={userInfo[0]};" +
                                $"Password={userInfo[1]};" +
                                $"SSL Mode=Require;Trust Server Certificate=true";
+        }
+
+        // Log the connection attempt (masking password)
+        if (!string.IsNullOrEmpty(connectionString))
+        {
+            var maskedConnectionString = System.Text.RegularExpressions.Regex.Replace(connectionString, @"Password=[^;]+", "Password=******");
+            Console.WriteLine($"[DB Setup] Attempting to connect with: {maskedConnectionString}");
+        }
+        else
+        {
+            Console.WriteLine("[DB Setup] No connection string found in configuration!");
         }
 
         services.AddDbContext<ApplicationDbContext>(options =>
