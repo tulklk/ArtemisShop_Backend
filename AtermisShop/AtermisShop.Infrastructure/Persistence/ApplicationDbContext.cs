@@ -71,7 +71,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     // News
     public DbSet<NewsPost> NewsPosts => Set<NewsPost>();
-    public DbSet<RssArticle> RssArticles => Set<RssArticle>();
 
     // Wishlist
     public DbSet<Wishlist> Wishlists => Set<Wishlist>();

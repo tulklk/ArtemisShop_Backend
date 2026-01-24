@@ -19,7 +19,21 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var connectionString = configuration.GetConnectionString("DefaultConnection") ?? configuration["DATABASE_URL"];
+
+        // If the connection string is a postgres:// URL (Render/Heroku format), convert it to Npgsql format
+        if (!string.IsNullOrEmpty(connectionString) && (connectionString.StartsWith("postgres://") || connectionString.StartsWith("postgresql://")))
+        {
+            var databaseUri = new Uri(connectionString);
+            var userInfo = databaseUri.UserInfo.Split(':');
+
+            connectionString = $"Host={databaseUri.Host};" +
+                               $"Port={databaseUri.Port};" +
+                               $"Database={databaseUri.AbsolutePath.TrimStart('/')};" +
+                               $"Username={userInfo[0]};" +
+                               $"Password={userInfo[1]};" +
+                               $"SSL Mode=Require;Trust Server Certificate=true";
+        }
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
