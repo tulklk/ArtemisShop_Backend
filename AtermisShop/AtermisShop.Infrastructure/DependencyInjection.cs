@@ -21,14 +21,14 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? configuration["DATABASE_URL"];
 
-        // If the connection string is a postgres:// URL (Render/Heroku format), convert it to Npgsql format
         if (!string.IsNullOrEmpty(connectionString) && (connectionString.StartsWith("postgres://") || connectionString.StartsWith("postgresql://")))
         {
             var databaseUri = new Uri(connectionString);
             var userInfo = databaseUri.UserInfo.Split(':');
+            var port = databaseUri.Port == -1 ? 5432 : databaseUri.Port;
 
             connectionString = $"Host={databaseUri.Host};" +
-                               $"Port={databaseUri.Port};" +
+                               $"Port={port};" +
                                $"Database={databaseUri.AbsolutePath.TrimStart('/')};" +
                                $"Username={userInfo[0]};" +
                                $"Password={userInfo[1]};" +
