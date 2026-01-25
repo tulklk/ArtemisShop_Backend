@@ -19,27 +19,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        // Prioritize DATABASE_URL (Render format) over local appsettings
-        var connectionString = configuration["DATABASE_URL"];
-        
-        if (string.IsNullOrWhiteSpace(connectionString))
-        {
-            connectionString = configuration.GetConnectionString("DefaultConnection");
-        }
-
-        if (!string.IsNullOrEmpty(connectionString) && (connectionString.StartsWith("postgres://") || connectionString.StartsWith("postgresql://")))
-        {
-            var databaseUri = new Uri(connectionString);
-            var userInfo = databaseUri.UserInfo.Split(':');
-            var port = databaseUri.Port == -1 ? 5432 : databaseUri.Port;
-
-            connectionString = $"Host={databaseUri.Host};" +
-                               $"Port={port};" +
-                               $"Database={databaseUri.AbsolutePath.TrimStart('/')};" +
-                               $"Username={userInfo[0]};" +
-                               $"Password={userInfo[1]};" +
-                               $"SSL Mode=Require;Trust Server Certificate=true";
-        }
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
 
         // Log the connection attempt (masking password)
         if (!string.IsNullOrEmpty(connectionString))
