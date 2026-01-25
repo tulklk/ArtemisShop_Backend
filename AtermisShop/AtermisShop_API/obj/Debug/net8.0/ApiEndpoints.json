@@ -1278,11 +1278,6 @@
         "IsRequired": false
       },
       {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "search",
         "Type": "System.String",
         "IsRequired": false
@@ -1306,6 +1301,27 @@
       {
         "Name": "incrementViewCount",
         "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.NewsController",
+    "Method": "GetChildAbductionNews",
+    "RelativePath": "api/News/child-abduction",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

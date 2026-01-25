@@ -12,18 +12,21 @@ namespace AtermisShop.Infrastructure.Auth;
 
 public sealed class JwtTokenService : IJwtTokenService
 {
+    private readonly IApplicationDbContext _context;
     private readonly IConfiguration _configuration;
     private readonly ILogger<JwtTokenService> _logger;
 
     public JwtTokenService(
+        IApplicationDbContext context,
         IConfiguration configuration,
         ILogger<JwtTokenService> logger)
     {
+        _context = context;
         _configuration = configuration;
         _logger = logger;
     }
 
-    public async Task<JwtTokenResult> GenerateTokensAsync(ApplicationUser user)
+    public async Task<JwtTokenResult> GenerateTokensAsync(ApplicationUser user, CancellationToken cancellationToken)
     {
         var jwtSection = _configuration.GetSection("Jwt");
         var issuer = jwtSection["Issuer"]!;
@@ -68,20 +71,44 @@ public sealed class JwtTokenService : IJwtTokenService
         var handler = new JwtSecurityTokenHandler();
 
         // Simplified refresh token for now
-        var refreshToken = Guid.NewGuid().ToString("N");
+        var refreshTokenString = Guid.NewGuid().ToString("N");
+        var refreshTokenExpiresAt = now.AddDays(refreshDays);
+
+        // Save refresh token to database
+        try
+        {
+            var refreshTokenEntity = new RefreshToken
+            {
+                UserId = user.Id,
+                Token = refreshTokenString,
+                ExpiresAt = refreshTokenExpiresAt,
+                CreatedAt = now
+            };
+
+            _context.RefreshTokens.Add(refreshTokenEntity);
+            var result = await _context.SaveChangesAsync(cancellationToken);
+            
+            _logger.LogInformation("Saved refresh token to database for user {UserId}. Result: {Result}", user.Id, result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to save refresh token to database for user {UserId}", user.Id);
+            // We don't throw here to avoid blocking login if only refresh token saving fails
+            // but in production you might want to handle this more strictly
+        }
 
         return new JwtTokenResult
         {
             AccessToken = handler.WriteToken(token),
             AccessTokenExpiresAt = accessExpires,
-            RefreshToken = refreshToken,
-            RefreshTokenExpiresAt = now.AddDays(refreshDays)
+            RefreshToken = refreshTokenString,
+            RefreshTokenExpiresAt = refreshTokenExpiresAt
         };
     }
 
     public JwtTokenResult GenerateTokens(ApplicationUser user)
     {
-        return GenerateTokensAsync(user).Result;
+        return GenerateTokensAsync(user, CancellationToken.None).Result;
     }
 }
 

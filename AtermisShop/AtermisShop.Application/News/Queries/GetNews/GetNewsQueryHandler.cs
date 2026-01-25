@@ -22,12 +22,6 @@ public sealed class GetNewsQueryHandler : IRequestHandler<GetNewsQuery, IReadOnl
             .Where(n => n.IsPublished)
             .AsQueryable();
 
-        // Filter by category
-        if (!string.IsNullOrWhiteSpace(request.Category))
-        {
-            query = query.Where(n => n.Category != null && n.Category.ToLower() == request.Category.ToLower());
-        }
-
         // Search by title or content
         if (!string.IsNullOrWhiteSpace(request.Search))
         {

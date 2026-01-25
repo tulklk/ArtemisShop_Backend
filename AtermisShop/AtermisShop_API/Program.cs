@@ -169,22 +169,29 @@ namespace AtermisShop_API
                 Console.WriteLine("Created wwwroot directory");
             }
 
-            // Configure uploads directory on volume (/data/uploads)
-            var volumeUploadsPath = Path.Combine("/data", "uploads");
+            // Configure uploads directory. Use environment variable or default to local 'uploads'
+            var volumeUploadsPath = builder.Configuration["Storage:UploadsPath"] ?? Path.Combine(Directory.GetCurrentDirectory(), "uploads");
             var dataModelsPath = Path.Combine(volumeUploadsPath, "models3d");
             var dataNewsPath = Path.Combine(volumeUploadsPath, "news");
             
             // Create directories if they don't exist
-            if (!Directory.Exists(dataModelsPath))
+            try
             {
-                Directory.CreateDirectory(dataModelsPath);
-                Console.WriteLine($"Created uploads directory on volume: {dataModelsPath}");
+                if (!Directory.Exists(dataModelsPath))
+                {
+                    Directory.CreateDirectory(dataModelsPath);
+                    Console.WriteLine($"Created uploads directory: {dataModelsPath}");
+                }
+                
+                if (!Directory.Exists(dataNewsPath))
+                {
+                    Directory.CreateDirectory(dataNewsPath);
+                    Console.WriteLine($"Created news uploads directory: {dataNewsPath}");
+                }
             }
-            
-            if (!Directory.Exists(dataNewsPath))
+            catch (Exception ex)
             {
-                Directory.CreateDirectory(dataNewsPath);
-                Console.WriteLine($"Created news uploads directory on volume: {dataNewsPath}");
+                Console.WriteLine($"Warning: Could not create upload directories: {ex.Message}");
             }
 
             // Enable static files for wwwroot (if needed for other static files)

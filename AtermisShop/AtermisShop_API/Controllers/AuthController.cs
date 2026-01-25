@@ -163,18 +163,43 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new VerifyEmailCommand(request.Token), cancellationToken);
-        if (!result)
-            return BadRequest(new { success = false, message = "Invalid or expired verification token" });
-        return Ok(new { success = true });
+        try
+        {
+            var result = await _mediator.Send(new VerifyEmailCommand(request.Token), cancellationToken);
+            if (!result)
+                return BadRequest(new { success = false, message = "Xác thực không thành công." });
+                
+            return Ok(new { success = true, message = "Xác thực email thành công!" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during email verification for token {Token}", request?.Token);
+            return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi trong quá trình xác thực email." });
+        }
     }
 
     [HttpPost("resend-verification")]
     [AllowAnonymous]
     public async Task<IActionResult> ResendVerification([FromBody] ResendVerificationRequest request, CancellationToken cancellationToken)
     {
-        var result = await _mediator.Send(new ResendVerificationCommand(request.Email), cancellationToken);
-        return Ok(new { success = result });
+        try
+        {
+            var result = await _mediator.Send(new ResendVerificationCommand(request.Email), cancellationToken);
+            return Ok(new { success = result, message = "Email xác thực đã được gửi lại." });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during resending verification for email: {Email}", request.Email);
+            return StatusCode(500, new { success = false, message = "Đã xảy ra lỗi khi gửi lại email xác thực." });
+        }
     }
 
     [HttpPost("forgot-password")]

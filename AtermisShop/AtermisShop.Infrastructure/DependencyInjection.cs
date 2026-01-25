@@ -21,6 +21,17 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+        // Log the connection attempt (masking password)
+        if (!string.IsNullOrEmpty(connectionString))
+        {
+            var maskedConnectionString = System.Text.RegularExpressions.Regex.Replace(connectionString, @"Password=[^;]+", "Password=******");
+            Console.WriteLine($"[DB Setup] Attempting to connect with: {maskedConnectionString}");
+        }
+        else
+        {
+            Console.WriteLine("[DB Setup] No connection string found in configuration!");
+        }
+
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseNpgsql(connectionString, npgsqlOptions =>
@@ -132,6 +143,9 @@ public static class DependencyInjection
 
         // Register HttpClientFactory for Facebook OAuth
         services.AddHttpClient();
+
+        // Register RSS Feed Service
+        services.AddHttpClient<IRssFeedService, RssFeedService>();
 
         return services;
     }
