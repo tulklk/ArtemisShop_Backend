@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AtermisShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251230182927_AddEngravingFieldsToProduct")]
-    partial class AddEngravingFieldsToProduct
+    [Migration("20260121101741_InitialPostgresMigration")]
+    partial class InitialPostgresMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -489,6 +489,9 @@ namespace AtermisShop.Infrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("Model3DUrl")
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -758,6 +761,9 @@ namespace AtermisShop.Infrastructure.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(false);
 
+                    b.Property<string>("FacebookId")
+                        .HasColumnType("text");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -824,6 +830,38 @@ namespace AtermisShop.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EmailVerificationTokens");
+                });
+
+            modelBuilder.Entity("AtermisShop.Domain.Users.PasswordResetToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PasswordResetTokens");
                 });
 
             modelBuilder.Entity("AtermisShop.Domain.Users.RefreshToken", b =>
@@ -1126,6 +1164,17 @@ namespace AtermisShop.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("AtermisShop.Domain.Users.EmailVerificationToken", b =>
+                {
+                    b.HasOne("AtermisShop.Domain.Users.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("AtermisShop.Domain.Users.PasswordResetToken", b =>
                 {
                     b.HasOne("AtermisShop.Domain.Users.ApplicationUser", "User")
                         .WithMany()

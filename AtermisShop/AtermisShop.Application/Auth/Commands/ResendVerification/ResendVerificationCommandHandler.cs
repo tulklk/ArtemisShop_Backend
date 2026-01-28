@@ -27,8 +27,16 @@ public sealed class ResendVerificationCommandHandler : IRequestHandler<ResendVer
     public async Task<bool> Handle(ResendVerificationCommand request, CancellationToken cancellationToken)
     {
         var user = await _userService.FindByEmailAsync(request.Email);
-        if (user == null || user.EmailVerified)
-            return false;
+        
+        if (user == null)
+        {
+            throw new InvalidOperationException("Không tìm thấy người dùng với email này.");
+        }
+
+        if (user.EmailVerified)
+        {
+            throw new InvalidOperationException("Email của bạn đã được xác thực rồi.");
+        }
 
         try
         {
@@ -48,7 +56,7 @@ public sealed class ResendVerificationCommandHandler : IRequestHandler<ResendVer
         catch (Exception ex)
         {
             _logger?.LogError(ex, "Failed to resend verification email to {Email}", request.Email);
-            return false;
+            throw new Exception("Đã xảy ra lỗi khi gửi email xác thực. Vui lòng thử lại sau.", ex);
         }
     }
 }

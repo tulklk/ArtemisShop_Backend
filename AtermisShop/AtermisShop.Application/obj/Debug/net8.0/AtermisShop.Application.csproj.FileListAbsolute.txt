@@ -29,3 +29,19 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\refint\AtermisShop.Application.dll
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.pdb
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\ref\AtermisShop.Application.dll
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.deps.json
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.dll
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Application.pdb
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Domain.dll
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\bin\Debug\net8.0\AtermisShop.Domain.pdb
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.AssemblyInfoInputs.cache
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.AssemblyInfo.cs
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.sourcelink.json
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisS.8F24EEF5.Up2Date
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.dll
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\refint\AtermisShop.Application.dll
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\AtermisShop.Application.pdb
+C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Application\obj\Debug\net8.0\ref\AtermisShop.Application.dll
