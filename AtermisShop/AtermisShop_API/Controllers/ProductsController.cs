@@ -8,6 +8,7 @@ using AtermisShop.Application.Products.Queries.GetProducts;
 using AtermisShop.Application.Products.Queries.SearchProducts;
 using AtermisShop.Application.Products.Queries.ValidateEngravingText;
 using MediatR;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

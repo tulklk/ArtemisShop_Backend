@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\persistence\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\uploads\\news\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\uploads\\news\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\uploads\\models3d\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\uploads\\models3d\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\services\\rssfeedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\services\\rssfeedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -194,7 +210,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AtermisShop_API\\Properties\\launchSettings.json",
@@ -203,8 +219,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-01-21T10:00:19.776Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -227,30 +242,12 @@
               "Name": "ST:82:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
-              "RelativeDocumentMoniker": "AtermisShop_API\\Program.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
-              "RelativeToolTip": "AtermisShop_API\\Program.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-25T09:36:40.286Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "RelativeToolTip": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T10:03:12.556Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
@@ -260,14 +257,70 @@
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
               "RelativeToolTip": "AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAowAwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-21T11:14:38.877Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "RelativeDocumentMoniker": "AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "RelativeToolTip": "AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T03:53:29.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T10:03:12.556Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\news\\.gitkeep",
+              "RelativeDocumentMoniker": "AtermisShop_API\\uploads\\news\\.gitkeep",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\news\\.gitkeep",
+              "RelativeToolTip": "AtermisShop_API\\uploads\\news\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T03:53:32.818Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RssFeedService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "ViewState": "AgIAABQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T15:23:06.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\DependencyInjection.cs",
@@ -275,12 +328,11 @@
               "RelativeToolTip": "AtermisShop.Infrastructure\\DependencyInjection.cs",
               "ViewState": "AgIAAJoAAAAAAAAAAAAkwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:53:55.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:53:55.788Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\CartController.cs",
@@ -288,12 +340,35 @@
               "RelativeToolTip": "AtermisShop_API\\Controllers\\CartController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAABAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:23:24.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T01:23:24.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
+              "RelativeToolTip": "AtermisShop_API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T09:36:40.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "AtermisShop_API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T07:57:08.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "CreateCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
@@ -301,12 +376,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:23:16.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T01:23:16.855Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "PasswordHasher.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
@@ -314,12 +388,11 @@
               "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T03:22:51.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T03:22:51.625Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "JwtTokenService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
@@ -327,12 +400,11 @@
               "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAkwCMAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T03:22:52.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T03:22:52.586Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "AddCartItemCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
@@ -340,12 +412,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAswAQAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:32:52.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T01:32:52.463Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "AddCartItemCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
@@ -353,12 +424,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:32:54.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T01:32:54.778Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "CreateCategoryCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
@@ -366,12 +436,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:55:31.694Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:55:31.694Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "ExampleOperationFilter.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
@@ -379,12 +448,11 @@
               "RelativeToolTip": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:56:00.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:56:00.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "ProductVariant.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductVariant.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductVariant.cs",
@@ -392,12 +460,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductVariant.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T12:54:08.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T12:54:08.666Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\Product.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\Product.cs",
@@ -405,12 +472,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Products\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T11:33:33.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T11:33:33.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "GlobalExceptionHandlerMiddleware.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
@@ -418,12 +484,11 @@
               "RelativeToolTip": "AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:49:27.13Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:49:27.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "CamelCaseSchemaFilter.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
@@ -431,12 +496,11 @@
               "RelativeToolTip": "AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:55:56.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:55:56.645Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "ChatMessage.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Chat\\ChatMessage.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Chat\\ChatMessage.cs",
@@ -444,12 +508,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Chat\\ChatMessage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:04:58.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:04:58.686Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "EmailVerificationToken.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
@@ -457,12 +520,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:01:21.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:01:21.827Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "PasswordResetToken.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\PasswordResetToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\PasswordResetToken.cs",
@@ -470,12 +532,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Users\\PasswordResetToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:01:22.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:01:22.931Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\ApplicationUser.cs",
@@ -483,12 +544,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Users\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:01:20.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:01:20.088Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\RefreshToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\RefreshToken.cs",
@@ -496,12 +556,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Users\\RefreshToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:01:19.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:01:19.293Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "ProductComment.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductComment.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductComment.cs",
@@ -509,12 +568,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductComment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T19:00:44.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T19:00:44.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "ProductSpecification.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductSpecification.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductSpecification.cs",
@@ -522,12 +580,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T16:36:33.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T16:36:33.875Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "Voucher.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Voucher.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\Voucher.cs",
@@ -535,12 +592,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\Voucher.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAABQAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T12:54:41.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T12:54:41.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "OrderStatus.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderStatus.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\OrderStatus.cs",
@@ -548,12 +604,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\OrderStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T12:54:29.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T12:54:29.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "GuestOrdersController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\GuestOrdersController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\GuestOrdersController.cs",
@@ -561,12 +616,11 @@
               "RelativeToolTip": "AtermisShop_API\\Controllers\\GuestOrdersController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T16:23:30.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T16:23:30.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "LoginCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
@@ -574,12 +628,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:57:31.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:57:31.315Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "LoginCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
@@ -587,12 +640,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:57:30.311Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:57:30.311Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "ForgotPasswordCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
@@ -600,12 +652,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:57:27.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:57:27.735Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "ForgotPasswordCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
@@ -613,12 +664,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:57:22.816Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:57:22.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "CategoryDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
@@ -626,12 +676,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:56:08.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:56:08.229Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "UpdateCategoryCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
@@ -639,12 +688,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:55:52.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:55:52.98Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "DeleteCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
@@ -652,12 +700,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:55:39.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:55:39.644Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "GetCategoryByIdQuery.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
@@ -665,12 +712,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:56:12.575Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:56:12.575Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "DeleteCategoryCommand.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
@@ -678,12 +724,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:55:36.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T14:55:36.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "VoucherUsage.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\VoucherUsage.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\VoucherUsage.cs",
@@ -691,12 +736,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\VoucherUsage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T12:54:39.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T12:54:39.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "ProductImage.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImage.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductImage.cs",
@@ -704,12 +748,11 @@
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductImage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T11:33:47.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T11:33:47.106Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\DependencyInjection.cs",
@@ -717,38 +760,35 @@
               "RelativeToolTip": "AtermisShop.Application\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T10:05:14.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T10:05:14.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "AtermisShop.Infrastructure.csproj",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "RelativeToolTip": "AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-21T10:00:10.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T10:00:10.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 44,
               "Title": "AtermisShop_API.csproj",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
               "RelativeDocumentMoniker": "AtermisShop_API\\AtermisShop_API.csproj",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+              "ToolTip": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
               "RelativeToolTip": "AtermisShop_API\\AtermisShop_API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-21T09:59:48.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T09:59:48.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 45,
               "Title": "WishlistController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\WishlistController.cs",
@@ -756,12 +796,11 @@
               "RelativeToolTip": "AtermisShop_API\\Controllers\\WishlistController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:55:55.139Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:55:55.139Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 46,
               "Title": "GetWishlistQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
@@ -769,12 +808,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:50:00.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:50:00.659Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 47,
               "Title": "GetWishlistQuery.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
@@ -782,12 +820,11 @@
               "RelativeToolTip": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:49:55.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-21T08:49:55.088Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 48,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\AuthController.cs",
@@ -795,24 +832,7 @@
               "RelativeToolTip": "AtermisShop_API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-22T12:22:29.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:13:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "WhenOpened": "2025-12-22T12:22:29.504Z"
             }
           ]
         }
