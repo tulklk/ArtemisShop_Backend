@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {}
+    "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {
+    "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj",
         "projectName": "AtermisShop.Application",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\obj\\",
         "projectStyle": "PackageReference",
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj": {
-                "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj"
+              "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj"
               }
             }
           }
@@ -107,12 +107,12 @@
         }
       }
     },
-    "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj": {
+    "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
         "projectName": "AtermisShop.Domain",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\AtermisShop.Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\obj\\",
         "projectStyle": "PackageReference",

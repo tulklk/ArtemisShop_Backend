@@ -8,5 +8,6 @@ public class ProductImage : BaseEntity
     public Product Product { get; set; } = default!;
     public string ImageUrl { get; set; } = default!;
     public bool IsPrimary { get; set; }
+    public ProductImageType Type { get; set; } = ProductImageType.Product;
 }
 
