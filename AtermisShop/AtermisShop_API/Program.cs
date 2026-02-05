@@ -60,6 +60,10 @@ namespace AtermisShop_API
                             // Allow all Vercel preview deployments (*.vercel.app)
                             if (origin.EndsWith(".vercel.app") && origin.StartsWith("https://"))
                                 return true;
+
+                            // Allow Artemis production frontend domain
+                            if (origin == "https://www.artemis.io.vn")
+                                return true;
                             
                             return false;
                         })
