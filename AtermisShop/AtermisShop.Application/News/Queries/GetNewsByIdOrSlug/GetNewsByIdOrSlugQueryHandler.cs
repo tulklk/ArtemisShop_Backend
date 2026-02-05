@@ -48,7 +48,8 @@ public sealed class GetNewsByIdOrSlugQueryHandler : IRequestHandler<GetNewsByIdO
             newsPost.Tags,
             newsPost.PublishedAt,
             newsPost.ViewCount,
-            newsPost.CreatedAt);
+            newsPost.CreatedAt,
+            newsPost.NewsUrl);
     }
 }
 

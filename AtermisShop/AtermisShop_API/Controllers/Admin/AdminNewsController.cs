@@ -49,6 +49,7 @@ public class AdminNewsController : ControllerBase
                 request.Category,
                 request.Tags,
                 request.IsPublished,
+                request.NewsUrl,
                 authorId), cancellationToken);
             
             return Ok(result);
@@ -184,7 +185,8 @@ public class AdminNewsController : ControllerBase
         string? ThumbnailUrl,
         string? Category,
         string? Tags,
-        bool IsPublished);
+        bool IsPublished,
+        string? NewsUrl);
 
     public record UpdateNewsRequest(
         string Title,

@@ -14,8 +14,18 @@ public sealed record CreateProductCommand(
     bool HasEngraving,
     string? DefaultEngravingText,
     string? Model3DUrl,
-    List<string>? ImageUrls,
+    List<CreateProductImageDto>? Images,
     List<ProductVariantDto>? Variants) : IRequest<Guid>;
+
+public enum ProductImageTypeDto
+{
+    Product = 0,
+    Illustration = 1
+}
+
+public sealed record CreateProductImageDto(
+    string ImageUrl,
+    ProductImageTypeDto? Type = null);
 
 public sealed record ProductVariantDto(
     string? Color,

@@ -7257,9 +7257,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
       "projectName": "AtermisShop_API",
-      "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\obj\\",
       "projectStyle": "PackageReference",
@@ -7282,11 +7282,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj"
+            "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj": {
+              "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\AtermisShop.Application.csproj"
             },
-            "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj"
+            "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj"
             }
           }
         }

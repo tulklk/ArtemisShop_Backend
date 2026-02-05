@@ -47,7 +47,11 @@ public sealed class SearchProductsQueryHandler : IRequestHandler<SearchProductsQ
             DefaultEngravingText = p.DefaultEngravingText,
             Model3DUrl = p.Model3DUrl,
             CategoryId = p.CategoryId,
-            ImageUrls = p.Images.Select(img => img.ImageUrl).ToList(),
+            Images = p.Images.Select(img => new ProductImageDto
+            {
+                ImageUrl = img.ImageUrl,
+                Type = (ProductImageTypeDto)img.Type
+            }).ToList(),
             Variants = p.Variants.Select(v => new ProductVariantDto(
                 v.Color,
                 v.Size,

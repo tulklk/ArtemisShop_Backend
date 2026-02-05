@@ -1,3 +1,4 @@
+using AtermisShop.Application.Products.Commands.CreateProduct;
 using MediatR;
 
 namespace AtermisShop.Application.Products.Commands.UpdateProduct;
@@ -15,5 +16,6 @@ public sealed record UpdateProductCommand(
     bool? IsActive = null,
     bool? HasEngraving = null,
     string? DefaultEngravingText = null,
-    string? Model3DUrl = null) : IRequest;
+    string? Model3DUrl = null,
+    List<CreateProductImageDto>? Images = null) : IRequest;
 

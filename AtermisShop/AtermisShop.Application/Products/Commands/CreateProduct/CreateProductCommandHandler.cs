@@ -64,17 +64,24 @@ public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductC
         _context.Products.Add(product);
 
         // Add images
-        if (request.ImageUrls != null && request.ImageUrls.Count > 0)
+        if (request.Images != null && request.Images.Count > 0)
         {
-            for (int i = 0; i < request.ImageUrls.Count; i++)
+            for (int i = 0; i < request.Images.Count; i++)
             {
-                if (!string.IsNullOrWhiteSpace(request.ImageUrls[i]))
+                var imageDto = request.Images[i];
+                if (!string.IsNullOrWhiteSpace(imageDto.ImageUrl))
                 {
+                    // Use provided Type or default to Product (0)
+                    var imageTypeDto = imageDto.Type ?? ProductImageTypeDto.Product;
+                    // Map DTO enum to domain enum
+                    var imageType = (ProductImageType)imageTypeDto;
+
                     var productImage = new ProductImage
                     {
                         ProductId = product.Id,
-                        ImageUrl = request.ImageUrls[i],
-                        IsPrimary = i == 0
+                        ImageUrl = imageDto.ImageUrl,
+                        IsPrimary = i == 0,
+                        Type = imageType
                     };
                     _context.ProductImages.Add(productImage);
                 }
