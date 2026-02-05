@@ -1,4 +1,5 @@
 using AtermisShop.Application.Common.Interfaces;
+using AtermisShop.Application.Products.Commands.CreateProduct;
 using AtermisShop.Domain.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ public sealed class UpdateProductCommandHandler : IRequestHandler<UpdateProductC
     public async Task Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
         var product = await _context.Products
+            .Include(p => p.Images)
             .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
         if (product == null)
@@ -75,6 +77,41 @@ public sealed class UpdateProductCommandHandler : IRequestHandler<UpdateProductC
             product.Model3DUrl = string.IsNullOrWhiteSpace(request.Model3DUrl) ? null : request.Model3DUrl;
         }
         // If request.Model3DUrl is null (default), don't update - keep existing value
+
+        // Update images: add new images or update type of existing images
+        if (request.Images != null && request.Images.Count > 0)
+        {
+            foreach (var imageDto in request.Images)
+            {
+                if (string.IsNullOrWhiteSpace(imageDto.ImageUrl))
+                    continue;
+
+                // Check if image already exists for this product
+                var existingImage = product.Images.FirstOrDefault(img => img.ImageUrl == imageDto.ImageUrl);
+
+                if (existingImage != null)
+                {
+                    // Update type of existing image
+                    var imageTypeDto = imageDto.Type ?? ProductImageTypeDto.Product;
+                    existingImage.Type = (ProductImageType)imageTypeDto;
+                }
+                else
+                {
+                    // Add new image
+                    var imageTypeDto = imageDto.Type ?? ProductImageTypeDto.Product;
+                    var imageType = (ProductImageType)imageTypeDto;
+
+                    var productImage = new ProductImage
+                    {
+                        ProductId = product.Id,
+                        ImageUrl = imageDto.ImageUrl,
+                        IsPrimary = product.Images.Count == 0, // Set as primary if no images exist
+                        Type = imageType
+                    };
+                    _context.ProductImages.Add(productImage);
+                }
+            }
+        }
 
         await _context.SaveChangesAsync(cancellationToken);
     }

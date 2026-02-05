@@ -36,7 +36,8 @@ public sealed class GetAllNewsQueryHandler : IRequestHandler<GetAllNewsQuery, IR
             n.PublishedAt,
             n.ViewCount,
             n.CreatedAt,
-            n.UpdatedAt)).ToList();
+            n.UpdatedAt,
+            n.NewsUrl)).ToList();
     }
 }
 

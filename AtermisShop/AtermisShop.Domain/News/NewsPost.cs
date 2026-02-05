@@ -17,5 +17,7 @@ public class NewsPost : BaseEntity
     public bool IsPublished { get; set; }
     public DateTime? PublishedAt { get; set; }
     public int ViewCount { get; set; }
+    public string? Url { get; set; }
+    public string? NewsUrl { get; set; }
 }
 

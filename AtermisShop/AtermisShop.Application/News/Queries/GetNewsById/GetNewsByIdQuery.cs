@@ -19,5 +19,6 @@ public sealed record NewsDto(
     DateTime? PublishedAt,
     int ViewCount,
     DateTime CreatedAt,
-    DateTime? UpdatedAt);
+    DateTime? UpdatedAt,
+    string? NewsUrl = null);
 
