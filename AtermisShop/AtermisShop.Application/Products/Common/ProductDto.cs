@@ -18,7 +18,13 @@ public sealed class ProductDto
     public string? DefaultEngravingText { get; set; }
     public string? Model3DUrl { get; set; }
     public Guid CategoryId { get; set; }
-    public List<string> ImageUrls { get; set; } = new();
+    public List<ProductImageDto> Images { get; set; } = new();
     public List<ProductVariantDto> Variants { get; set; } = new();
+}
+
+public sealed class ProductImageDto
+{
+    public string ImageUrl { get; set; } = default!;
+    public ProductImageTypeDto Type { get; set; }
 }
 

@@ -13,5 +13,6 @@ public sealed record NewsDto(
     string? Tags,
     DateTime? PublishedAt,
     int ViewCount,
-    DateTime CreatedAt);
+    DateTime CreatedAt,
+    string? NewsUrl = null);
 

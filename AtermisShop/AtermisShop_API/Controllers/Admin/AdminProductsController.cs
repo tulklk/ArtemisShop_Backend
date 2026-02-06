@@ -43,7 +43,7 @@ public class AdminProductsController : ControllerBase
             request.HasEngraving,
             request.DefaultEngravingText,
             request.Model3DUrl,
-            request.ImageUrls,
+            request.Images,
             request.Variants), cancellationToken);
         return Ok(new { Id = id });
     }
@@ -75,7 +75,8 @@ public class AdminProductsController : ControllerBase
                 request.IsActive,
                 request.HasEngraving,
                 request.DefaultEngravingText,
-                request.Model3DUrl), cancellationToken);
+                request.Model3DUrl,
+                request.Images), cancellationToken);
             return Ok();
         }
         catch (InvalidOperationException ex)
@@ -110,7 +111,7 @@ public class AdminProductsController : ControllerBase
         bool HasEngraving,
         string? DefaultEngravingText,
         string? Model3DUrl,
-        List<string>? ImageUrls,
+        List<CreateProductImageDto>? Images,
         List<ProductVariantDto>? Variants);
     public record UpdateProductRequest(
         string Name, 
@@ -124,6 +125,7 @@ public class AdminProductsController : ControllerBase
         bool? IsActive = null,
         bool? HasEngraving = null,
         string? DefaultEngravingText = null,
-        string? Model3DUrl = null);
+        string? Model3DUrl = null,
+        List<CreateProductImageDto>? Images = null);
 }
 

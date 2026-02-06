@@ -37,7 +37,8 @@ public sealed class GetNewsByIdQueryHandler : IRequestHandler<GetNewsByIdQuery, 
             newsPost.PublishedAt,
             newsPost.ViewCount,
             newsPost.CreatedAt,
-            newsPost.UpdatedAt);
+            newsPost.UpdatedAt,
+            newsPost.NewsUrl);
     }
 }
 

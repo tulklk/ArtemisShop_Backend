@@ -10,6 +10,7 @@ public sealed record CreateNewsCommand(
     string? Category,
     string? Tags,
     bool IsPublished,
+    string? NewsUrl,
     Guid? AuthorId = null) : IRequest<CreateNewsResult>;
 
 public sealed record CreateNewsResult(

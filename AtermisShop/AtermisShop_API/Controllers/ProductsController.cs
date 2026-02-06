@@ -8,6 +8,7 @@ using AtermisShop.Application.Products.Queries.GetProducts;
 using AtermisShop.Application.Products.Queries.SearchProducts;
 using AtermisShop.Application.Products.Queries.ValidateEngravingText;
 using MediatR;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -108,7 +109,7 @@ public class ProductsController : ControllerBase
             request.HasEngraving,
             request.DefaultEngravingText,
             request.Model3DUrl,
-            request.ImageUrls,
+            request.Images,
             request.Variants), cancellationToken);
 
         return Ok(new { id });
@@ -193,7 +194,7 @@ public sealed class CreateProductRequest
     public bool HasEngraving { get; set; }
     public string? DefaultEngravingText { get; set; }
     public string? Model3DUrl { get; set; }
-    public List<string>? ImageUrls { get; set; }
+    public List<CreateProductImageDto>? Images { get; set; }
     public List<ProductVariantDto>? Variants { get; set; }
 }
 

@@ -47,6 +47,7 @@ public sealed class CreateNewsCommandHandler : IRequestHandler<CreateNewsCommand
             Category = string.IsNullOrWhiteSpace(request.Category) ? null : request.Category,
             Tags = string.IsNullOrWhiteSpace(request.Tags) ? null : request.Tags,
             IsPublished = request.IsPublished,
+            NewsUrl = string.IsNullOrWhiteSpace(request.NewsUrl) ? null : request.NewsUrl,
             AuthorId = request.AuthorId,
             PublishedAt = request.IsPublished ? DateTime.UtcNow : null,
             ViewCount = 0

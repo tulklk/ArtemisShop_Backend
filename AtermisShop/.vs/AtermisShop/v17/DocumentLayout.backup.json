@@ -1,185 +1,237 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\persistence\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\persistence\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\persistence\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\products\\common\\productstatisticsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\products\\common\\productstatisticsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\products\\common\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\products\\common\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\auth\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\auth\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\news\\newspost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\news\\newspost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\productcommentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\productcommentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\createcategory\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\createcategory\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\swagger\\exampleoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\swagger\\exampleoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\swagger\\camelcaseschemafilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\swagger\\camelcaseschemafilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\middleware\\globalexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\middleware\\globalexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\chat\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\chat\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\emailverificationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\emailverificationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\guestorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\guestorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\queries\\getcategorybyid\\getcategorybyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\queries\\getcategorybyid\\getcategorybyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\updatecategory\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\updatecategory\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\voucherusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\voucherusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productimagetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productimagetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\services\\geminiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\services\\geminiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productvariant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\uploads\\news\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\uploads\\news\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\uploads\\models3d\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\uploads\\models3d\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\services\\rssfeedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\services\\rssfeedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\auth\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\auth\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\auth\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\cart\\commands\\addcartitem\\addcartitemcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\createcategory\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\createcategory\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\swagger\\exampleoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\swagger\\exampleoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\swagger\\camelcaseschemafilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\swagger\\camelcaseschemafilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\middleware\\globalexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\middleware\\globalexceptionhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\chat\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\chat\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\emailverificationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\emailverificationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\users\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\users\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\products\\productcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\products\\productcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\voucher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\guestorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\guestorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\login\\logincommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\auth\\commands\\forgotpassword\\forgotpasswordcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\queries\\getcategorybyid\\getcategorybyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\queries\\getcategorybyid\\getcategorybyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\common\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\updatecategory\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\updatecategory\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\categories\\commands\\deletecategory\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.domain\\orders\\voucherusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C1C5C9F-ED8B-4B7F-AE5C-1E8F4A5F9C10}|AtermisShop.Domain\\AtermisShop.Domain.csproj|solutionrelative:atermisshop.domain\\orders\\voucherusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\atermisshop.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.infrastructure\\atermisshop.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{F7B9F2E1-3A2C-4B4B-9D3E-5E4C6A8B9D22}|AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj|solutionrelative:atermisshop.infrastructure\\atermisshop.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\atermisshop_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\atermisshop_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\atermisshop_api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C0C7B5-65D1-4E43-8E8D-0D9E6D4C2A11}|AtermisShop.Application\\AtermisShop.Application.csproj|solutionrelative:atermisshop.application\\wishlist\\queries\\getwishlist\\getwishlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|e:\\fpt material\\project\\exe201\\custombraceletwithgpswebsite_be\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|c:\\users\\user\\source\\repos\\artemisshop_backend\\atermisshop\\atermisshop_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9F92391E-7DE9-4529-8F3B-5E360FB7DD15}|AtermisShop_API\\AtermisShop_API.csproj|solutionrelative:atermisshop_api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -190,20 +242,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 20,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AtermisShop_API\\Properties\\launchSettings.json",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Properties\\launchSettings.json",
               "RelativeToolTip": "AtermisShop_API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-01-21T10:00:19.776Z",
               "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -215,15 +271,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Bookmark",
@@ -231,40 +279,28 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
-              "RelativeDocumentMoniker": "AtermisShop_API\\Program.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
-              "RelativeToolTip": "AtermisShop_API\\Program.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAowDkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-25T09:36:40.286Z",
-              "EditorCaption": ""
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
               "RelativeToolTip": "AtermisShop.Infrastructure\\Persistence\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T10:03:12.556Z"
+              "WhenOpened": "2026-01-21T10:03:12.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DatabaseSeeder.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
               "RelativeToolTip": "AtermisShop.Infrastructure\\Persistence\\DatabaseSeeder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -272,120 +308,202 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Program.cs",
+              "RelativeToolTip": "AtermisShop_API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T09:36:40.286Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\DependencyInjection.cs",
-              "RelativeToolTip": "AtermisShop.Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAkwBYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:53:55.788Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\CartController.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\CartController.cs",
-              "RelativeToolTip": "AtermisShop_API\\Controllers\\CartController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAABAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:23:24.59Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CreateCategoryCommandHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
-              "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "Title": "ProductStatisticsDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Products\\Common\\ProductStatisticsDto.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Products\\Common\\ProductStatisticsDto.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Products\\Common\\ProductStatisticsDto.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Products\\Common\\ProductStatisticsDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:23:16.855Z"
+              "WhenOpened": "2026-02-05T13:16:38.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Products\\Common\\ProductDto.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Products\\Common\\ProductDto.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Products\\Common\\ProductDto.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Products\\Common\\ProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T13:16:34.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "PasswordHasher.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
-              "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\NewsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "AtermisShop_API\\Controllers\\NewsController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAA+wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T03:22:51.625Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "JwtTokenService.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
-              "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwCMAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T03:22:52.586Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AddCartItemCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
-              "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:32:52.463Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AddCartItemCommandHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
-              "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T01:32:54.778Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CreateCategoryCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
-              "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T14:55:31.694Z"
+              "WhenOpened": "2026-02-05T13:15:54.749Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "ExampleOperationFilter.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
-              "RelativeDocumentMoniker": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
-              "RelativeToolTip": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Title": "GeminiService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\GeminiService.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Services\\GeminiService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\GeminiService.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Services\\GeminiService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T08:56:00.748Z"
+              "WhenOpened": "2026-02-03T04:03:42.726Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "AtermisShop_API\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAuwLUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T07:57:08.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductCommentsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductCommentsController.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\ProductCommentsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\ProductCommentsController.cs",
+              "RelativeToolTip": "AtermisShop_API\\Controllers\\ProductCommentsController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T11:57:05.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NewsPost.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\News\\NewsPost.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\News\\NewsPost.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\News\\NewsPost.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\News\\NewsPost.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T08:53:53.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "RelativeDocumentMoniker": "AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "RelativeToolTip": "AtermisShop_API\\uploads\\models3d\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T03:53:29.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\Product.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\Product.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\Product.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\Products\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T11:33:33.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductImageType.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImageType.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductImageType.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImageType.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductImageType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T04:01:30.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductImage.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImage.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductImage.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImage.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T11:33:47.106Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Order.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\Order.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Order.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\Orders\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:10:09.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderItem.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderItem.cs",
+              "RelativeToolTip": "AtermisShop.Domain\\Orders\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T13:10:34.6Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "ProductVariant.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductVariant.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductVariant.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductVariant.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductVariant.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductVariant.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductVariant.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -393,23 +511,143 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Product.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\Product.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\Product.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\Product.cs",
-              "RelativeToolTip": "AtermisShop.Domain\\Products\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T11:33:33.629Z"
+              "DocumentIndex": 16,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\news\\.gitkeep",
+              "RelativeDocumentMoniker": "AtermisShop_API\\uploads\\news\\.gitkeep",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\uploads\\news\\.gitkeep",
+              "RelativeToolTip": "AtermisShop_API\\uploads\\news\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-26T03:53:32.818Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
+              "Title": "RssFeedService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Services\\RssFeedService.cs",
+              "ViewState": "AgIAABQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T15:23:06.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAkwBYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T08:53:55.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\CartController.cs",
+              "RelativeToolTip": "AtermisShop_API\\Controllers\\CartController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAABAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T01:23:24.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CreateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T01:23:16.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T03:22:51.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "JwtTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
+              "RelativeToolTip": "AtermisShop.Infrastructure\\Auth\\JwtTokenService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwCMAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T03:22:52.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AddCartItemCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T01:32:52.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AddCartItemCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Cart\\Commands\\AddCartItem\\AddCartItemCommandHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T01:32:54.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CreateCategoryCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
+              "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
+              "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\CreateCategory\\CreateCategoryCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T14:55:31.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ExampleOperationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
+              "RelativeDocumentMoniker": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
+              "RelativeToolTip": "AtermisShop_API\\Swagger\\ExampleOperationFilter.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T08:56:00.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "GlobalExceptionHandlerMiddleware.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
               "RelativeToolTip": "AtermisShop_API\\Middleware\\GlobalExceptionHandlerMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -417,11 +655,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 29,
               "Title": "CamelCaseSchemaFilter.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
               "RelativeToolTip": "AtermisShop_API\\Swagger\\CamelCaseSchemaFilter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -429,11 +667,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 31,
               "Title": "ChatMessage.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Chat\\ChatMessage.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Chat\\ChatMessage.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Chat\\ChatMessage.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Chat\\ChatMessage.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Chat\\ChatMessage.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Chat\\ChatMessage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -441,11 +679,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 32,
               "Title": "EmailVerificationToken.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Users\\EmailVerificationToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -453,11 +691,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 33,
               "Title": "PasswordResetToken.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\PasswordResetToken.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\PasswordResetToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\PasswordResetToken.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\PasswordResetToken.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\PasswordResetToken.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Users\\PasswordResetToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -465,11 +703,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 34,
               "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\ApplicationUser.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\ApplicationUser.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Users\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -477,11 +715,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 35,
               "Title": "RefreshToken.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\RefreshToken.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Users\\RefreshToken.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Users\\RefreshToken.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Users\\RefreshToken.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -489,11 +727,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 37,
               "Title": "ProductComment.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductComment.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductComment.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductComment.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductComment.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductComment.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductComment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -501,11 +739,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 36,
               "Title": "ProductSpecification.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductSpecification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductSpecification.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductSpecification.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductSpecification.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductSpecification.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -513,11 +751,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 39,
               "Title": "Voucher.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Voucher.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Voucher.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\Voucher.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Voucher.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\Voucher.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\Voucher.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAABQAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -525,11 +763,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 38,
               "Title": "OrderStatus.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderStatus.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderStatus.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\OrderStatus.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderStatus.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\OrderStatus.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\OrderStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -537,11 +775,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 40,
               "Title": "GuestOrdersController.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\GuestOrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\GuestOrdersController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\GuestOrdersController.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\GuestOrdersController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\GuestOrdersController.cs",
               "RelativeToolTip": "AtermisShop_API\\Controllers\\GuestOrdersController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -549,11 +787,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 41,
               "Title": "LoginCommandHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommandHandler.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -561,11 +799,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 42,
               "Title": "LoginCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\Login\\LoginCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -573,11 +811,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 43,
               "Title": "ForgotPasswordCommandHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -585,11 +823,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 44,
               "Title": "ForgotPasswordCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
               "RelativeToolTip": "AtermisShop.Application\\Auth\\Commands\\ForgotPassword\\ForgotPasswordCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -597,11 +835,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 46,
               "Title": "CategoryDto.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Common\\CategoryDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -609,11 +847,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 48,
               "Title": "UpdateCategoryCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\UpdateCategory\\UpdateCategoryCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -621,11 +859,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 47,
               "Title": "DeleteCategoryCommandHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommandHandler.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -633,11 +871,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 45,
               "Title": "GetCategoryByIdQuery.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Queries\\GetCategoryById\\GetCategoryByIdQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -645,11 +883,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 49,
               "Title": "DeleteCategoryCommand.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
               "RelativeToolTip": "AtermisShop.Application\\Categories\\Commands\\DeleteCategory\\DeleteCategoryCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -657,11 +895,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 50,
               "Title": "VoucherUsage.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\VoucherUsage.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\VoucherUsage.cs",
               "RelativeDocumentMoniker": "AtermisShop.Domain\\Orders\\VoucherUsage.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\VoucherUsage.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Orders\\VoucherUsage.cs",
               "RelativeToolTip": "AtermisShop.Domain\\Orders\\VoucherUsage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -669,23 +907,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "ProductImage.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImage.cs",
-              "RelativeDocumentMoniker": "AtermisShop.Domain\\Products\\ProductImage.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Domain\\Products\\ProductImage.cs",
-              "RelativeToolTip": "AtermisShop.Domain\\Products\\ProductImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T11:33:47.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 51,
               "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\DependencyInjection.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\DependencyInjection.cs",
               "RelativeToolTip": "AtermisShop.Application\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -693,11 +919,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 52,
               "Title": "AtermisShop.Infrastructure.csproj",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "RelativeDocumentMoniker": "AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "RelativeToolTip": "AtermisShop.Infrastructure\\AtermisShop.Infrastructure.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -705,11 +931,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 53,
               "Title": "AtermisShop_API.csproj",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+              "DocumentMoniker": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
               "RelativeDocumentMoniker": "AtermisShop_API\\AtermisShop_API.csproj",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
+              "ToolTip": "C:\\Users\\User\\Source\\Repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\AtermisShop_API.csproj",
               "RelativeToolTip": "AtermisShop_API\\AtermisShop_API.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -717,11 +943,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 54,
               "Title": "WishlistController.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\WishlistController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\WishlistController.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\WishlistController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\WishlistController.cs",
               "RelativeToolTip": "AtermisShop_API\\Controllers\\WishlistController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -729,11 +955,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 55,
               "Title": "GetWishlistQueryHandler.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
               "RelativeToolTip": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQueryHandler.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -741,11 +967,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 56,
               "Title": "GetWishlistQuery.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
               "RelativeDocumentMoniker": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
               "RelativeToolTip": "AtermisShop.Application\\Wishlist\\Queries\\GetWishlist\\GetWishlistQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -753,27 +979,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 57,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "AtermisShop_API\\Controllers\\AuthController.cs",
-              "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\Controllers\\AuthController.cs",
               "RelativeToolTip": "AtermisShop_API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-22T12:22:29.504Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:13:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

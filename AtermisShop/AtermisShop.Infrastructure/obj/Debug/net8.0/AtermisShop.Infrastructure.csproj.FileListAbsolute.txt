@@ -37,23 +37,23 @@ E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backe
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.pdb
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.genruntimeconfig.cache
 E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\ref\AtermisShop.Infrastructure.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.deps.json
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.runtimeconfig.json
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.pdb
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Application.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Domain.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Domain.pdb
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Application.pdb
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.AssemblyInfo.cs
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.sourcelink.json
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisS.A94CE870.Up2Date
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\refint\AtermisShop.Infrastructure.dll
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.pdb
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.genruntimeconfig.cache
-C:\Users\User\Source\Repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\ref\AtermisShop.Infrastructure.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.deps.json
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.runtimeconfig.json
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Infrastructure.pdb
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Application.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Domain.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Domain.pdb
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\bin\Debug\net8.0\AtermisShop.Application.pdb
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.AssemblyInfo.cs
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.sourcelink.json
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisS.A94CE870.Up2Date
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\refint\AtermisShop.Infrastructure.dll
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.pdb
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\AtermisShop.Infrastructure.genruntimeconfig.cache
+C:\Users\User\source\repos\ArtemisShop_Backend\AtermisShop\AtermisShop.Infrastructure\obj\Debug\net8.0\ref\AtermisShop.Infrastructure.dll
