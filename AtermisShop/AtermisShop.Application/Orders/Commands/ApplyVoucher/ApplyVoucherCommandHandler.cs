@@ -89,14 +89,25 @@ public sealed class ApplyVoucherCommandHandler : IRequestHandler<ApplyVoucherCom
             .FirstOrDefaultAsync(v => v.Code == request.Code && 
                 v.StartDate <= DateTime.UtcNow && v.EndDate >= DateTime.UtcNow, cancellationToken);
 
+        if (orderAmount <= 0)
+        {
+            return new ApplyVoucherResult(false, 0, "Order amount must be greater than 0.");
+        }
+
         if (voucher == null)
+        {
             return new ApplyVoucherResult(false, 0, "Voucher not found or expired");
+        }
 
         if (voucher.UsedCount >= voucher.UsageLimitTotal)
+        {
             return new ApplyVoucherResult(false, 0, "Voucher usage limit exceeded");
+        }
 
         if (voucher.MinOrderAmount.HasValue && orderAmount < voucher.MinOrderAmount.Value)
+        {
             return new ApplyVoucherResult(false, 0, $"Minimum order amount is {voucher.MinOrderAmount.Value}");
+        }
 
         decimal discount = 0;
         if (voucher.DiscountType == 1 && voucher.DiscountValue > 0) // Percentage
