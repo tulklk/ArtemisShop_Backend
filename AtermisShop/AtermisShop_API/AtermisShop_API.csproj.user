@@ -2,5 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>E:\FPT Material\Project\EXE201\CustomBraceletWithGPSWebsite_BE\ArtemisShop_Backend\AtermisShop\AtermisShop_API\Properties\PublishProfiles\artemis - Zip Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
