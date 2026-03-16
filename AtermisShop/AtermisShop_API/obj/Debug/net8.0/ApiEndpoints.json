@@ -1430,6 +1430,22 @@
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.OrdersController",
+    "Method": "DebugVoucher",
+    "RelativePath": "api/Orders/debug-voucher/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.OrdersController",
     "Method": "GetMyOrders",
     "RelativePath": "api/Orders/my",
     "HttpMethod": "GET",
