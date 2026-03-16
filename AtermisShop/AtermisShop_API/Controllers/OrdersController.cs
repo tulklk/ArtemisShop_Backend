@@ -69,7 +69,7 @@ public class OrdersController : ControllerBase
     public async Task<IActionResult> ApplyVoucher([FromBody] ApplyVoucherRequest request, CancellationToken cancellationToken)
     {
         var userId = Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
-        var result = await _mediator.Send(new ApplyVoucherCommand(request.Code, userId), cancellationToken);
+        var result = await _mediator.Send(new ApplyVoucherCommand(request.Code, userId, request.OrderAmount), cancellationToken);
         return Ok(result);
     }
 
@@ -175,6 +175,7 @@ public class OrdersController : ControllerBase
     public sealed class ApplyVoucherRequest
     {
         public string Code { get; set; } = default!;
+        public decimal? OrderAmount { get; set; }
     }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
 

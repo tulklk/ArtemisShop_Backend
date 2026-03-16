@@ -209,7 +209,7 @@ public class GuestOrdersController : ControllerBase
         var result = await _mediator.Send(new ApplyVoucherCommand(
             request.Code, 
             null, 
-            null, 
+            request.OrderAmount, 
             guestItems), cancellationToken);
         
         return Ok(result);
@@ -270,6 +270,7 @@ public class GuestOrdersController : ControllerBase
         public string Email { get; set; } = default!;
         public string Code { get; set; } = default!;
         public List<GuestOrderItem> Items { get; set; } = new();
+        public decimal? OrderAmount { get; set; }
     }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
 }

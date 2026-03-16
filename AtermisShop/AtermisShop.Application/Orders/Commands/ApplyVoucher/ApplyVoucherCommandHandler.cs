@@ -87,7 +87,19 @@ public sealed class ApplyVoucherCommandHandler : IRequestHandler<ApplyVoucherCom
 
         if (orderAmount <= 0)
         {
-            return new ApplyVoucherResult(false, 0, "Order amount must be greater than 0.");
+            var reason = "Order amount must be greater than 0.";
+            if (request.UserId.HasValue)
+            {
+                var cartExists = await _context.Carts.AnyAsync(c => c.UserId == request.UserId.Value, cancellationToken);
+                reason += cartExists
+                    ? " Cart found but items may have UnitPriceSnapshot=0. Try sending orderAmount in request body."
+                    : $" No cart found in database for user {request.UserId.Value}. Try sending orderAmount in request body.";
+            }
+            else if (request.GuestItems == null || !request.GuestItems.Any())
+            {
+                reason += " No items or orderAmount provided. Please send 'orderAmount' or 'items' in request body.";
+            }
+            return new ApplyVoucherResult(false, 0, reason);
         }
 
         var voucherByCode = await _context.Vouchers
