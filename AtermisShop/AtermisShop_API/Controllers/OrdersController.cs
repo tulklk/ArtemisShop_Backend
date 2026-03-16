@@ -1,3 +1,4 @@
+using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateOrder;
 using AtermisShop.Application.Orders.Commands.UpdateOrderPaymentTransaction;
@@ -10,6 +11,7 @@ using AtermisShop_API.Controllers.Orders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AtermisShop_API.Controllers;
 
@@ -19,10 +21,12 @@ namespace AtermisShop_API.Controllers;
 public class OrdersController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IApplicationDbContext _context;
 
-    public OrdersController(IMediator mediator)
+    public OrdersController(IMediator mediator, IApplicationDbContext context)
     {
         _mediator = mediator;
+        _context = context;
     }
 
     [HttpPost]
@@ -173,5 +177,64 @@ public class OrdersController : ControllerBase
         public string Code { get; set; } = default!;
     }
     public record CreatePaymentRequest(string Provider, string? ReturnUrl = null, string? CancelUrl = null);
+
+    [HttpGet("debug-voucher/{code}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> DebugVoucher(string code, CancellationToken cancellationToken)
+    {
+        var now = DateTime.UtcNow;
+
+        var voucher = await _context.Vouchers
+            .FirstOrDefaultAsync(v => v.Code == code, cancellationToken);
+
+        if (voucher == null)
+        {
+            var allCodes = await _context.Vouchers.Select(v => v.Code).ToListAsync(cancellationToken);
+            return Ok(new
+            {
+                found = false,
+                serverTimeUtc = now.ToString("o"),
+                message = $"Voucher with code '{code}' not found in database",
+                availableCodes = allCodes
+            });
+        }
+
+        var checks = new Dictionary<string, object>
+        {
+            ["1_voucherFound"] = true,
+            ["2_startDate"] = voucher.StartDate.ToString("o"),
+            ["3_endDate"] = voucher.EndDate.ToString("o"),
+            ["4_serverTimeUtc"] = now.ToString("o"),
+            ["5_startDatePassed"] = voucher.StartDate <= now,
+            ["6_endDateNotPassed"] = voucher.EndDate >= now,
+            ["7_isWithinDateRange"] = voucher.StartDate <= now && voucher.EndDate >= now,
+            ["8_usageLimitTotal"] = voucher.UsageLimitTotal,
+            ["9_usedCount"] = voucher.UsedCount,
+            ["10_usageLimitOk"] = voucher.UsageLimitTotal <= 0 || voucher.UsedCount < voucher.UsageLimitTotal,
+            ["11_isPublic"] = voucher.IsPublic,
+            ["12_discountType"] = voucher.DiscountType == 0 ? "FixedAmount" : "Percent",
+            ["13_discountValue"] = voucher.DiscountValue,
+            ["14_maxDiscountAmount"] = voucher.MaxDiscountAmount,
+            ["15_minOrderAmount"] = voucher.MinOrderAmount
+        };
+
+        var failReasons = new List<string>();
+        if (voucher.StartDate > now)
+            failReasons.Add($"Voucher chua bat dau. StartDate={voucher.StartDate:o}, ServerUTC={now:o}");
+        if (voucher.EndDate < now)
+            failReasons.Add($"Voucher da het han. EndDate={voucher.EndDate:o}, ServerUTC={now:o}");
+        if (voucher.UsageLimitTotal > 0 && voucher.UsedCount >= voucher.UsageLimitTotal)
+            failReasons.Add($"Vuot gioi han su dung. UsedCount={voucher.UsedCount}, Limit={voucher.UsageLimitTotal}");
+
+        return Ok(new
+        {
+            found = true,
+            code = voucher.Code,
+            name = voucher.Name,
+            checks,
+            failReasons = failReasons.Count > 0 ? failReasons : new List<string> { "No issues found - voucher should work" },
+            hint = "If failReasons is empty but voucher still fails, check orderAmount (cart might be empty or UnitPriceSnapshot=0)"
+        });
+    }
 }
 

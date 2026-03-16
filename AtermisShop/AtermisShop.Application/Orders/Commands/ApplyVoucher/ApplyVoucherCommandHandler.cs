@@ -85,23 +85,36 @@ public sealed class ApplyVoucherCommandHandler : IRequestHandler<ApplyVoucherCom
             }
         }
 
-        var voucher = await _context.Vouchers
-            .FirstOrDefaultAsync(v => v.Code == request.Code && 
-                v.StartDate <= DateTime.UtcNow && v.EndDate >= DateTime.UtcNow, cancellationToken);
-
         if (orderAmount <= 0)
         {
             return new ApplyVoucherResult(false, 0, "Order amount must be greater than 0.");
         }
 
-        if (voucher == null)
+        var voucherByCode = await _context.Vouchers
+            .FirstOrDefaultAsync(v => v.Code == request.Code, cancellationToken);
+
+        if (voucherByCode == null)
         {
-            return new ApplyVoucherResult(false, 0, "Voucher not found or expired");
+            return new ApplyVoucherResult(false, 0, "Voucher not found");
         }
+
+        var now = DateTime.UtcNow;
+
+        if (voucherByCode.StartDate > now)
+        {
+            return new ApplyVoucherResult(false, 0, $"Voucher has not started yet. Starts at {voucherByCode.StartDate:o}, current server time (UTC): {now:o}");
+        }
+
+        if (voucherByCode.EndDate < now)
+        {
+            return new ApplyVoucherResult(false, 0, $"Voucher has expired. Ended at {voucherByCode.EndDate:o}, current server time (UTC): {now:o}");
+        }
+
+        var voucher = voucherByCode;
 
         if (voucher.UsageLimitTotal > 0 && voucher.UsedCount >= voucher.UsageLimitTotal)
         {
-            return new ApplyVoucherResult(false, 0, "Voucher usage limit exceeded");
+            return new ApplyVoucherResult(false, 0, $"Voucher usage limit exceeded. Used: {voucher.UsedCount}, Limit: {voucher.UsageLimitTotal}");
         }
 
         if (voucher.MinOrderAmount.HasValue && orderAmount < voucher.MinOrderAmount.Value)

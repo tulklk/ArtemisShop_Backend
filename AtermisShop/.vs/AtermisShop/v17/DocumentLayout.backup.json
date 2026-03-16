@@ -308,7 +308,7 @@
               "RelativeDocumentMoniker": "AtermisShop_API\\appsettings.json",
               "ToolTip": "E:\\FPT Material\\Project\\EXE201\\CustomBraceletWithGPSWebsite_BE\\ArtemisShop_Backend\\AtermisShop\\AtermisShop_API\\appsettings.json",
               "RelativeToolTip": "AtermisShop_API\\appsettings.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowBYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-02-06T03:40:29.566Z",
               "EditorCaption": ""
@@ -356,8 +356,7 @@
               "RelativeToolTip": "AtermisShop_API\\Program.cs",
               "ViewState": "AgIAAB8BAAAAAAAAAAAgwCkBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-25T09:36:40.286Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-25T09:36:40.286Z"
             },
             {
               "$type": "Document",
