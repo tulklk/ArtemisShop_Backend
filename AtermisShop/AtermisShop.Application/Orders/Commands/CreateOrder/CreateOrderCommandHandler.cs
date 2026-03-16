@@ -171,7 +171,7 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             var voucher = await _context.Vouchers
                 .FirstOrDefaultAsync(v => v.Code == request.VoucherCode && 
                     v.StartDate <= DateTime.UtcNow && v.EndDate >= DateTime.UtcNow && 
-                    v.UsedCount < v.UsageLimitTotal, cancellationToken);
+                    (v.UsageLimitTotal <= 0 || v.UsedCount < v.UsageLimitTotal), cancellationToken);
 
             if (voucher != null && subTotal >= (voucher.MinOrderAmount ?? 0))
             {

@@ -99,7 +99,7 @@ public sealed class ApplyVoucherCommandHandler : IRequestHandler<ApplyVoucherCom
             return new ApplyVoucherResult(false, 0, "Voucher not found or expired");
         }
 
-        if (voucher.UsedCount >= voucher.UsageLimitTotal)
+        if (voucher.UsageLimitTotal > 0 && voucher.UsedCount >= voucher.UsageLimitTotal)
         {
             return new ApplyVoucherResult(false, 0, "Voucher usage limit exceeded");
         }
