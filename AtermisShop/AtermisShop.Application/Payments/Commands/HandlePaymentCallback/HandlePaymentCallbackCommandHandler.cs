@@ -62,6 +62,20 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
             
             _logger?.LogInformation("Searching for PayOS order with PaymentTransactionId: {OrderCode}. Found: {Found}", 
                 callbackResult.OrderId, order != null);
+
+            // Fallback: some older orders (or guest orders created before storing orderCode) may not have PaymentTransactionId.
+            // If caller provides internal orderId, try to locate by Id and (optionally) backfill PaymentTransactionId.
+            if (order == null && request.CallbackData.TryGetValue("orderId", out var rawOrderId) && Guid.TryParse(rawOrderId, out var guidOrderId))
+            {
+                order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == guidOrderId, cancellationToken);
+                _logger?.LogInformation("Fallback search by orderId: {OrderId}. Found: {Found}", guidOrderId, order != null);
+
+                if (order != null && string.IsNullOrWhiteSpace(order.PaymentTransactionId))
+                {
+                    order.PaymentTransactionId = callbackResult.OrderId;
+                    _logger?.LogInformation("Backfilled PaymentTransactionId with PayOS orderCode for order {OrderId}", order.Id);
+                }
+            }
         }
         else
         {

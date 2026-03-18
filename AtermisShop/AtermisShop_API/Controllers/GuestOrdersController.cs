@@ -1,6 +1,7 @@
 using AtermisShop.Application.Orders.Commands.ApplyVoucher;
 using AtermisShop.Application.Orders.Commands.CreateGuestOrder;
 using AtermisShop.Application.Orders.Commands.CreateOrder;
+using AtermisShop.Application.Orders.Commands.UpdateOrderPaymentTransaction;
 using AtermisShop.Application.Orders.Common;
 using AtermisShop.Application.Orders.Queries.GetOrderById;
 using AtermisShop.Application.Orders.Queries.LookupGuestOrder;
@@ -241,6 +242,13 @@ public class GuestOrdersController : ControllerBase
 
         if (!paymentResult.Success)
             return BadRequest(new { message = paymentResult.ErrorMessage });
+
+        // For PayOS, save orderCode to PaymentTransactionId for callback verification
+        if (request.Provider.Equals("PayOS", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(paymentResult.OrderCode))
+        {
+            await _mediator.Send(new UpdateOrderPaymentTransactionCommand(
+                order.Id, paymentResult.OrderCode), cancellationToken);
+        }
 
         return Ok(new { PaymentUrl = paymentResult.PaymentUrl });
     }
