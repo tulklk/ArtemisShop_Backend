@@ -318,10 +318,22 @@ public class PayOsPaymentProvider : IPaymentProvider
                 reference = callbackData.GetValueOrDefault("id", ""); // Payment Link Id
             }
             
-            // PayOS success code is "00"
-            // For return URL, status "PAID" also indicates success
+            // Determine success:
+            // - Webhook: PayOS includes boolean "success" (preferred signal)
+            // - Return URL / Confirm: "status" (PAID) or "code" (00)
             var status = callbackData.GetValueOrDefault("status", "");
-            var isSuccess = code == "00" || status == "PAID";
+            var successStr = callbackData.GetValueOrDefault("success", "");
+
+            var successBool = false;
+            var hasWebhookSuccessFlag =
+                !string.IsNullOrWhiteSpace(successStr) &&
+                bool.TryParse(successStr, out successBool);
+
+            var isPaidStatus = string.Equals(status, "PAID", StringComparison.OrdinalIgnoreCase);
+            var isSuccessCode = string.Equals(code, "00", StringComparison.OrdinalIgnoreCase);
+
+            // Prefer webhook success flag when present; otherwise fallback to code/status.
+            var isSuccess = hasWebhookSuccessFlag ? successBool : (isSuccessCode || isPaidStatus);
             
             if (isSuccess && !string.IsNullOrEmpty(finalOrderCode))
             {
