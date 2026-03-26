@@ -4,6 +4,7 @@ using AtermisShop_API.Controllers.Payments;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 
 namespace AtermisShop_API.Controllers;
@@ -13,10 +14,36 @@ namespace AtermisShop_API.Controllers;
 public class PaymentsController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IConfiguration _configuration;
 
-    public PaymentsController(IMediator mediator)
+    public PaymentsController(IMediator mediator, IConfiguration configuration)
     {
         _mediator = mediator;
+        _configuration = configuration;
+    }
+
+    private string BuildFrontendRedirectUrl(string path, Dictionary<string, string?> query)
+    {
+        var frontendUrl = _configuration["FrontendUrl"] ?? "";
+        if (string.IsNullOrWhiteSpace(frontendUrl) || !Uri.TryCreate(frontendUrl, UriKind.Absolute, out var frontendUri))
+        {
+            // Fall back to relative redirect; FE can handle it if hosted same domain.
+            var relative = path.StartsWith('/') ? path : "/" + path;
+            var q = string.Join("&", query
+                .Where(kv => !string.IsNullOrWhiteSpace(kv.Value))
+                .Select(kv => $"{Uri.EscapeDataString(kv.Key)}={Uri.EscapeDataString(kv.Value!)}"));
+            return string.IsNullOrWhiteSpace(q) ? relative : $"{relative}?{q}";
+        }
+
+        var baseUrl = frontendUri.ToString().TrimEnd('/');
+        var normalizedPath = path.StartsWith('/') ? path : "/" + path;
+        var queryString = string.Join("&", query
+            .Where(kv => !string.IsNullOrWhiteSpace(kv.Value))
+            .Select(kv => $"{Uri.EscapeDataString(kv.Key)}={Uri.EscapeDataString(kv.Value!)}"));
+
+        return string.IsNullOrWhiteSpace(queryString)
+            ? $"{baseUrl}{normalizedPath}"
+            : $"{baseUrl}{normalizedPath}?{queryString}";
     }
 
     [HttpGet("payos/return")]
@@ -33,8 +60,38 @@ public class PaymentsController : ControllerBase
 
         var result = await _mediator.Send(new HandlePaymentCallbackCommand("PayOS", queryParams), cancellationToken);
         if (result == null)
-            return BadRequest(new { message = "Payment verification failed" });
-        return Ok(new { message = "Payment successful", orderId = result.Id });
+        {
+            var failUrl = BuildFrontendRedirectUrl("/payment/cancel", new Dictionary<string, string?>
+            {
+                ["provider"] = "PayOS",
+                ["status"] = request.Status,
+                ["orderCode"] = request.OrderCode?.ToString()
+            });
+            return Redirect(failUrl);
+        }
+
+        var successUrl = BuildFrontendRedirectUrl("/payment/success", new Dictionary<string, string?>
+        {
+            ["provider"] = "PayOS",
+            ["orderId"] = result.Id.ToString(),
+            ["orderNumber"] = result.OrderNumber,
+            ["orderCode"] = request.OrderCode?.ToString()
+        });
+        return Redirect(successUrl);
+    }
+
+    [HttpGet("payos/cancel")]
+    [AllowAnonymous]
+    public IActionResult PayOsCancel([FromQuery] PayOsReturnRequest request)
+    {
+        var cancelUrl = BuildFrontendRedirectUrl("/payment/cancel", new Dictionary<string, string?>
+        {
+            ["provider"] = "PayOS",
+            ["status"] = request.Status,
+            ["orderCode"] = request.OrderCode?.ToString(),
+            ["cancel"] = request.Cancel?.ToString()
+        });
+        return Redirect(cancelUrl);
     }
 
     [HttpPost("payos/webhook")]

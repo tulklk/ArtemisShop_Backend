@@ -44,22 +44,31 @@ public class PayOsPaymentProvider : IPaymentProvider
     {
         try
         {
-            // For PayOS, we want full control over redirect URLs to avoid mismatched domains.
-            // Prefer FrontendUrl + fixed paths, then fallback to request, then PayOS section.
-            var frontendUrl = _configuration["FrontendUrl"];
-            string? returnUrl;
-            string? cancelUrl;
+            // We must send ReturnUrl/CancelUrl to BACKEND so we can verify callback,
+            // update PaymentStatus, then redirect to frontend with orderNumber.
+            //
+            // Priority:
+            // - Explicit request.ReturnUrl/CancelUrl (if provided)
+            // - BackendPublicUrl + fixed backend callback endpoints
+            // - PayOS:ReturnUrl / PayOS:CancelUrl (legacy fallback)
+            var backendPublicUrl = _configuration["BackendPublicUrl"];
+            string? returnUrl = request.ReturnUrl;
+            string? cancelUrl = request.CancelUrl;
 
-            if (!string.IsNullOrWhiteSpace(frontendUrl) && Uri.TryCreate(frontendUrl, UriKind.Absolute, out var frontendUri))
+            if (string.IsNullOrWhiteSpace(returnUrl) || string.IsNullOrWhiteSpace(cancelUrl))
             {
-                var baseUrl = frontendUri.ToString().TrimEnd('/');
-                returnUrl = $"{baseUrl}/payment/success";
-                cancelUrl = $"{baseUrl}/payment/cancel";
-            }
-            else
-            {
-                returnUrl = request.ReturnUrl ?? _configuration["PayOS:ReturnUrl"];
-                cancelUrl = request.CancelUrl ?? _configuration["PayOS:CancelUrl"];
+                if (!string.IsNullOrWhiteSpace(backendPublicUrl) &&
+                    Uri.TryCreate(backendPublicUrl, UriKind.Absolute, out var backendUri))
+                {
+                    var baseUrl = backendUri.ToString().TrimEnd('/');
+                    returnUrl ??= $"{baseUrl}/api/payments/payos/return";
+                    cancelUrl ??= $"{baseUrl}/api/payments/payos/cancel";
+                }
+                else
+                {
+                    returnUrl ??= _configuration["PayOS:ReturnUrl"];
+                    cancelUrl ??= _configuration["PayOS:CancelUrl"];
+                }
             }
 
             // Validate URLs
@@ -227,7 +236,7 @@ public class PayOsPaymentProvider : IPaymentProvider
         }
     }
 
-    public async Task<PaymentCallbackResult> VerifyCallbackAsync(Dictionary<string, string> callbackData, CancellationToken cancellationToken)
+    public Task<PaymentCallbackResult> VerifyCallbackAsync(Dictionary<string, string> callbackData, CancellationToken cancellationToken)
     {
         try
         {
@@ -355,15 +364,15 @@ public class PayOsPaymentProvider : IPaymentProvider
             
             if (isSuccess && !string.IsNullOrEmpty(finalOrderCode))
             {
-                return new PaymentCallbackResult(true, finalOrderCode, amount, reference);
+                return Task.FromResult(new PaymentCallbackResult(true, finalOrderCode, amount, reference));
             }
 
-            return new PaymentCallbackResult(false, finalOrderCode, amount, reference, desc);
+            return Task.FromResult(new PaymentCallbackResult(false, finalOrderCode, amount, reference, desc));
         }
         catch (Exception ex)
         {
             _logger?.LogError(ex, "Error verifying PayOS callback");
-            return new PaymentCallbackResult(false, "", 0, "", ex.Message);
+            return Task.FromResult(new PaymentCallbackResult(false, "", 0, "", ex.Message));
         }
     }
 }
