@@ -1,5 +1,6 @@
 using AtermisShop.Application.Common.Interfaces;
 using AtermisShop.Application.Payments.Common;
+using AtermisShop.Application.Orders.Common;
 using AtermisShop.Domain.Orders;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -97,6 +98,30 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
         if (order.PaymentStatus == 1) // Already paid
         {
             _logger?.LogInformation("Order {OrderId} already has PaymentStatus = Paid. Skipping update.", order.Id);
+
+            // Idempotency: ensure cart is cleared for PayOS-paid user orders.
+            try
+            {
+                var payOsMethod = PaymentMethod.ToInt(PaymentMethod.PayOS);
+                if (order.PaymentMethod == payOsMethod && order.UserId.HasValue)
+                {
+                    var cart = await _context.Carts
+                        .Include(c => c.Items)
+                        .FirstOrDefaultAsync(c => c.UserId == order.UserId.Value, cancellationToken);
+
+                    if (cart?.Items != null && cart.Items.Any())
+                    {
+                        _context.CartItems.RemoveRange(cart.Items);
+                        await _context.SaveChangesAsync(cancellationToken);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Failed to clear cart for already-paid PayOS order {OrderId}", order.Id);
+                // Do not block returning successful callback
+            }
+
             return order;
         }
 
@@ -124,6 +149,29 @@ public sealed class HandlePaymentCallbackCommandHandler : IRequestHandler<Handle
 
         _logger?.LogInformation("Order {OrderId} payment status updated successfully. OrderStatus: {OrderStatus}, PaymentStatus: {PaymentStatus}", 
             order.Id, order.OrderStatus, order.PaymentStatus);
+
+        // For PayOS: after successful payment, clear user's cart (since we postponed cart clearing).
+        try
+        {
+            var payOsMethod = PaymentMethod.ToInt(PaymentMethod.PayOS);
+            if (order.PaymentMethod == payOsMethod && order.UserId.HasValue)
+            {
+                var cart = await _context.Carts
+                    .Include(c => c.Items)
+                    .FirstOrDefaultAsync(c => c.UserId == order.UserId.Value, cancellationToken);
+
+                if (cart?.Items != null && cart.Items.Any())
+                {
+                    _context.CartItems.RemoveRange(cart.Items);
+                    await _context.SaveChangesAsync(cancellationToken);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to clear cart for PayOS-paid order {OrderId}", order.Id);
+            // Continue sending email / returning success
+        }
 
         // Send order confirmation email after successful payment (PayOS)
         try

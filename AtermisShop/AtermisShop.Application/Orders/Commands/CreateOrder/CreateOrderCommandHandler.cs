@@ -54,6 +54,9 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
         if (cart.Items == null || !cart.Items.Any())
             throw new InvalidOperationException($"Cart exists but has no items. Please add items to cart first.");
 
+        var paymentMethodInt = PaymentMethod.ToInt(request.PaymentMethod); // 0: COD, 1: PayOS
+        var isCod = paymentMethodInt == PaymentMethod.ToInt(PaymentMethod.COD);
+
         var orderNumber = await OrderNumberHelper.GenerateUniqueOrderNumberAsync(_context, cancellationToken);
         var order = new Order
         {
@@ -61,7 +64,7 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
             UserId = request.UserId,
             OrderStatus = (int)OrderStatus.Pending,
             PaymentStatus = 0, // Pending
-            PaymentMethod = AtermisShop.Application.Orders.Common.PaymentMethod.ToInt(request.PaymentMethod), // 0: COD, 1: PayOS
+            PaymentMethod = paymentMethodInt,
             ShippingFullName = request.ShippingAddress?.FullName,
             ShippingPhoneNumber = request.ShippingAddress?.PhoneNumber,
             ShippingAddressLine = request.ShippingAddress?.AddressLine,
@@ -197,42 +200,48 @@ public sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderComma
 
         _context.Orders.Add(order);
 
-        // Clear cart after order creation
-        _context.CartItems.RemoveRange(cart.Items);
+        if (isCod)
+        {
+            // COD: clear cart immediately because order is confirmed.
+            _context.CartItems.RemoveRange(cart.Items);
+        }
 
         await _context.SaveChangesAsync(cancellationToken);
 
-        // Send order confirmation email
-        try
+        if (isCod)
         {
-            var user = await _userService.FindByIdAsync(request.UserId);
-            if (user != null && !string.IsNullOrEmpty(user.Email))
+            // COD: send order confirmation email immediately.
+            try
             {
-                // Load order with items and product images for email
-                var orderWithItems = await _context.Orders
-                    .Include(o => o.Items)
-                        .ThenInclude(i => i.Product)
-                            .ThenInclude(p => p.Images)
-                    .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
-
-                if (orderWithItems != null)
+                var user = await _userService.FindByIdAsync(request.UserId);
+                if (user != null && !string.IsNullOrEmpty(user.Email))
                 {
-                    await _emailService.SendOrderConfirmationAsync(
-                        user.Email,
-                        user.FullName ?? user.Email,
-                        orderWithItems,
-                        cancellationToken);
-                    
-                    _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber}", 
-                        user.Email, order.OrderNumber);
+                    // Load order with items and product images for email
+                    var orderWithItems = await _context.Orders
+                        .Include(o => o.Items)
+                            .ThenInclude(i => i.Product)
+                                .ThenInclude(p => p.Images)
+                        .FirstOrDefaultAsync(o => o.Id == order.Id, cancellationToken);
+
+                    if (orderWithItems != null)
+                    {
+                        await _emailService.SendOrderConfirmationAsync(
+                            user.Email,
+                            user.FullName ?? user.Email,
+                            orderWithItems,
+                            cancellationToken);
+
+                        _logger?.LogInformation("Order confirmation email sent to {Email} for order {OrderNumber}",
+                            user.Email, order.OrderNumber);
+                    }
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber}. Order was created successfully.", 
-                order.OrderNumber);
-            // Don't throw - order is created successfully, email failure shouldn't fail the request
+            catch (Exception ex)
+            {
+                _logger?.LogError(ex, "Failed to send order confirmation email for order {OrderNumber}. Order was created successfully.",
+                    order.OrderNumber);
+                // Don't throw - email failure shouldn't fail the request
+            }
         }
 
         return order;
