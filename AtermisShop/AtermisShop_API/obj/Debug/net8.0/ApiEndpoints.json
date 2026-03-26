@@ -1456,6 +1456,42 @@
   },
   {
     "ContainingType": "AtermisShop_API.Controllers.PaymentsController",
+    "Method": "PayOsCancel",
+    "RelativePath": "api/Payments/payos/cancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Code",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cancel",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderCode",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AtermisShop_API.Controllers.PaymentsController",
     "Method": "PayOsConfirm",
     "RelativePath": "api/Payments/payos/confirm",
     "HttpMethod": "POST",
