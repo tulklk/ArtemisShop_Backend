@@ -17,10 +17,13 @@ public sealed class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery
 
     public async Task<IReadOnlyList<OrderDto>> Handle(GetAllOrdersQuery request, CancellationToken cancellationToken)
     {
+        var payOsMethod = PaymentMethod.ToInt(PaymentMethod.PayOS); // 1
+
         var orders = await _context.Orders
             .Include(o => o.Items)
             .Include(o => o.Voucher)
             .Include(o => o.User)
+            .Where(o => !(o.PaymentMethod == payOsMethod && o.PaymentStatus == 0)) // Hide unpaid PayOS orders
             .OrderByDescending(o => o.CreatedAt)
             .AsNoTracking()
             .ToListAsync(cancellationToken);
