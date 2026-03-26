@@ -116,11 +116,15 @@ public class OrdersController : ControllerBase
             Price: (int)Math.Round(item.UnitPrice, MidpointRounding.AwayFromZero) // Convert decimal to int (VND) with proper rounding
         )).ToList();
 
+        var orderDescription = request.Provider.Equals("PayOS", StringComparison.OrdinalIgnoreCase)
+            ? $"Order {order.OrderNumber}"
+            : $"Order #{order.OrderNumber}";
+
         var paymentResult = await _mediator.Send(new CreatePaymentCommand(
             request.Provider,
             order.Id,
             order.TotalAmount,
-            $"Order #{order.OrderNumber}",
+            orderDescription,
             paymentItems,
             request.ReturnUrl,
             request.CancelUrl), cancellationToken);
