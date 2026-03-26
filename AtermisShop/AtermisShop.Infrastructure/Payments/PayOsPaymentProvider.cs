@@ -48,27 +48,27 @@ public class PayOsPaymentProvider : IPaymentProvider
             // update PaymentStatus, then redirect to frontend with orderNumber.
             //
             // Priority:
-            // - Explicit request.ReturnUrl/CancelUrl (if provided)
             // - BackendPublicUrl + fixed backend callback endpoints
             // - PayOS:ReturnUrl / PayOS:CancelUrl (legacy fallback)
+            //
+            // Important: do NOT trust ReturnUrl/CancelUrl from client request for PayOS.
+            // If FE sends a direct frontend URL, backend callback can be skipped and
+            // order payment status won't be updated, causing admin to miss paid guest orders.
             var backendPublicUrl = _configuration["BackendPublicUrl"];
-            string? returnUrl = request.ReturnUrl;
-            string? cancelUrl = request.CancelUrl;
+            string? returnUrl = null;
+            string? cancelUrl = null;
 
-            if (string.IsNullOrWhiteSpace(returnUrl) || string.IsNullOrWhiteSpace(cancelUrl))
+            if (!string.IsNullOrWhiteSpace(backendPublicUrl) &&
+                Uri.TryCreate(backendPublicUrl, UriKind.Absolute, out var backendUri))
             {
-                if (!string.IsNullOrWhiteSpace(backendPublicUrl) &&
-                    Uri.TryCreate(backendPublicUrl, UriKind.Absolute, out var backendUri))
-                {
-                    var baseUrl = backendUri.ToString().TrimEnd('/');
-                    returnUrl ??= $"{baseUrl}/api/payments/payos/return";
-                    cancelUrl ??= $"{baseUrl}/api/payments/payos/cancel";
-                }
-                else
-                {
-                    returnUrl ??= _configuration["PayOS:ReturnUrl"];
-                    cancelUrl ??= _configuration["PayOS:CancelUrl"];
-                }
+                var baseUrl = backendUri.ToString().TrimEnd('/');
+                returnUrl = $"{baseUrl}/api/payments/payos/return";
+                cancelUrl = $"{baseUrl}/api/payments/payos/cancel";
+            }
+            else
+            {
+                returnUrl = _configuration["PayOS:ReturnUrl"];
+                cancelUrl = _configuration["PayOS:CancelUrl"];
             }
 
             // Validate URLs
