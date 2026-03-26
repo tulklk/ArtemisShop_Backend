@@ -231,11 +231,15 @@ public class GuestOrdersController : ControllerBase
             Price: (int)item.UnitPrice // Convert decimal to int (VND)
         )).ToList();
 
+        var orderDescription = request.Provider.Equals("PayOS", StringComparison.OrdinalIgnoreCase)
+            ? $"Order {order.OrderNumber}"
+            : $"Order #{order.OrderNumber}";
+
         var paymentResult = await _mediator.Send(new CreatePaymentCommand(
             request.Provider,
             order.Id,
             order.TotalAmount,
-            $"Order #{order.OrderNumber}",
+            orderDescription,
             paymentItems,
             request.ReturnUrl,
             request.CancelUrl), cancellationToken);
