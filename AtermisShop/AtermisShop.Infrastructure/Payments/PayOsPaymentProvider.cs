@@ -44,8 +44,23 @@ public class PayOsPaymentProvider : IPaymentProvider
     {
         try
         {
-            var returnUrl = request.ReturnUrl ?? _configuration["PayOS:ReturnUrl"];
-            var cancelUrl = request.CancelUrl ?? _configuration["PayOS:CancelUrl"];
+            // For PayOS, we want full control over redirect URLs to avoid mismatched domains.
+            // Prefer FrontendUrl + fixed paths, then fallback to request, then PayOS section.
+            var frontendUrl = _configuration["FrontendUrl"];
+            string? returnUrl;
+            string? cancelUrl;
+
+            if (!string.IsNullOrWhiteSpace(frontendUrl) && Uri.TryCreate(frontendUrl, UriKind.Absolute, out var frontendUri))
+            {
+                var baseUrl = frontendUri.ToString().TrimEnd('/');
+                returnUrl = $"{baseUrl}/payment/success";
+                cancelUrl = $"{baseUrl}/payment/cancel";
+            }
+            else
+            {
+                returnUrl = request.ReturnUrl ?? _configuration["PayOS:ReturnUrl"];
+                cancelUrl = request.CancelUrl ?? _configuration["PayOS:CancelUrl"];
+            }
 
             // Validate URLs
             if (string.IsNullOrEmpty(returnUrl) || !Uri.TryCreate(returnUrl, UriKind.Absolute, out _))
@@ -166,7 +181,10 @@ public class PayOsPaymentProvider : IPaymentProvider
             }
 
             // Sanitize description (PayOS may have length limits)
-            var description = request.OrderDescription ?? $"Order {request.OrderId}";
+            // Also remove '#' so PayOS dashboard displays clean order code/name.
+            var description = (request.OrderDescription ?? $"Order {request.OrderId}")
+                .Replace("#", "", StringComparison.Ordinal)
+                .Trim();
             if (description.Length > 255)
             {
                 description = description.Substring(0, 255);
